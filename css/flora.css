@@ -1,38 +1,47 @@
 /* ==========================================================================
-   FLORA | Botanical Artistry - Vibrant Botanical Aesthetics
-   Tailwind CSS Companion Sheet
+   FLORA | Botanical Artistry - Electric Sunset & Evergreen Aesthetics
+   High-Fashion Maximalist Palette:
+   - Hero Accent: Electric Coral / Poppy (#FF4834)
+   - Secondary Pop: Bright Apricot (#FFA451)
+   - Anchor / Structure: Deep Juniper (#0D3B2E)
+   - Background Base: Warm Buttercream (#FFFDF5)
+   - Body Text: Midnight Forest (#111A16)
    ========================================================================== */
 
 :root {
-    --bg-base: #FAF9F6;
-    --text-dark: #0D1F15;
-    --flora-emerald: #1B5E39;
-    --flora-rose: #E11D48;
-    --flora-gold: #D97706;
-    --flora-leaf: #22C55E;
-    --flora-sage: #2E7D32;
+    --bg-base: #FFFDF5; /* Warm Buttercream */
+    --text-dark: #111A16; /* Midnight Forest */
+    --body-text: #111A16;
+    --hero-coral: #FF4834; /* Electric Coral / Poppy */
+    --secondary-apricot: #FFA451; /* Bright Apricot */
+    --anchor-juniper: #0D3B2E; /* Deep Juniper */
+    --flora-emerald: #0D3B2E;
+    --flora-rose: #FF4834;
+    --flora-gold: #FFA451;
+    --flora-leaf: #FFA451;
+    --flora-sage: #134E3E;
 }
 
 /* Custom Selection */
 ::selection {
-    background-color: #1B5E39;
-    color: #FAF9F6;
+    background-color: #FF4834;
+    color: #FFFDF5;
 }
 
 /* Slim Vibrant Scrollbar */
 ::-webkit-scrollbar {
-    width: 7px;
-    height: 7px;
+    width: 6px;
+    height: 6px;
 }
 ::-webkit-scrollbar-track {
-    background: #F1F5F1;
+    background: #FFFDF5;
 }
 ::-webkit-scrollbar-thumb {
-    background: #2E7D32;
+    background: #0D3B2E;
     border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: #E11D48;
+    background: #FF4834;
 }
 
 /* Subtle Luminous Texture */
@@ -48,25 +57,27 @@
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
-/* Fluid Typography */
+/* Fluid Responsive Typography */
 .text-huge {
-    font-size: clamp(3.5rem, 10vw, 10.5rem);
-    line-height: 0.9;
+    font-size: clamp(2.5rem, 8vw, 8.5rem);
+    line-height: 0.92;
     letter-spacing: -0.025em;
+    word-break: break-word;
 }
 
 .text-editorial-title {
-    font-size: clamp(2.4rem, 6.5vw, 6rem);
-    line-height: 0.96;
+    font-size: clamp(2rem, 5.5vw, 5rem);
+    line-height: 0.98;
     letter-spacing: -0.02em;
+    word-break: break-word;
 }
 
 /* Smooth Fade In View Transition */
 .view {
     display: none;
     opacity: 0;
-    transform: translateY(12px);
-    transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(10px);
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .view.active {
@@ -93,11 +104,11 @@
     }
 }
 
-/* Vibrant Image Styling - NO GRAYSCALE */
+/* Vibrant Image Styling */
 .edgy-img-wrapper {
     position: relative;
     overflow: hidden;
-    background-color: #E8F0EA;
+    background-color: #E8F2ED;
 }
 
 .edgy-img-wrapper img {
@@ -106,8 +117,8 @@
 }
 
 .edgy-card:hover .edgy-img-wrapper img {
-    transform: scale(1.07);
-    filter: saturate(1.22) contrast(1.08);
+    transform: scale(1.06);
+    filter: saturate(1.2) contrast(1.08);
 }
 
 /* Vibrant Hover Underline Draw Effect */
@@ -147,7 +158,7 @@
 .modal-backdrop {
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.35s ease, visibility 0.35s ease;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 .modal-backdrop.open {
     opacity: 1;
@@ -155,8 +166,8 @@
 }
 
 .modal-content {
-    transform: translateY(25px) scale(0.97);
-    transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(20px) scale(0.98);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .modal-backdrop.open .modal-content {
     transform: translateY(0) scale(1);
@@ -174,16 +185,141 @@
 }
 .drawer-panel {
     transform: translateX(100%);
-    transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .drawer-backdrop.open .drawer-panel {
     transform: translateX(0);
 }
 
+/* Mobile Menu Slide-Over Animation */
+.mobile-menu-backdrop {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.mobile-menu-backdrop.open {
+    opacity: 1;
+    visibility: visible;
+}
+.mobile-menu-panel {
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.mobile-menu-backdrop.open .mobile-menu-panel {
+    transform: translateX(0);
+}
+
+/* Mobile Horizontal Scroll Helper for Filter Tabs */
+.scrollbar-none::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
 /* Glowing Vibrant Highlights */
+.glow-coral {
+    box-shadow: 0 10px 30px -10px rgba(255, 72, 52, 0.45);
+}
+.glow-apricot {
+    box-shadow: 0 10px 30px -10px rgba(255, 164, 81, 0.45);
+}
+.glow-juniper {
+    box-shadow: 0 10px 30px -10px rgba(13, 59, 46, 0.4);
+}
 .glow-emerald {
-    box-shadow: 0 10px 30px -10px rgba(27, 94, 57, 0.35);
+    box-shadow: 0 10px 30px -10px rgba(13, 59, 46, 0.4);
 }
 .glow-rose {
-    box-shadow: 0 10px 30px -10px rgba(225, 29, 72, 0.35);
+    box-shadow: 0 10px 30px -10px rgba(255, 72, 52, 0.45);
+}
+
+
+/* ==========================================================================
+   DELIVERY MAP & LEAFLET ENHANCEMENTS
+   ========================================================================== */
+#delivery-map {
+    z-index: 1;
+    min-height: 420px;
+}
+
+@media (min-width: 768px) {
+    #delivery-map {
+        min-height: 520px;
+    }
+}
+
+/* Ensure Leaflet controls do not overlay site modals or sticky header */
+.leaflet-top,
+.leaflet-bottom {
+    z-index: 20 !important;
+}
+
+/* Custom Leaflet Popup */
+.flora-custom-leaflet-popup .leaflet-popup-content-wrapper {
+    background: #FFFDF5 !important;
+    color: #111A16 !important;
+    border-radius: 16px !important;
+    border: 1px solid rgba(13, 59, 46, 0.2) !important;
+    box-shadow: 0 16px 36px -8px rgba(13, 59, 46, 0.25) !important;
+    padding: 2px !important;
+}
+
+.flora-custom-leaflet-popup .leaflet-popup-content {
+    margin: 8px 10px !important;
+    line-height: 1.4 !important;
+}
+
+.flora-custom-leaflet-popup .leaflet-popup-tip {
+    background: #FFFDF5 !important;
+    border: 1px solid rgba(13, 59, 46, 0.2) !important;
+    box-shadow: none !important;
+}
+
+.flora-custom-leaflet-popup a.leaflet-popup-close-button {
+    top: 8px !important;
+    right: 8px !important;
+    color: #0D3B2E !important;
+    font-size: 16px !important;
+}
+
+.flora-custom-leaflet-popup a.leaflet-popup-close-button:hover {
+    color: #FF4834 !important;
+}
+
+/* Custom Tooltip */
+.flora-leaflet-tooltip {
+    background: #0D3B2E !important;
+    color: #FFFDF5 !important;
+    border: 1px solid #FFA451 !important;
+    border-radius: 6px !important;
+    font-family: inherit !important;
+    font-size: 11px !important;
+    padding: 3px 8px !important;
+    box-shadow: 0 4px 14px rgba(13, 59, 46, 0.25) !important;
+}
+
+.flora-leaflet-tooltip::before {
+    border-top-color: #0D3B2E !important;
+}
+
+
+/* Custom Map Marker Resets & Pulsing Animation */
+@keyframes floraPing {
+    0% { transform: scale(0.9); opacity: 0.85; }
+    75%, 100% { transform: scale(2.2); opacity: 0; }
+}
+
+.flora-center-marker-icon,
+.flora-city-marker-icon,
+.flora-village-marker-icon,
+.leaflet-div-icon {
+    background: transparent !important;
+    border: none !important;
+}
+
+.flora-village-marker-icon div:hover {
+    background-color: #FF4834 !important;
+    transform: scale(1.6);
 }
