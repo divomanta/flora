@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Каталог & Архив | ФЛОРА — Botanical Artistry</title>
+    <title>Каталог & Колекция | ФЛОРА — Магазин за цветя гр. Тутракан</title>
     <meta name="description" content="Флорален каталог на магазин Флора в гр. Тутракан. Бутикови букети, сватбена флористика, авангардни композиции и саксийни орхидеи.">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Tailwind CSS -->
@@ -19,12 +19,12 @@
             theme: {
                 extend: {
                     colors: {
-                        'flora-base': '#F4F0EB',
-                        'flora-dark': '#121A14',
-                        'flora-taupe': '#9A8C84',
-                        'flora-sage': '#4A5D4E',
-                        'flora-cream': '#EFE9E0',
-                        'flora-card': '#EDE8E1',
+                        'flora-base': '#FAF9F6',
+                        'flora-dark': '#0D1F15',
+                        'flora-emerald': '#1B5E39',
+                        'flora-rose': '#E11D48',
+                        'flora-amber': '#D97706',
+                        'flora-sage': '#2E7D32',
                     },
                     fontFamily: {
                         serif: ['"Playfair Display"', 'Georgia', 'serif'],
@@ -40,51 +40,63 @@
     </script>
     <link rel="stylesheet" href="css/flora.css">
 </head>
-<body class="bg-flora-base text-flora-dark font-sans selection:bg-flora-dark selection:text-flora-base min-h-screen flex flex-col justify-between">
+<body class="bg-flora-base text-stone-900 font-sans selection:bg-emerald-800 selection:text-white min-h-screen flex flex-col justify-between">
     <div class="grain-overlay" aria-hidden="true"></div>
 
     <!-- Header Navigation -->
-    <header class="fixed top-0 left-0 w-full px-6 sm:px-12 py-6 flex justify-between items-center z-50 transition-colors" style="mix-blend-mode: difference; color: #FFFFFF;">
-        <a href="index.html#home" class="font-serif italic text-2xl sm:text-3xl text-inherit">Flora<span class="text-xs font-sans tracking-mega uppercase not-italic opacity-70">.Atelier</span></a>
+    <header class="fixed top-0 left-0 w-full px-6 sm:px-12 py-4 sm:py-5 flex justify-between items-center z-50 bg-white/80 backdrop-blur-md border-b border-stone-200 shadow-sm">
+        <a href="index.html#home" class="font-serif italic text-2xl sm:text-3xl text-emerald-950 font-bold flex items-center gap-2">
+            <span>Flora</span>
+            <span class="text-emerald-600 text-lg"><i class="fa-solid fa-leaf"></i></span>
+            <span class="text-[10px] font-sans tracking-mega uppercase not-italic text-emerald-800 font-semibold bg-emerald-100/80 px-2 py-0.5 rounded-full border border-emerald-300">Тутракан</span>
+        </a>
         
-        <nav class="hidden md:flex items-center gap-8 text-[11px] font-sans tracking-mega uppercase">
-            <a href="index.html#home" class="hover-draw pb-0.5 text-inherit opacity-80 hover:opacity-100">Начало</a>
-            <a href="catalog.html" class="hover-draw pb-0.5 text-inherit opacity-100 border-b border-current">Колекция</a>
-            <a href="order.html" class="hover-draw pb-0.5 text-inherit opacity-80 hover:opacity-100">Поръчай</a>
-            <a href="contact.html" class="hover-draw pb-0.5 text-inherit opacity-80 hover:opacity-100">Контакти</a>
+        <nav class="hidden md:flex items-center gap-8 text-[12px] font-sans tracking-mega uppercase font-semibold text-stone-700">
+            <a href="index.html#home" class="hover-draw pb-0.5 hover:text-emerald-800 transition-colors">Начало</a>
+            <a href="catalog.html" class="hover-draw pb-0.5 text-emerald-800 border-b-2 border-emerald-800">Колекция</a>
+            <a href="order.html" class="hover-draw pb-0.5 hover:text-emerald-800 transition-colors">Поръчай</a>
+            <a href="contact.html" class="hover-draw pb-0.5 hover:text-emerald-800 transition-colors">Контакти</a>
         </nav>
 
-        <a href="order.html" class="bg-flora-base text-flora-dark px-4 py-2 text-[10px] uppercase tracking-mega font-medium hover:bg-flora-sage hover:text-flora-base transition-colors">
+        <a href="order.html" class="bg-emerald-800 text-white px-5 py-2.5 rounded-full text-xs uppercase tracking-mega font-bold hover:bg-emerald-900 transition-all shadow-sm">
             Поръчай
         </a>
     </header>
 
     <main class="flex-1 px-4 sm:px-8 lg:px-12 pt-32 pb-20 max-w-7xl mx-auto w-full">
-        <!-- Header -->
-        <div class="border-b border-flora-dark/20 pb-8 mb-10">
+        <!-- Vibrant Header Banner Strip -->
+        <div class="relative rounded-2xl overflow-hidden mb-12 shadow-md">
+            <img src="img/banner-flowers.jpg" alt="Vibrant flowers" class="w-full h-48 sm:h-64 object-cover filter saturate-125">
+            <div class="absolute inset-0 bg-gradient-to-r from-emerald-950/85 via-emerald-950/60 to-transparent flex flex-col justify-center px-8 sm:px-14 text-white">
+                <span class="text-xs uppercase tracking-mega text-emerald-300 font-bold mb-1">Флорален Архив &bull; Магазин Флора</span>
+                <h1 class="text-3xl sm:text-5xl font-serif italic font-bold">Нашата Пълна Колекция</h1>
+                <p class="text-sm text-stone-200 mt-2 max-w-lg font-light">Всички налични букети, венци, саксийни цветя и аранжировки в гр. Тутракан.</p>
+            </div>
+        </div>
+
+        <div class="border-b border-stone-200 pb-8 mb-10">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-8">
                 <div>
-                    <span class="text-[11px] uppercase tracking-mega text-flora-taupe block mb-2">Флорален архив</span>
                     <div class="flex items-baseline gap-4">
-                        <h1 class="text-editorial-title font-serif italic text-flora-dark">Archives.</h1>
-                        <span id="product-count" class="font-sans text-xs tracking-mega uppercase text-flora-taupe"></span>
+                        <h2 class="text-3xl sm:text-4xl font-serif italic text-stone-900">Каталог</h2>
+                        <span id="product-count" class="font-sans text-xs tracking-mega uppercase font-bold text-stone-500"></span>
                     </div>
                 </div>
 
                 <div class="w-full md:w-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-                    <div class="relative flex-1 sm:w-64">
+                    <div class="relative flex-1 sm:w-72">
                         <input 
                             type="text" 
                             id="catalog-search" 
                             placeholder="Търсене на букет или цвете..." 
-                            class="w-full bg-transparent border-b border-flora-dark/40 py-2 pl-2 pr-7 text-xs font-sans text-flora-dark placeholder-flora-taupe/70 focus:outline-none focus:border-flora-dark"
+                            class="w-full bg-white border border-stone-300 rounded-full py-2.5 pl-4 pr-9 text-xs font-sans text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-emerald-600 shadow-sm"
                         />
-                        <i class="fa-solid fa-magnifying-glass absolute right-2 top-3 text-[11px] text-flora-taupe pointer-events-none"></i>
+                        <i class="fa-solid fa-magnifying-glass absolute right-3.5 top-3.5 text-xs text-stone-400 pointer-events-none"></i>
                     </div>
 
                     <select 
                         id="catalog-sort" 
-                        class="bg-transparent border-b border-flora-dark/40 py-2 px-2 text-xs font-sans text-flora-dark focus:outline-none focus:border-flora-dark cursor-pointer"
+                        class="bg-white border border-stone-300 rounded-full py-2.5 px-4 text-xs font-sans text-stone-800 focus:outline-none focus:ring-2 focus:ring-emerald-600 cursor-pointer shadow-sm"
                     >
                         <option value="featured">Препоръчани</option>
                         <option value="price-asc">Цена: Ниска към Висока</option>
@@ -95,13 +107,13 @@
             </div>
 
             <!-- Categories -->
-            <div class="flex flex-wrap items-center gap-2 sm:gap-6 pt-2">
-                <button type="button" class="filter-btn active text-xs uppercase tracking-mega font-sans py-1.5 px-3 rounded-full hover:text-flora-dark transition-colors" data-filter="всички">Всички</button>
-                <button type="button" class="filter-btn text-xs uppercase tracking-mega font-sans py-1.5 px-3 rounded-full text-flora-taupe hover:text-flora-dark transition-colors" data-filter="букети">Букети</button>
-                <button type="button" class="filter-btn text-xs uppercase tracking-mega font-sans py-1.5 px-3 rounded-full text-flora-taupe hover:text-flora-dark transition-colors" data-filter="авангард">Авангард</button>
-                <button type="button" class="filter-btn text-xs uppercase tracking-mega font-sans py-1.5 px-3 rounded-full text-flora-taupe hover:text-flora-dark transition-colors" data-filter="сватбени">Сватбени</button>
-                <button type="button" class="filter-btn text-xs uppercase tracking-mega font-sans py-1.5 px-3 rounded-full text-flora-taupe hover:text-flora-dark transition-colors" data-filter="саксийни">Саксийни</button>
-                <button type="button" class="filter-btn text-xs uppercase tracking-mega font-sans py-1.5 px-3 rounded-full text-flora-taupe hover:text-flora-dark transition-colors" data-filter="аранжировки">Аранжировки</button>
+            <div class="flex flex-wrap items-center gap-2 sm:gap-3 pt-2">
+                <button type="button" class="filter-btn active text-xs uppercase tracking-mega font-sans py-2 px-4 rounded-full bg-emerald-800 text-white font-medium shadow-sm transition-all" data-filter="всички">Всички</button>
+                <button type="button" class="filter-btn text-xs uppercase tracking-mega font-sans py-2 px-4 rounded-full bg-white/70 text-stone-700 hover:bg-emerald-50 hover:text-emerald-800 border border-stone-200 transition-all" data-filter="букети">Букети</button>
+                <button type="button" class="filter-btn text-xs uppercase tracking-mega font-sans py-2 px-4 rounded-full bg-white/70 text-stone-700 hover:bg-emerald-50 hover:text-emerald-800 border border-stone-200 transition-all" data-filter="авангард">Авангард</button>
+                <button type="button" class="filter-btn text-xs uppercase tracking-mega font-sans py-2 px-4 rounded-full bg-white/70 text-stone-700 hover:bg-emerald-50 hover:text-emerald-800 border border-stone-200 transition-all" data-filter="сватбени">Сватбени</button>
+                <button type="button" class="filter-btn text-xs uppercase tracking-mega font-sans py-2 px-4 rounded-full bg-white/70 text-stone-700 hover:bg-emerald-50 hover:text-emerald-800 border border-stone-200 transition-all" data-filter="саксийни">Саксийни</button>
+                <button type="button" class="filter-btn text-xs uppercase tracking-mega font-sans py-2 px-4 rounded-full bg-white/70 text-stone-700 hover:bg-emerald-50 hover:text-emerald-800 border border-stone-200 transition-all" data-filter="аранжировки">Аранжировки</button>
             </div>
         </div>
 
@@ -110,23 +122,23 @@
     </main>
 
     <!-- Product Modal -->
-    <div id="product-modal" class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 lg:p-8 bg-flora-dark/75 backdrop-blur-sm" onclick="FloraApp.closeProductModal()">
-        <div class="modal-content relative w-full max-w-4xl bg-flora-base text-flora-dark p-6 sm:p-10 shadow-2xl max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
-            <button type="button" onclick="FloraApp.closeProductModal()" class="absolute top-5 right-5 text-xl font-sans text-flora-dark/70 hover:text-flora-dark p-2">&times;</button>
+    <div id="product-modal" class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 lg:p-8 bg-black/75 backdrop-blur-sm" onclick="FloraApp.closeProductModal()">
+        <div class="modal-content relative w-full max-w-4xl bg-white text-stone-900 p-6 sm:p-10 rounded-xl shadow-2xl max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
+            <button type="button" onclick="FloraApp.closeProductModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-600 flex items-center justify-center text-xl transition-colors">&times;</button>
             <div id="modal-product-content"></div>
         </div>
     </div>
 
     <!-- Favorites Drawer -->
-    <div id="favorites-drawer" class="drawer-backdrop fixed inset-0 z-50 bg-flora-dark/60 backdrop-blur-sm" onclick="FloraApp.closeFavoritesDrawer()">
-        <div class="drawer-panel absolute top-0 right-0 w-full max-w-md h-full bg-flora-base text-flora-dark p-6 sm:p-8 shadow-2xl flex flex-col justify-between overflow-y-auto" onclick="event.stopPropagation()">
+    <div id="favorites-drawer" class="drawer-backdrop fixed inset-0 z-50 bg-black/60 backdrop-blur-sm" onclick="FloraApp.closeFavoritesDrawer()">
+        <div class="drawer-panel absolute top-0 right-0 w-full max-w-md h-full bg-white text-stone-900 p-6 sm:p-8 shadow-2xl flex flex-col justify-between overflow-y-auto" onclick="event.stopPropagation()">
             <div>
-                <div class="flex justify-between items-center pb-4 border-b border-flora-dark/15 mb-6">
-                    <h3 class="font-serif italic text-2xl text-flora-dark flex items-center gap-2">
-                        <i class="fa-regular fa-heart text-flora-sage text-lg"></i>
+                <div class="flex justify-between items-center pb-4 border-b border-stone-200 mb-6">
+                    <h3 class="font-serif italic text-2xl text-stone-900 flex items-center gap-2">
+                        <i class="fa-solid fa-heart text-rose-500 text-lg"></i>
                         <span>Запазени цветя</span>
                     </h3>
-                    <button type="button" onclick="FloraApp.closeFavoritesDrawer()" class="text-2xl leading-none text-flora-dark/70 hover:text-flora-dark">&times;</button>
+                    <button type="button" onclick="FloraApp.closeFavoritesDrawer()" class="w-8 h-8 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-600 flex items-center justify-center text-xl">&times;</button>
                 </div>
                 <div id="favorites-list" class="space-y-2"></div>
             </div>
@@ -134,16 +146,16 @@
     </div>
 
     <!-- Toast Notification -->
-    <div id="flora-toast" class="fixed bottom-6 right-6 z-50 bg-flora-dark text-flora-base px-5 py-3 shadow-2xl border border-flora-base/20 text-xs font-sans flex items-center gap-3 transition-all duration-300 opacity-0 pointer-events-none translate-y-4">
-        <i class="fa-solid fa-leaf text-flora-sage"></i>
+    <div id="flora-toast" class="fixed bottom-6 right-6 z-50 bg-stone-900 text-white px-5 py-3.5 rounded-lg shadow-2xl border border-white/20 text-xs font-sans flex items-center gap-3 transition-all duration-300 opacity-0 pointer-events-none translate-y-4">
+        <i class="fa-solid fa-leaf text-emerald-400"></i>
         <span id="toast-message">Действието бе изпълнено.</span>
     </div>
 
     <!-- Footer -->
-    <footer class="bg-flora-dark text-flora-base px-6 sm:px-12 py-10 border-t border-flora-dark">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-xs text-flora-taupe gap-4">
+    <footer class="bg-stone-950 text-white px-6 sm:px-12 py-10 border-t border-stone-900">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-xs text-stone-400 gap-4">
             <p>&copy; 2026 ЕТ РАИВ-2012 ИВЕЛИНА ИНДЖЕВА (Магазин „Флора“). гр. Тутракан, ул. Родина 18.</p>
-            <p>Тел: <a href="tel:+359887865181" class="text-flora-base hover:underline">0887 865 181</a></p>
+            <p>Тел: <a href="tel:+359887865181" class="text-white hover:underline font-bold">0887 865 181</a></p>
         </div>
     </footer>
 

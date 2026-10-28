@@ -1,6 +1,6 @@
 /**
  * FLORA | Botanical Artistry - Core Application Engine
- * High-Fashion Editorial Experience with Interactive Flora Studio
+ * Vibrant Botanical Studio Edition
  */
 
 (function () {
@@ -64,18 +64,13 @@
         targetView.classList.add('active');
         state.currentView = viewId;
 
-        // Update browser URL hash if requested
         if (triggerHash) {
             window.location.hash = viewId;
         }
 
-        // Close menu if open
         closeMenu();
-
-        // Smooth scroll to top of view
         window.scrollTo({ top: 0, behavior: 'smooth' });
 
-        // Extra logic based on view
         if (viewId === 'catalog') {
             renderCatalog();
         }
@@ -89,7 +84,6 @@
             switchView('home', false);
         }
 
-        // Check if direct product query is in URL: ?id=X
         const urlParams = new URLSearchParams(window.location.search);
         const productId = urlParams.get('id');
         if (productId) {
@@ -118,7 +112,7 @@
 
         if (elements.header) {
             elements.header.style.mixBlendMode = 'normal';
-            elements.header.style.color = '#F4F0EB';
+            elements.header.style.color = '#FAF9F6';
         }
     }
 
@@ -131,7 +125,25 @@
             setTimeout(() => {
                 elements.header.style.mixBlendMode = 'difference';
                 elements.header.style.color = '#FFFFFF';
-            }, 300);
+            }, 250);
+        }
+    }
+
+    // Get Vibrant Badge Styling
+    function getBadgeClass(category) {
+        switch (category) {
+            case 'букети':
+                return 'bg-rose-600 text-white shadow-sm shadow-rose-600/30';
+            case 'авангард':
+                return 'bg-purple-700 text-white shadow-sm shadow-purple-700/30';
+            case 'сватбени':
+                return 'bg-amber-600 text-white shadow-sm shadow-amber-600/30';
+            case 'саксийни':
+                return 'bg-emerald-600 text-white shadow-sm shadow-emerald-600/30';
+            case 'аранжировки':
+                return 'bg-teal-700 text-white shadow-sm shadow-teal-700/30';
+            default:
+                return 'bg-emerald-700 text-white';
         }
     }
 
@@ -139,7 +151,6 @@
     function renderCatalog() {
         if (!elements.editorialGrid) return;
 
-        // Filter products
         let filtered = FLORA_PRODUCTS.filter(product => {
             const matchesCategory = state.activeFilter === 'всички' || product.category === state.activeFilter;
             const query = state.searchQuery.toLowerCase().trim();
@@ -166,12 +177,15 @@
             elements.productCount.textContent = `(${filtered.length} ${filtered.length === 1 ? 'експонат' : 'произведения'})`;
         }
 
-        // Empty state
         if (filtered.length === 0) {
             elements.editorialGrid.innerHTML = `
                 <div class="col-span-12 py-20 text-center">
-                    <p class="font-serif italic text-2xl text-flora-taupe mb-4">Няма открити цветя по тези критерии.</p>
-                    <button class="btn-reset-filter text-xs tracking-widest uppercase border-b border-flora-dark pb-1 hover:text-flora-sage transition-colors">
+                    <div class="w-16 h-16 rounded-full bg-rose-50 text-rose-600 flex items-center justify-center mx-auto mb-4 text-2xl">
+                        <i class="fa-solid fa-seedling"></i>
+                    </div>
+                    <p class="font-serif italic text-2xl text-flora-dark mb-2">Няма открити цветя по тези критерии.</p>
+                    <p class="text-xs text-stone-500 mb-6">Опитайте с друго търсене или нулирайте избраната категория.</p>
+                    <button class="btn-reset-filter bg-emerald-700 text-white hover:bg-emerald-800 text-xs tracking-mega uppercase py-3 px-6 font-medium transition-colors">
                         Изчисти филтрите
                     </button>
                 </div>
@@ -189,28 +203,29 @@
             return;
         }
 
-        // Render Asymmetric Editorial Grid
         let html = '';
         filtered.forEach((product, index) => {
             const isFav = state.favorites.includes(product.id);
-            // Asymmetric grid column staggering classes
+            const badgeClass = getBadgeClass(product.category);
+
+            // Stagger classes
             const mod = index % 3;
             let staggerClass = 'col-span-12 md:col-span-6 lg:editorial-col-stagger-1';
             if (mod === 1) staggerClass = 'col-span-12 md:col-span-6 lg:editorial-col-stagger-2';
             if (mod === 2) staggerClass = 'col-span-12 md:col-span-8 lg:editorial-col-stagger-3';
 
             html += `
-                <article class="edgy-card group flex flex-col gap-3 ${staggerClass}" data-id="${product.id}">
-                    <div class="relative edgy-img-wrapper aspect-[3/4] cursor-pointer" onclick="window.FloraApp.openProductModalById(${product.id})">
+                <article class="edgy-card group flex flex-col gap-3.5 ${staggerClass} transition-transform duration-300 hover:-translate-y-1.5" data-id="${product.id}">
+                    <div class="relative edgy-img-wrapper aspect-[3/4] cursor-pointer rounded-sm shadow-md group-hover:shadow-xl group-hover:shadow-emerald-950/15" onclick="window.FloraApp.openProductModalById(${product.id})">
                         <img 
                             src="${product.image}" 
                             alt="${product.name}" 
                             loading="lazy" 
-                            class="w-full h-full object-cover grayscale-[15%] group-hover:grayscale-0"
-                            onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1508759073847-927b7c2cc0ba?q=80&w=1000&auto=format&fit=crop';"
+                            class="w-full h-full object-cover filter saturate-110 contrast-105 group-hover:saturate-125 group-hover:scale-105 transition-all duration-500"
+                            onerror="this.onerror=null; this.src='img/banner-flowers.jpg';"
                         />
                         ${product.badge ? `
-                            <span class="absolute top-4 left-4 bg-flora-dark/80 backdrop-blur-sm text-flora-base text-[10px] uppercase tracking-mega px-3 py-1 font-sans">
+                            <span class="absolute top-4 left-4 ${badgeClass} text-[10px] uppercase tracking-mega px-3 py-1 font-sans font-semibold rounded-sm">
                                 ${product.badge}
                             </span>
                         ` : ''}
@@ -218,41 +233,41 @@
                         <button 
                             type="button" 
                             onclick="event.stopPropagation(); window.FloraApp.toggleFavorite(${product.id});" 
-                            class="absolute top-4 right-4 w-9 h-9 rounded-full bg-flora-base/90 backdrop-blur-md flex items-center justify-center text-flora-dark hover:scale-110 transition-transform shadow-sm"
+                            class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center text-stone-800 hover:text-rose-600 hover:scale-110 transition-all shadow-md"
                             title="${isFav ? 'Премахни от любими' : 'Добави в любими'}"
                         >
-                            <i class="${isFav ? 'fa-solid text-red-600' : 'fa-regular'} fa-heart text-xs"></i>
+                            <i class="${isFav ? 'fa-solid text-rose-600' : 'fa-regular'} fa-heart text-xs"></i>
                         </button>
 
-                        <div class="absolute inset-0 bg-gradient-to-t from-flora-dark/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                            <span class="text-flora-base text-xs font-sans uppercase tracking-widest border-b border-flora-base/60 pb-1">
-                                Разгледай детайли &rarr;
+                        <div class="absolute inset-0 bg-gradient-to-t from-emerald-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <span class="text-white text-xs font-sans uppercase tracking-widest border-b border-white/70 pb-1 flex items-center gap-2">
+                                <span>Разгледай детайли</span> &rarr;
                             </span>
                         </div>
                     </div>
 
-                    <div class="meta pt-3 border-t border-flora-dark/20 flex flex-col gap-1">
+                    <div class="meta pt-3 border-t border-emerald-900/15 flex flex-col gap-1.5">
                         <div class="flex justify-between items-baseline gap-4">
-                            <h3 class="font-serif italic text-xl md:text-2xl text-flora-dark group-hover:text-flora-sage transition-colors cursor-pointer" onclick="window.FloraApp.openProductModalById(${product.id})">
+                            <h3 class="font-serif italic text-xl md:text-2xl text-flora-dark group-hover:text-emerald-800 transition-colors cursor-pointer" onclick="window.FloraApp.openProductModalById(${product.id})">
                                 ${product.name}
                             </h3>
-                            <span class="font-sans text-xs tracking-widest uppercase font-medium text-flora-dark whitespace-nowrap">
+                            <span class="font-sans text-sm tracking-wide font-bold text-emerald-800 whitespace-nowrap bg-emerald-50 px-2.5 py-0.5 rounded border border-emerald-200">
                                 ${product.price.toFixed(2)} ${product.currency}
                             </span>
                         </div>
-                        <p class="text-xs text-flora-taupe line-clamp-1 font-sans">
+                        <p class="text-xs text-stone-600 line-clamp-1 font-sans">
                             ${product.subtitle}
                         </p>
-                        <div class="flex items-center justify-between mt-2 pt-2 border-t border-dashed border-flora-dark/10">
-                            <span class="text-[10px] uppercase tracking-ultra text-flora-taupe">
-                                ${product.categoryLabel}
+                        <div class="flex items-center justify-between mt-2 pt-2 border-t border-dashed border-stone-200">
+                            <span class="text-[10px] uppercase tracking-mega font-semibold text-emerald-700">
+                                &bull; ${product.categoryLabel}
                             </span>
                             <button 
                                 type="button" 
                                 onclick="window.FloraApp.orderProductDirectly(${product.id})" 
-                                class="text-[11px] uppercase tracking-widest font-sans font-medium text-flora-dark hover:text-flora-sage hover-draw pb-0.5"
+                                class="text-[11px] uppercase tracking-widest font-sans font-semibold text-rose-600 hover:text-rose-700 hover-draw pb-0.5 flex items-center gap-1"
                             >
-                                Поръчай &rarr;
+                                <span>Поръчай</span> &rarr;
                             </button>
                         </div>
                     </div>
@@ -267,11 +282,9 @@
         elements.filterButtons.forEach(btn => {
             const filter = btn.getAttribute('data-filter') || btn.textContent.trim().toLowerCase();
             if (filter === state.activeFilter) {
-                btn.classList.add('active', 'text-flora-dark');
-                btn.classList.remove('text-flora-taupe');
+                btn.className = 'filter-btn active text-xs uppercase tracking-mega font-sans py-2 px-4 rounded-full bg-emerald-800 text-white font-medium shadow-sm transition-all';
             } else {
-                btn.classList.remove('active', 'text-flora-dark');
-                btn.classList.add('text-flora-taupe');
+                btn.className = 'filter-btn text-xs uppercase tracking-mega font-sans py-2 px-4 rounded-full bg-white/70 text-stone-700 hover:bg-emerald-50 hover:text-emerald-800 border border-stone-200 transition-all';
             }
         });
     }
@@ -283,20 +296,22 @@
 
         const isFav = state.favorites.includes(product.id);
         const botanicalList = (product.botanicalNotes || [])
-            .map(note => `<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-flora-sage"></span><span class="italic font-serif">${note}</span></li>`)
+            .map(note => `<li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-emerald-600"></span><span class="italic font-serif text-stone-800">${note}</span></li>`)
             .join('');
+
+        const badgeClass = getBadgeClass(product.category);
 
         elements.modalContent.innerHTML = `
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                <div class="lg:col-span-6 relative aspect-[3/4] bg-flora-card overflow-hidden">
+                <div class="lg:col-span-6 relative aspect-[3/4] bg-stone-100 overflow-hidden rounded shadow-lg">
                     <img 
                         src="${product.image}" 
                         alt="${product.name}" 
-                        class="w-full h-full object-cover"
-                        onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1508759073847-927b7c2cc0ba?q=80&w=1000&auto=format&fit=crop';"
+                        class="w-full h-full object-cover filter saturate-110 contrast-105"
+                        onerror="this.onerror=null; this.src='img/banner-flowers.jpg';"
                     />
                     ${product.badge ? `
-                        <span class="absolute top-4 left-4 bg-flora-dark text-flora-base text-[10px] uppercase tracking-widest px-3 py-1">
+                        <span class="absolute top-4 left-4 ${badgeClass} text-[10px] uppercase tracking-mega px-3 py-1 font-sans font-semibold rounded-sm">
                             ${product.badge}
                         </span>
                     ` : ''}
@@ -304,54 +319,55 @@
 
                 <div class="lg:col-span-6 flex flex-col gap-6">
                     <div>
-                        <span class="text-[11px] uppercase tracking-mega text-flora-taupe block mb-1">
+                        <span class="text-[11px] uppercase tracking-mega font-semibold text-emerald-800 block mb-1">
                             ${product.categoryLabel} &bull; Каталог № ${product.id}
                         </span>
                         <h2 class="font-serif italic text-3xl md:text-4xl text-flora-dark mb-2">
                             ${product.name}
                         </h2>
-                        <p class="text-sm font-sans text-flora-taupe italic">
+                        <p class="text-sm font-sans text-stone-600 italic">
                             ${product.subtitle}
                         </p>
                     </div>
 
-                    <div class="flex items-baseline gap-4 py-3 border-y border-flora-dark/10">
-                        <span class="font-serif text-3xl text-flora-dark">
-                            ${product.price.toFixed(2)} <span class="text-sm font-sans uppercase">${product.currency}</span>
+                    <div class="flex items-baseline gap-4 py-3.5 border-y border-stone-200">
+                        <span class="font-serif text-3xl font-bold text-emerald-900">
+                            ${product.price.toFixed(2)} <span class="text-sm font-sans uppercase font-medium text-stone-600">${product.currency}</span>
                         </span>
-                        <span class="text-xs text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded">
-                            Налично за изработка / поръчка
+                        <span class="text-xs text-emerald-800 bg-emerald-100/80 border border-emerald-300 px-3 py-1 rounded-full font-medium flex items-center gap-1.5">
+                            <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+                            <span>Свежо в ателието &bull; Готово за доставка</span>
                         </span>
                     </div>
 
                     <div>
-                        <h4 class="text-xs uppercase tracking-widest font-sans font-semibold text-flora-dark mb-2">
+                        <h4 class="text-xs uppercase tracking-mega font-sans font-bold text-stone-900 mb-2">
                             Описание на произведението
                         </h4>
-                        <p class="text-sm text-flora-dark/80 leading-relaxed">
+                        <p class="text-sm text-stone-700 leading-relaxed font-sans">
                             ${product.description}
                         </p>
                     </div>
 
                     ${product.botanicalNotes && product.botanicalNotes.length ? `
-                        <div>
-                            <h4 class="text-xs uppercase tracking-widest font-sans font-semibold text-flora-dark mb-2">
-                                Ботанически състав & сортове
+                        <div class="bg-emerald-50/60 p-4 rounded border border-emerald-100">
+                            <h4 class="text-xs uppercase tracking-mega font-sans font-bold text-emerald-950 mb-2.5">
+                                Ботанически сортове & съставки
                             </h4>
-                            <ul class="text-xs text-flora-dark/80 grid grid-cols-2 gap-y-1.5 gap-x-4">
+                            <ul class="text-xs grid grid-cols-2 gap-y-2 gap-x-4">
                                 ${botanicalList}
                             </ul>
                         </div>
                     ` : ''}
 
-                    <div class="grid grid-cols-2 gap-4 text-xs bg-flora-cream/50 p-4 border border-flora-dark/10">
+                    <div class="grid grid-cols-2 gap-4 text-xs bg-amber-50/50 p-4 border border-amber-200/60 rounded">
                         <div>
-                            <span class="block text-flora-taupe uppercase tracking-wider text-[10px]">Размери</span>
-                            <span class="font-medium text-flora-dark">${product.dimensions || 'Индивидуални'}</span>
+                            <span class="block text-stone-500 uppercase tracking-wider text-[10px] font-semibold">Размери</span>
+                            <span class="font-medium text-stone-900">${product.dimensions || 'Индивидуален размер'}</span>
                         </div>
                         <div>
-                            <span class="block text-flora-taupe uppercase tracking-wider text-[10px]">Грижа</span>
-                            <span class="font-medium text-flora-dark">${product.careTip || 'Сменяйте водата редовно'}</span>
+                            <span class="block text-stone-500 uppercase tracking-wider text-[10px] font-semibold">Грижа за свежест</span>
+                            <span class="font-medium text-stone-900">${product.careTip || 'Сменяйте водата на 48 часа'}</span>
                         </div>
                     </div>
 
@@ -359,16 +375,16 @@
                         <button 
                             type="button" 
                             onclick="window.FloraApp.orderProductDirectly(${product.id}); window.FloraApp.closeProductModal();" 
-                            class="flex-1 bg-flora-dark hover:bg-flora-sage text-flora-base text-xs uppercase tracking-widest py-4 px-6 text-center font-sans font-medium transition-colors"
+                            class="flex-1 bg-gradient-to-r from-emerald-700 to-emerald-900 hover:from-emerald-600 hover:to-emerald-800 text-white text-xs uppercase tracking-mega py-4 px-6 text-center font-sans font-bold transition-all shadow-md shadow-emerald-900/20 rounded"
                         >
-                            Заяви това произведение &rarr;
+                            Заяви това цвете &rarr;
                         </button>
                         <button 
                             type="button" 
                             onclick="window.FloraApp.toggleFavorite(${product.id});" 
-                            class="border border-flora-dark text-flora-dark hover:bg-flora-dark hover:text-flora-base text-xs uppercase tracking-widest py-4 px-5 text-center font-sans transition-colors flex items-center justify-center gap-2"
+                            class="border border-stone-300 text-stone-800 hover:border-rose-500 hover:text-rose-600 text-xs uppercase tracking-widest py-4 px-5 text-center font-sans transition-colors flex items-center justify-center gap-2 rounded bg-white"
                         >
-                            <i class="${isFav ? 'fa-solid text-red-600' : 'fa-regular'} fa-heart"></i>
+                            <i class="${isFav ? 'fa-solid text-rose-600' : 'fa-regular'} fa-heart"></i>
                             <span>${isFav ? 'В любими' : 'Запази'}</span>
                         </button>
                     </div>
@@ -396,11 +412,10 @@
 
         if (elements.productSelect) {
             elements.productSelect.value = product.name;
-            // Highlight field briefly
-            elements.productSelect.classList.add('ring-2', 'ring-flora-sage');
+            elements.productSelect.classList.add('ring-2', 'ring-emerald-600', 'bg-emerald-50/50');
             setTimeout(() => {
-                elements.productSelect.classList.remove('ring-2', 'ring-flora-sage');
-            }, 1800);
+                elements.productSelect.classList.remove('ring-2', 'ring-emerald-600', 'bg-emerald-50/50');
+            }, 2000);
         }
 
         showToast(`Избрахте „${product.name}“. Попълнете формата за завършване на поръчката.`);
@@ -411,7 +426,6 @@
         if (!elements.productSelect) return;
         let options = '<option value="">-- Изберете флорално произведение --</option>';
 
-        // Group by category
         const categories = [...new Set(FLORA_PRODUCTS.map(p => p.categoryLabel))];
         categories.forEach(cat => {
             options += `<optgroup label="${cat}">`;
@@ -420,7 +434,7 @@
             });
             options += `</optgroup>`;
         });
-        options += `<option value="Индивидуална авторска поръчка">Индивидуална авторска поръчка (опишете в желания)</option>`;
+        options += `<option value="Индивидуална авторска аранжировка">Индивидуална авторска аранжировка (опишете в желания)</option>`;
 
         elements.productSelect.innerHTML = options;
     }
@@ -449,7 +463,6 @@
         renderCatalog();
         renderFavoritesDrawer();
 
-        // Refresh modal favorite button if modal is open
         if (state.selectedProduct && state.selectedProduct.id === productId) {
             openProductModal(state.selectedProduct);
         }
@@ -483,10 +496,10 @@
 
         if (favProducts.length === 0) {
             elements.favoritesList.innerHTML = `
-                <div class="py-16 text-center text-flora-taupe">
-                    <i class="fa-regular fa-heart text-4xl mb-3 opacity-40"></i>
-                    <p class="font-serif italic text-lg mb-1">Вашият списък е празен.</p>
-                    <p class="text-xs">Натиснете сърцето върху всяка аранжировка, за да я запазите.</p>
+                <div class="py-16 text-center text-stone-400">
+                    <i class="fa-regular fa-heart text-5xl mb-3 text-rose-300"></i>
+                    <p class="font-serif italic text-xl text-stone-700 mb-1">Вашият списък е празен.</p>
+                    <p class="text-xs text-stone-500">Натиснете сърцето върху всяка аранжировка, за да я запазите.</p>
                 </div>
             `;
             return;
@@ -497,17 +510,17 @@
         favProducts.forEach(item => {
             total += item.price;
             html += `
-                <div class="flex items-center gap-4 py-4 border-b border-flora-dark/10">
-                    <img src="${item.image}" alt="${item.name}" class="w-16 h-20 object-cover bg-flora-card">
+                <div class="flex items-center gap-4 py-4 border-b border-stone-200">
+                    <img src="${item.image}" alt="${item.name}" class="w-16 h-20 object-cover rounded shadow-sm">
                     <div class="flex-1 min-w-0">
                         <h4 class="font-serif italic text-base text-flora-dark truncate">${item.name}</h4>
-                        <span class="text-xs text-flora-taupe">${item.price.toFixed(2)} ${item.currency}</span>
+                        <span class="text-xs font-bold text-emerald-800">${item.price.toFixed(2)} ${item.currency}</span>
                         <div class="mt-2 flex items-center gap-3">
-                            <button onclick="window.FloraApp.orderProductDirectly(${item.id}); window.FloraApp.closeFavoritesDrawer();" class="text-[10px] uppercase tracking-widest text-flora-dark hover:text-flora-sage font-medium">
+                            <button onclick="window.FloraApp.orderProductDirectly(${item.id}); window.FloraApp.closeFavoritesDrawer();" class="text-[10px] uppercase tracking-widest text-emerald-700 hover:text-emerald-900 font-bold">
                                 Поръчай &rarr;
                             </button>
-                            <button onclick="window.FloraApp.toggleFavorite(${item.id})" class="text-[10px] uppercase tracking-widest text-red-700/80 hover:text-red-900">
-                                Изтрий
+                            <button onclick="window.FloraApp.toggleFavorite(${item.id})" class="text-[10px] uppercase tracking-widest text-rose-600 hover:text-rose-800">
+                                Премахни
                             </button>
                         </div>
                     </div>
@@ -517,12 +530,12 @@
 
         html += `
             <div class="pt-6">
-                <div class="flex justify-between items-baseline mb-4 text-sm font-sans">
-                    <span class="uppercase tracking-widest text-flora-taupe text-xs">Обща стойност:</span>
-                    <span class="font-serif text-xl font-medium text-flora-dark">${total.toFixed(2)} BGN</span>
+                <div class="flex justify-between items-baseline mb-4 text-sm font-sans bg-emerald-50 p-3 rounded border border-emerald-100">
+                    <span class="uppercase tracking-widest text-stone-600 text-xs font-medium">Обща стойност:</span>
+                    <span class="font-serif text-2xl font-bold text-emerald-900">${total.toFixed(2)} BGN</span>
                 </div>
-                <button onclick="window.FloraApp.switchView('contact'); window.FloraApp.closeFavoritesDrawer();" class="w-full bg-flora-dark text-flora-base py-3 text-xs uppercase tracking-widest hover:bg-flora-sage transition-colors">
-                    Премини към форма за поръчка
+                <button onclick="window.FloraApp.switchView('contact'); window.FloraApp.closeFavoritesDrawer();" class="w-full bg-gradient-to-r from-emerald-700 to-emerald-900 text-white py-3.5 text-xs uppercase tracking-mega font-bold hover:from-emerald-600 hover:to-emerald-800 transition-all rounded shadow-md">
+                    Премини към форма за поръчка &rarr;
                 </button>
             </div>
         `;
@@ -543,9 +556,7 @@
         const date = form.querySelector('[name="date"]').value;
         const delivery = form.querySelector('[name="delivery"]').value;
         const occasion = form.querySelector('[name="occasion"]').value.trim() || 'Специален повод';
-        const message = form.querySelector('[name="message"]').value.trim() || 'Без допълнителни изисквания';
 
-        // Validation
         if (!name || !phone || !email || !product || !date) {
             alert('Моля, попълнете всички задължителни полета отбелязани със звездичка (*).');
             return;
@@ -557,50 +568,48 @@
             return;
         }
 
-        // Generate Reference Number
         const refId = 'FLORA-' + Math.floor(100000 + Math.random() * 900000);
 
-        // Show Confirmation
         if (elements.confirmationDetails && elements.confirmationModal) {
             elements.confirmationDetails.innerHTML = `
-                <div class="bg-flora-cream/70 p-5 rounded border border-flora-dark/10 text-left text-xs space-y-2 mb-6">
-                    <div class="flex justify-between border-b border-flora-dark/10 pb-2">
-                        <span class="text-flora-taupe uppercase tracking-wider">Номер на запитване:</span>
-                        <strong class="font-mono text-flora-dark">${refId}</strong>
+                <div class="bg-emerald-50/70 p-5 rounded-lg border border-emerald-200 text-left text-xs space-y-2 mb-6">
+                    <div class="flex justify-between border-b border-emerald-200 pb-2">
+                        <span class="text-stone-500 uppercase tracking-wider font-semibold">Номер на запитване:</span>
+                        <strong class="font-mono text-emerald-900 text-sm">${refId}</strong>
                     </div>
                     <div class="flex justify-between">
-                        <span class="text-flora-taupe">Клиент:</span>
-                        <span class="font-medium text-flora-dark">${name}</span>
+                        <span class="text-stone-600">Клиент:</span>
+                        <span class="font-bold text-stone-900">${name}</span>
                     </div>
                     <div class="flex justify-between">
-                        <span class="text-flora-taupe">Телефон:</span>
-                        <span class="font-medium text-flora-dark">${phone}</span>
+                        <span class="text-stone-600">Телефон:</span>
+                        <span class="font-bold text-stone-900">${phone}</span>
                     </div>
                     <div class="flex justify-between">
-                        <span class="text-flora-taupe">Имейл:</span>
-                        <span class="font-medium text-flora-dark">${email}</span>
+                        <span class="text-stone-600">Имейл:</span>
+                        <span class="font-medium text-stone-900">${email}</span>
                     </div>
-                    <div class="flex justify-between border-t border-flora-dark/10 pt-2">
-                        <span class="text-flora-taupe">Аранжировка:</span>
-                        <span class="font-semibold text-flora-dark">${product}</span>
-                    </div>
-                    <div class="flex justify-between">
-                        <span class="text-flora-taupe">Дата на изпълнение:</span>
-                        <span class="font-medium text-flora-dark">${date}</span>
+                    <div class="flex justify-between border-t border-emerald-200 pt-2">
+                        <span class="text-stone-600">Аранжировка:</span>
+                        <span class="font-bold text-emerald-900 text-sm">${product}</span>
                     </div>
                     <div class="flex justify-between">
-                        <span class="text-flora-taupe">Начин на получаване:</span>
-                        <span class="font-medium text-flora-dark">${delivery}</span>
+                        <span class="text-stone-600">Дата на изпълнение:</span>
+                        <span class="font-bold text-stone-900">${date}</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-stone-600">Начин на получаване:</span>
+                        <span class="font-medium text-stone-900">${delivery}</span>
                     </div>
                     ${occasion ? `
                     <div class="flex justify-between">
-                        <span class="text-flora-taupe">Повод:</span>
-                        <span class="font-medium text-flora-dark">${occasion}</span>
+                        <span class="text-stone-600">Повод:</span>
+                        <span class="font-medium text-stone-900">${occasion}</span>
                     </div>
                     ` : ''}
                 </div>
-                <div class="text-center text-xs text-flora-dark/70 mb-4">
-                    Благодарим Ви! Наш флорист от ателие „Флора“ (гр. Тутракан) ще се свърже с Вас за финално потвърждение.
+                <div class="text-center text-xs text-stone-600 mb-4">
+                    Благодарим Ви! Наш флорист от ателие „Флора“ (гр. Тутракан) ще се свърже с Вас за финално потвърждение на доставката.
                 </div>
             `;
 
@@ -633,12 +642,10 @@
 
     // Event Listeners
     function bindEvents() {
-        // Menu Toggle
         if (elements.menuToggleBtn) {
             elements.menuToggleBtn.addEventListener('click', toggleMenu);
         }
 
-        // Close Menu on Esc
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 closeMenu();
@@ -648,7 +655,6 @@
             }
         });
 
-        // Hash change navigation
         window.addEventListener('hashchange', () => {
             const hash = window.location.hash.replace('#', '');
             if (hash && ['home', 'catalog', 'about', 'contact'].includes(hash)) {
@@ -656,7 +662,6 @@
             }
         });
 
-        // Filter Buttons
         elements.filterButtons.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const target = e.currentTarget;
@@ -667,7 +672,6 @@
             });
         });
 
-        // Live Search Input
         if (elements.searchInput) {
             elements.searchInput.addEventListener('input', (e) => {
                 state.searchQuery = e.target.value;
@@ -675,7 +679,6 @@
             });
         }
 
-        // Sort Select
         if (elements.sortSelect) {
             elements.sortSelect.addEventListener('change', (e) => {
                 state.sortBy = e.target.value;
@@ -683,13 +686,11 @@
             });
         }
 
-        // Order Form
         if (elements.orderForm) {
             elements.orderForm.addEventListener('submit', handleOrderSubmit);
         }
     }
 
-    // Global Exposure for inline HTML hooks
     window.FloraApp = {
         switchView,
         toggleMenu,
@@ -706,7 +707,6 @@
         closeConfirmationModal
     };
 
-    // Run on DOM ready
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
     } else {

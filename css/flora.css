@@ -1,39 +1,41 @@
 /* ==========================================================================
-   FLORA | Botanical Artistry - Haute Editorial Styling
+   FLORA | Botanical Artistry - Vibrant Botanical Aesthetics
    Tailwind CSS Companion Sheet
    ========================================================================== */
 
 :root {
-    --bg-base: #F4F0EB;
-    --text-dark: #121A14;
-    --accent-muted: #9A8C84;
-    --accent-pop: #4A5D4E;
-    --accent-gold: #C8A97E;
+    --bg-base: #FAF9F6;
+    --text-dark: #0D1F15;
+    --flora-emerald: #1B5E39;
+    --flora-rose: #E11D48;
+    --flora-gold: #D97706;
+    --flora-leaf: #22C55E;
+    --flora-sage: #2E7D32;
 }
 
 /* Custom Selection */
 ::selection {
-    background-color: #121A14;
-    color: #F4F0EB;
+    background-color: #1B5E39;
+    color: #FAF9F6;
 }
 
-/* Slim Editorial Scrollbar */
+/* Slim Vibrant Scrollbar */
 ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+    width: 7px;
+    height: 7px;
 }
 ::-webkit-scrollbar-track {
-    background: #EDE8E1;
+    background: #F1F5F1;
 }
 ::-webkit-scrollbar-thumb {
-    background: #9A8C84;
-    border-radius: 3px;
+    background: #2E7D32;
+    border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: #4A5D4E;
+    background: #E11D48;
 }
 
-/* Subtle Film Grain Overlay for Luxury Editorial Texture */
+/* Subtle Luminous Texture */
 .grain-overlay {
     position: fixed;
     top: 0;
@@ -42,20 +44,20 @@
     height: 100vh;
     pointer-events: none;
     z-index: 999;
-    opacity: 0.035;
+    opacity: 0.02;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
 /* Fluid Typography */
 .text-huge {
-    font-size: clamp(3.8rem, 11vw, 11rem);
-    line-height: 0.88;
-    letter-spacing: -0.03em;
+    font-size: clamp(3.5rem, 10vw, 10.5rem);
+    line-height: 0.9;
+    letter-spacing: -0.025em;
 }
 
 .text-editorial-title {
-    font-size: clamp(2.5rem, 7vw, 6.5rem);
-    line-height: 0.95;
+    font-size: clamp(2.4rem, 6.5vw, 6rem);
+    line-height: 0.96;
     letter-spacing: -0.02em;
 }
 
@@ -63,8 +65,8 @@
 .view {
     display: none;
     opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(12px);
+    transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .view.active {
@@ -77,37 +79,38 @@
 @media (min-width: 1024px) {
     .editorial-col-stagger-1 {
         grid-column: span 5;
-        margin-top: 4vw;
+        margin-top: 2vw;
     }
     .editorial-col-stagger-2 {
         grid-column: span 7;
-        padding-left: 8vw;
+        padding-left: 6vw;
     }
     .editorial-col-stagger-3 {
         grid-column: span 6;
         grid-column-start: 4;
-        margin-top: -6vw;
+        margin-top: -4vw;
         z-index: 2;
     }
 }
 
-/* Subtle Image Hover & Masking */
+/* Vibrant Image Styling - NO GRAYSCALE */
 .edgy-img-wrapper {
     position: relative;
     overflow: hidden;
-    background-color: #E6DFD5;
+    background-color: #E8F0EA;
 }
 
 .edgy-img-wrapper img {
-    transition: transform 0.9s cubic-bezier(0.2, 1, 0.2, 1), filter 0.6s ease;
+    transition: transform 0.8s cubic-bezier(0.2, 1, 0.2, 1), filter 0.5s ease;
+    filter: saturate(1.1) contrast(1.05);
 }
 
 .edgy-card:hover .edgy-img-wrapper img {
-    transform: scale(1.06);
-    filter: saturate(1.1) contrast(1.02);
+    transform: scale(1.07);
+    filter: saturate(1.22) contrast(1.08);
 }
 
-/* Minimalist Underline Draw Effect */
+/* Vibrant Hover Underline Draw Effect */
 .hover-draw {
     position: relative;
 }
@@ -117,7 +120,7 @@
     bottom: -3px;
     left: 0;
     width: 0;
-    height: 1px;
+    height: 2px;
     background-color: currentColor;
     transition: width 0.35s ease;
 }
@@ -134,7 +137,7 @@
 .animate-marquee {
     display: flex;
     width: 200%;
-    animation: marquee 28s linear infinite;
+    animation: marquee 24s linear infinite;
 }
 .animate-marquee:hover {
     animation-play-state: paused;
@@ -152,8 +155,8 @@
 }
 
 .modal-content {
-    transform: translateY(30px) scale(0.97);
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(25px) scale(0.97);
+    transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .modal-backdrop.open .modal-content {
     transform: translateY(0) scale(1);
@@ -171,8 +174,16 @@
 }
 .drawer-panel {
     transform: translateX(100%);
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .drawer-backdrop.open .drawer-panel {
     transform: translateX(0);
+}
+
+/* Glowing Vibrant Highlights */
+.glow-emerald {
+    box-shadow: 0 10px 30px -10px rgba(27, 94, 57, 0.35);
+}
+.glow-rose {
+    box-shadow: 0 10px 30px -10px rgba(225, 29, 72, 0.35);
 }

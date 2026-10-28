@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Контакти & Ателие | ФЛОРА — Botanical Artistry</title>
-    <meta name="description" content="Контакти на цветарски магазин Флора в гр. Тутракан, ул. Родина 18. Телефон: 0887 865 181, работно време и локация.">
+    <title>Контакти & Магазин | ФЛОРА — гр. Тутракан</title>
+    <meta name="description" content="Контакти на цветарски магазин Флора в гр. Тутракан, ул. Родина 18. Телефон: 0887 865 181, работно време и точна локация на картата.">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Tailwind CSS -->
@@ -19,12 +19,12 @@
             theme: {
                 extend: {
                     colors: {
-                        'flora-base': '#F4F0EB',
-                        'flora-dark': '#121A14',
-                        'flora-taupe': '#9A8C84',
-                        'flora-sage': '#4A5D4E',
-                        'flora-cream': '#EFE9E0',
-                        'flora-card': '#EDE8E1',
+                        'flora-base': '#FAF9F6',
+                        'flora-dark': '#0D1F15',
+                        'flora-emerald': '#1B5E39',
+                        'flora-rose': '#E11D48',
+                        'flora-amber': '#D97706',
+                        'flora-sage': '#2E7D32',
                     },
                     fontFamily: {
                         serif: ['"Playfair Display"', 'Georgia', 'serif'],
@@ -40,85 +40,100 @@
     </script>
     <link rel="stylesheet" href="css/flora.css">
 </head>
-<body class="bg-flora-base text-flora-dark font-sans selection:bg-flora-dark selection:text-flora-base min-h-screen flex flex-col justify-between">
+<body class="bg-flora-base text-stone-900 font-sans selection:bg-emerald-800 selection:text-white min-h-screen flex flex-col justify-between">
     <div class="grain-overlay" aria-hidden="true"></div>
 
     <!-- Header Navigation -->
-    <header class="fixed top-0 left-0 w-full px-6 sm:px-12 py-6 flex justify-between items-center z-50 transition-colors" style="mix-blend-mode: difference; color: #FFFFFF;">
-        <a href="index.html#home" class="font-serif italic text-2xl sm:text-3xl text-inherit">Flora<span class="text-xs font-sans tracking-mega uppercase not-italic opacity-70">.Atelier</span></a>
+    <header class="fixed top-0 left-0 w-full px-6 sm:px-12 py-4 sm:py-5 flex justify-between items-center z-50 bg-white/80 backdrop-blur-md border-b border-stone-200 shadow-sm">
+        <a href="index.html#home" class="font-serif italic text-2xl sm:text-3xl text-emerald-950 font-bold flex items-center gap-2">
+            <span>Flora</span>
+            <span class="text-emerald-600 text-lg"><i class="fa-solid fa-leaf"></i></span>
+            <span class="text-[10px] font-sans tracking-mega uppercase not-italic text-emerald-800 font-semibold bg-emerald-100/80 px-2 py-0.5 rounded-full border border-emerald-300">Тутракан</span>
+        </a>
         
-        <nav class="hidden md:flex items-center gap-8 text-[11px] font-sans tracking-mega uppercase">
-            <a href="index.html#home" class="hover-draw pb-0.5 text-inherit opacity-80 hover:opacity-100">Начало</a>
-            <a href="catalog.html" class="hover-draw pb-0.5 text-inherit opacity-80 hover:opacity-100">Колекция</a>
-            <a href="order.html" class="hover-draw pb-0.5 text-inherit opacity-80 hover:opacity-100">Поръчай</a>
-            <a href="contact.html" class="hover-draw pb-0.5 text-inherit opacity-100 border-b border-current">Контакти</a>
+        <nav class="hidden md:flex items-center gap-8 text-[12px] font-sans tracking-mega uppercase font-semibold text-stone-700">
+            <a href="index.html#home" class="hover-draw pb-0.5 hover:text-emerald-800 transition-colors">Начало</a>
+            <a href="catalog.html" class="hover-draw pb-0.5 hover:text-emerald-800 transition-colors">Колекция</a>
+            <a href="order.html" class="hover-draw pb-0.5 hover:text-emerald-800 transition-colors">Поръчай</a>
+            <a href="contact.html" class="hover-draw pb-0.5 text-emerald-800 border-b-2 border-emerald-800">Контакти</a>
         </nav>
 
-        <a href="tel:+359887865181" class="text-xs uppercase tracking-mega hover-draw pb-0.5 text-inherit flex items-center gap-2">
+        <a href="tel:+359887865181" class="bg-emerald-800 text-white px-5 py-2.5 rounded-full text-xs uppercase tracking-mega font-bold hover:bg-emerald-900 transition-all shadow-sm flex items-center gap-2">
             <i class="fa-solid fa-phone text-[10px]"></i>
             <span>0887 865 181</span>
         </a>
     </header>
 
     <main class="flex-1 px-4 sm:px-8 lg:px-12 pt-32 pb-20 max-w-7xl mx-auto w-full">
-        <!-- Title -->
-        <div class="mb-12 border-b border-flora-dark/15 pb-8">
-            <span class="text-[11px] uppercase tracking-mega text-flora-taupe block mb-2">Локация & Връзка с нас</span>
-            <h1 class="text-editorial-title font-serif italic text-flora-dark">Свържете се с нас.</h1>
-            <p class="font-serif italic text-xl text-flora-taupe mt-2">Магазин за цветя „Флора“ &bull; гр. Тутракан, ул. Родина 18</p>
+        <!-- Vibrant Banner Strip -->
+        <div class="relative rounded-2xl overflow-hidden mb-12 shadow-md">
+            <img src="img/banner-flowers.jpg" alt="Vibrant flowers" class="w-full h-44 sm:h-56 object-cover filter saturate-125">
+            <div class="absolute inset-0 bg-gradient-to-r from-emerald-950/90 via-emerald-950/60 to-transparent flex flex-col justify-center px-8 sm:px-14 text-white">
+                <span class="text-xs uppercase tracking-mega text-emerald-300 font-bold mb-1">Свържете се с нас</span>
+                <h1 class="text-3xl sm:text-5xl font-serif italic font-bold">Контакти & Локация</h1>
+                <p class="text-sm text-stone-200 mt-2 max-w-lg font-light">Заповядайте на място в магазина или се свържете с нас по телефон и имейл.</p>
+            </div>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <!-- Contact Info -->
-            <div class="lg:col-span-5 space-y-8 bg-flora-card/40 border border-flora-dark/10 p-8 sm:p-10">
+            <div class="lg:col-span-5 space-y-8 bg-white border border-stone-200 rounded-xl p-8 sm:p-10 shadow-sm">
                 <div>
-                    <h3 class="font-serif italic text-2xl text-flora-dark mb-1">Ателие и магазин</h3>
-                    <p class="text-xs text-flora-taupe">ЕТ РАИВ-2012 Ивелина Инджева</p>
+                    <h3 class="font-serif italic text-2xl text-stone-900 mb-1">Магазин за цветя „Флора“</h3>
+                    <p class="text-xs text-stone-500">ЕТ РАИВ-2012 Ивелина Инджева &bull; гр. Тутракан</p>
                 </div>
 
                 <div class="space-y-6 text-sm font-sans">
                     <div class="flex items-start gap-4">
-                        <i class="fa-solid fa-location-dot text-flora-sage text-lg mt-0.5"></i>
+                        <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 text-base">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
                         <div>
-                            <strong class="block text-xs uppercase tracking-wider text-flora-dark mb-1">Точен Адрес</strong>
-                            <p class="text-flora-dark/80">ул. Родина 18</p>
-                            <p class="text-flora-dark/80">7600 гр. Тутракан, България</p>
+                            <strong class="block text-xs uppercase tracking-wider text-stone-900 mb-0.5">Адрес на магазина</strong>
+                            <p class="text-stone-700">ул. Родина 18</p>
+                            <p class="text-stone-700">7600 гр. Тутракан, България</p>
                         </div>
                     </div>
 
                     <div class="flex items-start gap-4">
-                        <i class="fa-solid fa-phone text-flora-sage text-lg mt-0.5"></i>
+                        <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 text-base">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
                         <div>
-                            <strong class="block text-xs uppercase tracking-wider text-flora-dark mb-1">Телефонен номер</strong>
-                            <p><a href="tel:+359887865181" class="text-flora-dark hover:text-flora-sage font-mono font-medium text-base">0887 865 181</a></p>
-                            <p class="text-[11px] text-flora-taupe">На разположение за консултации и поръчки</p>
+                            <strong class="block text-xs uppercase tracking-wider text-stone-900 mb-0.5">Телефон за поръчки</strong>
+                            <p><a href="tel:+359887865181" class="text-emerald-800 hover:text-emerald-950 font-mono font-bold text-base">0887 865 181</a></p>
+                            <p class="text-xs text-stone-500">Понеделник &ndash; Неделя</p>
                         </div>
                     </div>
 
                     <div class="flex items-start gap-4">
-                        <i class="fa-solid fa-envelope text-flora-sage text-lg mt-0.5"></i>
+                        <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 text-base">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
                         <div>
-                            <strong class="block text-xs uppercase tracking-wider text-flora-dark mb-1">Електронна поща</strong>
-                            <p><a href="mailto:ivi_indjeva@abv.bg" class="text-flora-dark hover:text-flora-sage">ivi_indjeva@abv.bg</a></p>
+                            <strong class="block text-xs uppercase tracking-wider text-stone-900 mb-0.5">Имейл за запитвания</strong>
+                            <p><a href="mailto:ivi_indjeva@abv.bg" class="text-stone-700 hover:text-emerald-800 font-medium">ivi_indjeva@abv.bg</a></p>
                         </div>
                     </div>
 
                     <div class="flex items-start gap-4">
-                        <i class="fa-regular fa-clock text-flora-sage text-lg mt-0.5"></i>
+                        <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 text-base">
+                            <i class="fa-regular fa-clock"></i>
+                        </div>
                         <div>
-                            <strong class="block text-xs uppercase tracking-wider text-flora-dark mb-1">Работно Време</strong>
-                            <p class="text-flora-dark/80">Понеделник &ndash; Събота: 08:30 &ndash; 19:30 ч.</p>
-                            <p class="text-flora-dark/80">Неделя: 09:00 &ndash; 14:00 ч.</p>
+                            <strong class="block text-xs uppercase tracking-wider text-stone-900 mb-0.5">Работно Време</strong>
+                            <p class="text-stone-700">Понеделник &ndash; Събота: 08:30 &ndash; 19:30 ч.</p>
+                            <p class="text-stone-700">Неделя: 09:00 &ndash; 14:00 ч.</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="pt-6 border-t border-flora-dark/15 flex items-center justify-between">
-                    <span class="text-xs uppercase tracking-mega text-flora-taupe">Социални мрежи</span>
-                    <div class="flex items-center gap-4 text-flora-dark text-lg">
-                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="hover:text-flora-sage transition-colors"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="hover:text-flora-sage transition-colors"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="tel:+359887865181" class="hover:text-flora-sage transition-colors"><i class="fa-brands fa-viber"></i></a>
+                <div class="pt-6 border-t border-stone-200 flex items-center justify-between">
+                    <span class="text-xs uppercase tracking-mega text-stone-500 font-bold">Социални мрежи</span>
+                    <div class="flex items-center gap-4 text-emerald-800 text-xl">
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-950 transition-colors"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-950 transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="tel:+359887865181" class="hover:text-emerald-950 transition-colors"><i class="fa-brands fa-viber"></i></a>
                     </div>
                 </div>
             </div>
@@ -126,7 +141,7 @@
             <!-- Google Maps Embed & Real Store Image -->
             <div class="lg:col-span-7 space-y-6">
                 <!-- Map -->
-                <div class="w-full h-80 sm:h-96 rounded overflow-hidden shadow-sm border border-flora-dark/15">
+                <div class="w-full h-80 sm:h-96 rounded-xl overflow-hidden shadow-md border border-stone-200">
                     <iframe 
                         src="https://maps.google.com/maps?q=ул.%20Родина%2018,%20Тутракан&t=&z=16&ie=UTF8&iwloc=&output=embed" 
                         width="100%" 
@@ -135,20 +150,20 @@
                         allowfullscreen="" 
                         loading="lazy" 
                         referrerpolicy="no-referrer-when-downgrade"
-                        title="Локация на магазин Флора в Тутракан">
+                        title="Локация на магазин Флора в гр. Тутракан">
                     </iframe>
                 </div>
 
                 <!-- Store Preview Card -->
-                <div class="bg-flora-cream/60 p-6 border border-flora-dark/10 flex flex-col sm:flex-row gap-6 items-center">
-                    <img src="img/magazin.jpg" alt="Магазин Флора Тутракан" class="w-full sm:w-44 aspect-[4/3] object-cover shadow-sm bg-flora-card">
+                <div class="bg-emerald-50/70 p-6 rounded-xl border border-emerald-100 flex flex-col sm:flex-row gap-6 items-center shadow-sm">
+                    <img src="img/magazin.jpg" alt="Магазин Флора Тутракан" class="w-full sm:w-48 aspect-[4/3] object-cover rounded-lg shadow-sm">
                     <div class="space-y-2">
-                        <h4 class="font-serif italic text-xl text-flora-dark">Заповядайте на място</h4>
-                        <p class="text-xs text-flora-dark/75 leading-relaxed">
-                            Нашите флористи ще ви помогнат да изберете идеалния букет, саксийно цвете или подаръчна аранжировка на живо в магазина.
+                        <h4 class="font-serif italic text-2xl text-stone-900">Заповядайте на ул. Родина 18</h4>
+                        <p class="text-xs text-stone-600 leading-relaxed font-sans">
+                            Нашите опитни флористи ще ви посрещнат с усмивка и ще аранжират най-красивия букет специално за вашия повод.
                         </p>
-                        <a href="order.html" class="inline-block text-xs uppercase tracking-mega text-flora-dark hover:text-flora-sage hover-draw pb-0.5 font-medium">
-                            Или направете поръчка онлайн &rarr;
+                        <a href="order.html" class="inline-flex items-center gap-2 text-xs uppercase tracking-mega text-emerald-800 hover:text-emerald-950 font-bold pt-1">
+                            <span>Или направете поръчка онлайн</span> &rarr;
                         </a>
                     </div>
                 </div>
@@ -157,10 +172,10 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-flora-dark text-flora-base px-6 sm:px-12 py-10 border-t border-flora-dark">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-xs text-flora-taupe gap-4">
+    <footer class="bg-stone-950 text-white px-6 sm:px-12 py-10 border-t border-stone-900">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-xs text-stone-400 gap-4">
             <p>&copy; 2026 ЕТ РАИВ-2012 ИВЕЛИНА ИНДЖЕВА (Магазин „Флора“). гр. Тутракан, ул. Родина 18.</p>
-            <p>Тел: <a href="tel:+359887865181" class="text-flora-base hover:underline">0887 865 181</a></p>
+            <p>Тел: <a href="tel:+359887865181" class="text-white hover:underline font-bold">0887 865 181</a></p>
         </div>
     </footer>
 </body>

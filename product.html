@@ -9,7 +9,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Tailwind CSS -->
@@ -19,12 +19,12 @@
             theme: {
                 extend: {
                     colors: {
-                        'flora-base': '#F4F0EB',
-                        'flora-dark': '#121A14',
-                        'flora-taupe': '#9A8C84',
-                        'flora-sage': '#4A5D4E',
-                        'flora-cream': '#EFE9E0',
-                        'flora-card': '#EDE8E1',
+                        'flora-base': '#FAF9F6',
+                        'flora-dark': '#0D1F15',
+                        'flora-emerald': '#1B5E39',
+                        'flora-rose': '#E11D48',
+                        'flora-amber': '#D97706',
+                        'flora-sage': '#2E7D32',
                     },
                     fontFamily: {
                         serif: ['"Playfair Display"', 'Georgia', 'serif'],
@@ -40,45 +40,49 @@
     </script>
     <link rel="stylesheet" href="css/flora.css">
 </head>
-<body class="bg-flora-base text-flora-dark font-sans selection:bg-flora-dark selection:text-flora-base min-h-screen flex flex-col justify-between">
+<body class="bg-flora-base text-stone-900 font-sans selection:bg-emerald-800 selection:text-white min-h-screen flex flex-col justify-between">
     <div class="grain-overlay" aria-hidden="true"></div>
 
     <!-- Header Navigation -->
-    <header class="fixed top-0 left-0 w-full px-6 sm:px-12 py-6 flex justify-between items-center z-50 transition-colors" style="mix-blend-mode: difference; color: #FFFFFF;">
-        <a href="index.html#home" class="font-serif italic text-2xl sm:text-3xl text-inherit">Flora<span class="text-xs font-sans tracking-mega uppercase not-italic opacity-70">.Atelier</span></a>
+    <header class="fixed top-0 left-0 w-full px-6 sm:px-12 py-4 sm:py-5 flex justify-between items-center z-50 bg-white/80 backdrop-blur-md border-b border-stone-200 shadow-sm">
+        <a href="index.html#home" class="font-serif italic text-2xl sm:text-3xl text-emerald-950 font-bold flex items-center gap-2">
+            <span>Flora</span>
+            <span class="text-emerald-600 text-lg"><i class="fa-solid fa-leaf"></i></span>
+            <span class="text-[10px] font-sans tracking-mega uppercase not-italic text-emerald-800 font-semibold bg-emerald-100/80 px-2 py-0.5 rounded-full border border-emerald-300">Тутракан</span>
+        </a>
         
-        <nav class="hidden md:flex items-center gap-8 text-[11px] font-sans tracking-mega uppercase">
-            <a href="index.html#home" class="hover-draw pb-0.5 text-inherit opacity-80 hover:opacity-100">Начало</a>
-            <a href="catalog.html" class="hover-draw pb-0.5 text-inherit opacity-80 hover:opacity-100">Колекция</a>
-            <a href="order.html" class="hover-draw pb-0.5 text-inherit opacity-80 hover:opacity-100">Поръчай</a>
-            <a href="contact.html" class="hover-draw pb-0.5 text-inherit opacity-80 hover:opacity-100">Контакти</a>
+        <nav class="hidden md:flex items-center gap-8 text-[12px] font-sans tracking-mega uppercase font-semibold text-stone-700">
+            <a href="index.html#home" class="hover-draw pb-0.5 hover:text-emerald-800 transition-colors">Начало</a>
+            <a href="catalog.html" class="hover-draw pb-0.5 hover:text-emerald-800 transition-colors">Колекция</a>
+            <a href="order.html" class="hover-draw pb-0.5 hover:text-emerald-800 transition-colors">Поръчай</a>
+            <a href="contact.html" class="hover-draw pb-0.5 hover:text-emerald-800 transition-colors">Контакти</a>
         </nav>
 
-        <a href="catalog.html" class="text-xs uppercase tracking-mega hover-draw pb-0.5 text-inherit">
-            &larr; Към Архива
+        <a href="catalog.html" class="text-xs uppercase tracking-mega font-bold text-emerald-800 hover:text-emerald-950 flex items-center gap-1.5">
+            <i class="fa-solid fa-arrow-left text-xs"></i>
+            <span>Към Каталога</span>
         </a>
     </header>
 
     <main class="flex-1 px-4 sm:px-8 lg:px-12 pt-32 pb-20 max-w-6xl mx-auto w-full">
         <!-- Back Link -->
         <div class="mb-8">
-            <a href="catalog.html" class="inline-flex items-center gap-2 text-xs uppercase tracking-mega text-flora-taupe hover:text-flora-dark transition-colors">
+            <a href="catalog.html" class="inline-flex items-center gap-2 text-xs uppercase tracking-mega text-emerald-800 font-bold hover:text-emerald-950 transition-colors">
                 <i class="fa-solid fa-arrow-left text-[10px]"></i>
-                <span>Обратно към каталога</span>
+                <span>Обратно към пълния каталог</span>
             </a>
         </div>
 
-        <div id="product-container" class="bg-flora-card/40 border border-flora-dark/10 p-6 sm:p-12 shadow-sm">
-            <!-- Injected via JavaScript -->
-            <div class="py-20 text-center text-flora-taupe">Зареждане на детайлите за произведението...</div>
+        <div id="product-container" class="bg-white rounded-xl border border-stone-200 p-6 sm:p-12 shadow-sm">
+            <div class="py-20 text-center text-stone-400">Зареждане на детайлите за цветето...</div>
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-flora-dark text-flora-base px-6 sm:px-12 py-10 border-t border-flora-dark">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-xs text-flora-taupe gap-4">
+    <footer class="bg-stone-950 text-white px-6 sm:px-12 py-10 border-t border-stone-900">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-xs text-stone-400 gap-4">
             <p>&copy; 2026 ЕТ РАИВ-2012 ИВЕЛИНА ИНДЖЕВА (Магазин „Флора“). гр. Тутракан, ул. Родина 18.</p>
-            <p>Тел: <a href="tel:+359887865181" class="text-flora-base hover:underline">0887 865 181</a></p>
+            <p>Тел: <a href="tel:+359887865181" class="text-white hover:underline font-bold">0887 865 181</a></p>
         </div>
     </footer>
 
@@ -93,10 +97,10 @@
             if (!product) {
                 container.innerHTML = `
                     <div class="py-20 text-center">
-                        <h2 class="font-serif italic text-3xl mb-4">Произведението не е открито</h2>
-                        <p class="text-xs uppercase tracking-mega text-flora-taupe mb-6">Възможно е експонатът да е архивиран</p>
-                        <a href="catalog.html" class="inline-block bg-flora-dark text-flora-base text-xs uppercase tracking-mega py-3 px-6 hover:bg-flora-sage transition-colors">
-                            Вижте всички налични
+                        <h2 class="font-serif italic text-3xl mb-4 text-stone-900">Произведението не е открито</h2>
+                        <p class="text-xs uppercase tracking-mega text-stone-500 mb-6">Възможно е експонатът да е архивиран или временно изчерпан</p>
+                        <a href="catalog.html" class="inline-block bg-emerald-800 text-white text-xs uppercase tracking-mega py-3.5 px-6 font-bold rounded hover:bg-emerald-900 transition-colors">
+                            Вижте всички налични цветя
                         </a>
                     </div>
                 `;
@@ -106,20 +110,20 @@
             document.title = `${product.name} | ФЛОРА`;
 
             const botanicalList = (product.botanicalNotes || [])
-                .map(note => `<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-flora-sage"></span><span class="italic font-serif">${note}</span></li>`)
+                .map(note => `<li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-emerald-600"></span><span class="italic font-serif text-stone-800">${note}</span></li>`)
                 .join('');
 
             container.innerHTML = `
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-                    <div class="lg:col-span-6 relative aspect-[3/4] bg-flora-card overflow-hidden shadow-md">
+                    <div class="lg:col-span-6 relative aspect-[3/4] bg-stone-100 overflow-hidden rounded-lg shadow-md">
                         <img 
                             src="${product.image}" 
                             alt="${product.name}" 
-                            class="w-full h-full object-cover filter contrast-105"
-                            onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1508759073847-927b7c2cc0ba?q=80&w=1000&auto=format&fit=crop';"
+                            class="w-full h-full object-cover filter saturate-115 contrast-105"
+                            onerror="this.onerror=null; this.src='img/banner-flowers.jpg';"
                         />
                         ${product.badge ? `
-                            <span class="absolute top-4 left-4 bg-flora-dark text-flora-base text-[10px] uppercase tracking-mega px-3 py-1 font-sans">
+                            <span class="absolute top-4 left-4 bg-emerald-800 text-white text-[10px] uppercase tracking-mega px-3.5 py-1 font-sans font-bold rounded-sm shadow-md">
                                 ${product.badge}
                             </span>
                         ` : ''}
@@ -127,69 +131,71 @@
 
                     <div class="lg:col-span-6 flex flex-col gap-6">
                         <div>
-                            <span class="text-[11px] uppercase tracking-mega text-flora-taupe block mb-1">
+                            <span class="text-xs uppercase tracking-mega text-emerald-800 font-bold block mb-1">
                                 ${product.categoryLabel} &bull; Каталог № ${product.id}
                             </span>
-                            <h1 class="font-serif italic text-4xl sm:text-5xl text-flora-dark mb-2">
+                            <h1 class="font-serif italic text-4xl sm:text-5xl text-stone-900 mb-2">
                                 ${product.name}
                             </h1>
-                            <p class="text-sm font-sans text-flora-taupe italic">
+                            <p class="text-sm font-sans text-stone-600 italic">
                                 ${product.subtitle}
                             </p>
                         </div>
 
-                        <div class="flex items-baseline gap-4 py-3 border-y border-flora-dark/15">
-                            <span class="font-serif text-3xl sm:text-4xl text-flora-dark">
-                                ${product.price.toFixed(2)} <span class="text-sm font-sans uppercase font-medium">${product.currency}</span>
+                        <div class="flex items-baseline gap-4 py-3.5 border-y border-stone-200">
+                            <span class="font-serif text-3xl sm:text-4xl font-bold text-emerald-900">
+                                ${product.price.toFixed(2)} <span class="text-sm font-sans uppercase font-bold text-stone-600">${product.currency}</span>
                             </span>
-                            <span class="text-xs text-emerald-800 bg-emerald-50 px-3 py-1 rounded">
-                                Налично за аранжиране
+                            <span class="text-xs text-emerald-800 bg-emerald-100 border border-emerald-300 px-3 py-1 rounded-full font-bold flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+                                <span>Налично в ателието за поръчка</span>
                             </span>
                         </div>
 
                         <div>
-                            <h4 class="text-xs uppercase tracking-mega font-sans font-semibold text-flora-dark mb-2">
-                                Описание на произведението
+                            <h4 class="text-xs uppercase tracking-mega font-sans font-bold text-stone-900 mb-2">
+                                Описание на букета
                             </h4>
-                            <p class="text-sm text-flora-dark/80 leading-relaxed font-sans">
+                            <p class="text-sm text-stone-700 leading-relaxed font-sans">
                                 ${product.description}
                             </p>
                         </div>
 
                         ${product.botanicalNotes && product.botanicalNotes.length ? `
-                            <div>
-                                <h4 class="text-xs uppercase tracking-mega font-sans font-semibold text-flora-dark mb-2">
+                            <div class="bg-emerald-50/70 p-4 rounded-lg border border-emerald-100">
+                                <h4 class="text-xs uppercase tracking-mega font-sans font-bold text-emerald-950 mb-2.5">
                                     Ботанически сортове & съставки
                                 </h4>
-                                <ul class="text-xs text-flora-dark/80 grid grid-cols-2 gap-y-2 gap-x-4">
+                                <ul class="text-xs grid grid-cols-2 gap-y-2 gap-x-4">
                                     ${botanicalList}
                                 </ul>
                             </div>
                         ` : ''}
 
-                        <div class="grid grid-cols-2 gap-4 text-xs bg-flora-cream/60 p-4 border border-flora-dark/10">
+                        <div class="grid grid-cols-2 gap-4 text-xs bg-stone-50 p-4 border border-stone-200 rounded-lg">
                             <div>
-                                <span class="block text-flora-taupe uppercase tracking-wider text-[10px]">Размери</span>
-                                <span class="font-medium text-flora-dark">${product.dimensions || 'Индивидуален размер'}</span>
+                                <span class="block text-stone-500 uppercase tracking-wider text-[10px] font-bold">Размери</span>
+                                <span class="font-semibold text-stone-900">${product.dimensions || 'Индивидуален размер'}</span>
                             </div>
                             <div>
-                                <span class="block text-flora-taupe uppercase tracking-wider text-[10px]">Съвети за трайност</span>
-                                <span class="font-medium text-flora-dark">${product.careTip || 'Сменяйте водата на 48 часа'}</span>
+                                <span class="block text-stone-500 uppercase tracking-wider text-[10px] font-bold">Грижа за свежест</span>
+                                <span class="font-semibold text-stone-900">${product.careTip || 'Сменяйте водата на 48 часа'}</span>
                             </div>
                         </div>
 
                         <div class="pt-2 flex flex-col sm:flex-row gap-4">
                             <a 
                                 href="order.html?product=${encodeURIComponent(product.name)}" 
-                                class="flex-1 bg-flora-dark hover:bg-flora-sage text-flora-base text-xs uppercase tracking-mega py-4 px-8 text-center font-sans font-medium transition-colors"
+                                class="flex-1 bg-gradient-to-r from-emerald-700 to-emerald-900 hover:from-emerald-600 hover:to-emerald-800 text-white text-xs uppercase tracking-mega py-4 px-8 text-center font-sans font-bold rounded shadow-md transition-all"
                             >
                                 Заяви поръчка на това цвете &rarr;
                             </a>
                             <a 
                                 href="tel:+359887865181" 
-                                class="border border-flora-dark hover:bg-flora-dark hover:text-flora-base text-flora-dark text-xs uppercase tracking-mega py-4 px-6 text-center font-sans font-medium transition-colors"
+                                class="border border-stone-300 hover:border-emerald-700 hover:text-emerald-800 text-stone-800 text-xs uppercase tracking-mega py-4 px-6 text-center font-sans font-bold rounded transition-colors flex items-center justify-center gap-2"
                             >
-                                Бързо обаждане
+                                <i class="fa-solid fa-phone text-xs"></i>
+                                <span>0887 865 181</span>
                             </a>
                         </div>
                     </div>
