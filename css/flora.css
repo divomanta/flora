@@ -1,0 +1,178 @@
+/* ==========================================================================
+   FLORA | Botanical Artistry - Haute Editorial Styling
+   Tailwind CSS Companion Sheet
+   ========================================================================== */
+
+:root {
+    --bg-base: #F4F0EB;
+    --text-dark: #121A14;
+    --accent-muted: #9A8C84;
+    --accent-pop: #4A5D4E;
+    --accent-gold: #C8A97E;
+}
+
+/* Custom Selection */
+::selection {
+    background-color: #121A14;
+    color: #F4F0EB;
+}
+
+/* Slim Editorial Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #EDE8E1;
+}
+::-webkit-scrollbar-thumb {
+    background: #9A8C84;
+    border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #4A5D4E;
+}
+
+/* Subtle Film Grain Overlay for Luxury Editorial Texture */
+.grain-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Fluid Typography */
+.text-huge {
+    font-size: clamp(3.8rem, 11vw, 11rem);
+    line-height: 0.88;
+    letter-spacing: -0.03em;
+}
+
+.text-editorial-title {
+    font-size: clamp(2.5rem, 7vw, 6.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+}
+
+/* Smooth Fade In View Transition */
+.view {
+    display: none;
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.view.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Asymmetric Editorial Grid */
+@media (min-width: 1024px) {
+    .editorial-col-stagger-1 {
+        grid-column: span 5;
+        margin-top: 4vw;
+    }
+    .editorial-col-stagger-2 {
+        grid-column: span 7;
+        padding-left: 8vw;
+    }
+    .editorial-col-stagger-3 {
+        grid-column: span 6;
+        grid-column-start: 4;
+        margin-top: -6vw;
+        z-index: 2;
+    }
+}
+
+/* Subtle Image Hover & Masking */
+.edgy-img-wrapper {
+    position: relative;
+    overflow: hidden;
+    background-color: #E6DFD5;
+}
+
+.edgy-img-wrapper img {
+    transition: transform 0.9s cubic-bezier(0.2, 1, 0.2, 1), filter 0.6s ease;
+}
+
+.edgy-card:hover .edgy-img-wrapper img {
+    transform: scale(1.06);
+    filter: saturate(1.1) contrast(1.02);
+}
+
+/* Minimalist Underline Draw Effect */
+.hover-draw {
+    position: relative;
+}
+.hover-draw::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: currentColor;
+    transition: width 0.35s ease;
+}
+.hover-draw:hover::after {
+    width: 100%;
+}
+
+/* Infinite Marquee Ticker */
+@keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+    display: flex;
+    width: 200%;
+    animation: marquee 28s linear infinite;
+}
+.animate-marquee:hover {
+    animation-play-state: paused;
+}
+
+/* Custom Modal Animation */
+.modal-backdrop {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+.modal-backdrop.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    transform: translateY(30px) scale(0.97);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.modal-backdrop.open .modal-content {
+    transform: translateY(0) scale(1);
+}
+
+/* Drawer Animation */
+.drawer-backdrop {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.drawer-backdrop.open {
+    opacity: 1;
+    visibility: visible;
+}
+.drawer-panel {
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.drawer-backdrop.open .drawer-panel {
+    transform: translateX(0);
+}

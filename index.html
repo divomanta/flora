@@ -1,128 +1,784 @@
 <!DOCTYPE html>
-<html lang="bg">
+<html lang="bg" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Флора | Цветарски магазин</title>
-    <meta name="description" content="Цветарски магазин Флора в гр. Тутракан. Свежи букети, венци и сватбена флористика.">
-    <meta name="keywords" content="цветя, букети, Тутракан, цветарски магазин, доставка на цветя, рози, орхидеи">
-    <link rel="stylesheet" href="css/style.css">
+    <title>ФЛОРА | Botanical Artistry & Atelier Tutrakan</title>
+    <meta name="description" content="Флора — бутикален магазин за цветя, сватбена флористика и авторски букети в гр. Тутракан. Уникални естествени композиции с отношение към детайла.">
+    <meta name="keywords" content="цветя Тутракан, букети, сватбена флористика, магазин Флора, рози, орхидеи, аранжировки, доставка на цветя">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome 6 Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS (Play CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'flora-base': '#F4F0EB',
+                        'flora-dark': '#121A14',
+                        'flora-taupe': '#9A8C84',
+                        'flora-sage': '#4A5D4E',
+                        'flora-pop': '#37473A',
+                        'flora-cream': '#EFE9E0',
+                        'flora-card': '#EDE8E1',
+                        'flora-gold': '#C8A97E',
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+                        sans: ['"Inter"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                    },
+                    letterSpacing: {
+                        'ultra': '0.2em',
+                        'mega': '0.3em',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom Editorial Stylesheet -->
+    <link rel="stylesheet" href="css/flora.css">
 </head>
-<body>
+<body class="bg-flora-base text-flora-dark font-sans selection:bg-flora-dark selection:text-flora-base overflow-x-hidden antialiased">
 
-    <header>
-        <a href="index.html" class="logo">Флора <i class="fa-solid fa-leaf"></i></a>
-        <nav>
-            <ul id="nav-menu">
-                <li><a href="index.html">Начало</a></li>
-                <li><a href="catalog.html">Каталог</a></li>
-                <li><a href="order.html">Поръчай</a></li>
-                <li><a href="contact.html">Контакти</a></li>
-            </ul>
-        </nav>
-        <div class="burger" id="burger-menu"><i class="fa-solid fa-bars"></i></div>
+    <!-- Film Grain Overlay for Luxury Magazine Aesthetic -->
+    <div class="grain-overlay" aria-hidden="true"></div>
+
+    <!-- ==========================================================================
+         TOP HEADER NAVIGATION
+         ========================================================================== -->
+    <header class="fixed top-0 left-0 w-full px-4 sm:px-8 lg:px-12 py-5 sm:py-6 flex justify-between items-center z-50 transition-colors duration-500" style="mix-blend-mode: difference; color: #FFFFFF;">
+        <!-- Logo -->
+        <a href="#home" onclick="FloraApp.switchView('home')" class="logo font-serif italic text-2xl sm:text-3xl tracking-tight text-inherit flex items-baseline gap-1.5 group">
+            <span>Flora</span>
+            <span class="text-xs font-sans tracking-mega uppercase opacity-70 not-italic group-hover:opacity-100 transition-opacity">.Atelier</span>
+        </a>
+
+        <!-- Right Quick Actions & Menu Toggle -->
+        <div class="flex items-center gap-4 sm:gap-8">
+            <!-- Fast View Shortcuts (Desktop) -->
+            <nav class="hidden md:flex items-center gap-6 text-[11px] font-sans tracking-mega uppercase">
+                <a href="#catalog" onclick="FloraApp.switchView('catalog')" class="hover-draw pb-0.5 text-inherit opacity-80 hover:opacity-100 transition-opacity">Колекция</a>
+                <a href="#about" onclick="FloraApp.switchView('about')" class="hover-draw pb-0.5 text-inherit opacity-80 hover:opacity-100 transition-opacity">За Нас</a>
+                <a href="#contact" onclick="FloraApp.switchView('contact')" class="hover-draw pb-0.5 text-inherit opacity-80 hover:opacity-100 transition-opacity">Поръчка</a>
+            </nav>
+
+            <!-- Favorites Heart Trigger -->
+            <button 
+                type="button" 
+                onclick="FloraApp.openFavoritesDrawer()" 
+                class="relative text-inherit hover:opacity-80 transition-opacity p-1.5 flex items-center justify-center"
+                title="Преглед на запазени цветя"
+                aria-label="Запазени цветя"
+            >
+                <i class="fa-regular fa-heart text-base sm:text-lg"></i>
+                <span id="favorites-count" class="hidden absolute -top-1 -right-1 bg-flora-sage text-flora-base text-[9px] w-4 h-4 rounded-full items-center justify-center font-sans font-semibold">0</span>
+            </button>
+
+            <!-- Fullscreen Overlay Menu Toggle Button -->
+            <button 
+                id="menuToggleBtn" 
+                type="button" 
+                class="menu-toggle flex items-center gap-3 text-inherit uppercase text-[11px] sm:text-xs tracking-mega font-sans font-medium focus:outline-none"
+                aria-label="Отвори меню"
+            >
+                <span class="hidden sm:inline">МЕНЮ</span>
+                <div class="w-7 sm:w-8 h-[1px] bg-current"></div>
+            </button>
+        </div>
     </header>
 
-    <main>
-        <section class="hero">
-            <h1 class="fade-in">Магазин за цветя „Флора“ – гр. Тутракан</h1>
-            <p class="fade-in">Свежест, стил и уникални аранжировки за всеки ваш специален повод.</p>
-            <a href="catalog.html" class="btn fade-in" style="margin-top: 1.5rem;">Разгледай каталога</a>
-        </section>
+    <!-- ==========================================================================
+         FULLSCREEN OVERLAY MENU
+         ========================================================================== -->
+    <div id="overlayMenu" class="fixed inset-0 w-screen h-screen bg-flora-dark text-flora-base z-40 flex flex-col justify-between p-8 sm:p-16 lg:p-20 opacity-0 pointer-events-none transition-opacity duration-500">
+        <!-- Top bar of menu -->
+        <div class="flex justify-between items-center border-b border-flora-base/10 pb-6">
+            <span class="text-xs uppercase tracking-mega text-flora-taupe">Флорален архив & Ателие</span>
+            <button type="button" onclick="FloraApp.closeMenu()" class="text-xs uppercase tracking-mega text-flora-base hover:text-flora-taupe transition-colors flex items-center gap-2">
+                <span>Затвори</span> &times;
+            </button>
+        </div>
 
-        <section class="categories fade-in" style="background-color: var(--bg-light-green);">
-            <h2 class="section-title">Какво предлагаме</h2>
-            <div class="grid-5">
-                <div><i class="fa-solid fa-seedling fa-3x" style="color: var(--primary-color);"></i><h3>Букети</h3></div>
-                <div><i class="fa-solid fa-fan fa-3x" style="color: var(--primary-color);"></i><h3>Венци</h3></div>
-                <div><i class="fa-solid fa-ring fa-3x" style="color: var(--primary-color);"></i><h3>Сватбена флористика</h3></div>
-                <div><i class="fa-solid fa-spa fa-3x" style="color: var(--primary-color);"></i><h3>Аранжировки</h3></div>
-                <div><i class="fa-solid fa-gift fa-3x" style="color: var(--primary-color);"></i><h3>Подаръци</h3></div>
-                <div><i class="fa-solid fa-leaf fa-3x" style="color: var(--primary-color);"></i><h3>Саксийни</h3></div>
-            </div>
-        </section>
+        <!-- Main Navigation Links -->
+        <nav class="flex flex-col gap-3 sm:gap-6 my-auto text-left max-w-4xl">
+            <a href="#home" onclick="FloraApp.switchView('home')" class="group flex items-baseline gap-4 text-3xl sm:text-6xl lg:text-7xl font-serif italic text-flora-base/90 hover:text-flora-base hover:translate-x-3 transition-all duration-300">
+                <span class="font-sans text-xs tracking-widest text-flora-taupe not-italic group-hover:text-flora-sage">01.</span>
+                <span>Начало</span>
+            </a>
+            <a href="#catalog" onclick="FloraApp.switchView('catalog')" class="group flex items-baseline gap-4 text-3xl sm:text-6xl lg:text-7xl font-serif italic text-flora-base/90 hover:text-flora-base hover:translate-x-3 transition-all duration-300">
+                <span class="font-sans text-xs tracking-widest text-flora-taupe not-italic group-hover:text-flora-sage">02.</span>
+                <span>Колекция & Архив</span>
+            </a>
+            <a href="#about" onclick="FloraApp.switchView('about')" class="group flex items-baseline gap-4 text-3xl sm:text-6xl lg:text-7xl font-serif italic text-flora-base/90 hover:text-flora-base hover:translate-x-3 transition-all duration-300">
+                <span class="font-sans text-xs tracking-widest text-flora-taupe not-italic group-hover:text-flora-sage">03.</span>
+                <span>За Ателието</span>
+            </a>
+            <a href="#contact" onclick="FloraApp.switchView('contact')" class="group flex items-baseline gap-4 text-3xl sm:text-6xl lg:text-7xl font-serif italic text-flora-base/90 hover:text-flora-base hover:translate-x-3 transition-all duration-300">
+                <span class="font-sans text-xs tracking-widest text-flora-taupe not-italic group-hover:text-flora-sage">04.</span>
+                <span>Поръчка & Контакти</span>
+            </a>
+        </nav>
 
-        <section class="featured fade-in">
-            <h2 class="section-title">Препоръчани продукти</h2>
-            <div class="grid-3">
-                
-                <div class="card">
-                    <img src="img/buket1.jpg" alt="Пролетен полъх" loading="lazy">
-                    <div class="card-content">
-                        <h3>Букет „Пролетен полъх“</h3>
-                        <p class="price">45.00 лв.</p>
-                        <a href="product.html?id=1" class="btn">Детайли</a>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <img src="img/roses.jpg" alt="Класически червени рози" loading="lazy">
-                    <div class="card-content">
-                        <h3>Букет розови мечти</h3>
-                        <p class="price">80.00 лв.</p>
-                        <a href="product.html?id=2" class="btn">Детайли</a>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <img src="img/orchid.jpg" alt="Бяла Орхидея" loading="lazy">
-                    <div class="card-content">
-                        <h3>Елегантна Бяла Орхидея</h3>
-                        <p class="price">35.00 лв.</p>
-                        <a href="product.html?id=3" class="btn">Детайли</a>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <section class="about fade-in" style="background-color: var(--bg-light-green);">
-            <div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center;">
-                <div style="flex: 1; min-width: 300px;">
-                    <h2>За нас</h2>
-                    <p>Добре дошли в магазин за цветя „Флора“ – вашето място за красота и стил в сърцето на град Тутракан!</p>
-                    <p style="margin-top: 1rem;">Ние вярваме, че всяко цвете носи своя собствена емоция. С много любов и внимание към детайла, нашият екип (ЕТ РАИВ-2012 Ивелина Инджева) създава уникални букети, венци и флорални аранжировки, които да направят вашите празници наистина незабравими. Независимо дали търсите нежен жест за любим човек, или цялостна сватбена украса, ние сме тук, за да превърнем идеите ви в реалност.</p>
-                </div>
-                <div style="flex: 1; min-width: 300px;">
-                    <img src="img/magazin.jpg" alt="Магазин Флора отвътре" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);" loading="lazy">
-                </div>
-            </div>
-        </section>
-        
-        <section class="cta fade-in" style="text-align: center;">
-            <h2>Имате специален повод?</h2>
-            <p>Свържете се с нас или направете поръчка онлайн, за да зарадвате любим човек още днес.</p>
-            <br>
-            <a href="order.html" class="btn">Направи поръчка</a>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-grid">
+        <!-- Bottom Atelier Footer inside Menu -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-flora-base/10 text-xs text-flora-taupe">
             <div>
-                <a href="index.html" class="logo" style="color: var(--bg-white);">Флора</a>
-                <p style="margin-top: 1rem;">Красота от природата.</p>
-            </div>
-            <div>
-                <h3>Контакти</h3>
+                <p class="uppercase tracking-widest text-flora-base text-[10px] mb-1">Локация</p>
                 <p>ул. Родина 18, гр. Тутракан</p>
-                <p>0887 865 181</p>
-                <p>ivi_indjeva@abv.bg</p>
+                <p>България</p>
             </div>
             <div>
-                <h3>Последвайте ни</h3>
-                <div style="margin-top: 1rem;">
-                    <a href="#" style="color: var(--bg-white); font-size: 1.5rem; margin-right: 1rem;"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#" style="color: var(--bg-white); font-size: 1.5rem;"><i class="fa-brands fa-instagram"></i></a>
-                </div>
+                <p class="uppercase tracking-widest text-flora-base text-[10px] mb-1">Директен контакт</p>
+                <p><a href="tel:+359887865181" class="hover:text-flora-base transition-colors">0887 865 181</a></p>
+                <p><a href="mailto:ivi_indjeva@abv.bg" class="hover:text-flora-base transition-colors">ivi_indjeva@abv.bg</a></p>
+            </div>
+            <div>
+                <p class="uppercase tracking-widest text-flora-base text-[10px] mb-1">Работно време</p>
+                <p>Пон &ndash; Съб: 08:30 &ndash; 19:30</p>
+                <p>Неделя: 09:00 &ndash; 14:00</p>
             </div>
         </div>
-        <div class="footer-bottom">
+    </div>
+
+    <!-- ==========================================================================
+         MAIN VIEWS CONTAINER
+         ========================================================================== -->
+    <main>
+
+        <!-- ======================================================================
+             VIEW 1: HOME
+             ====================================================================== -->
+        <div id="view-home" class="view active">
+            <!-- Hero Section -->
+            <section class="relative min-h-[95vh] flex items-center justify-center px-4 sm:px-8 lg:px-12 pt-24 pb-16 overflow-hidden">
+                <!-- Large Editorial Background/Floating Typography -->
+                <div class="absolute inset-0 flex flex-col justify-center items-center pointer-events-none z-10 px-4 text-center">
+                    <h1 class="text-huge font-serif text-flora-dark uppercase select-none">
+                        <span>BOTANICAL</span>
+                        <span class="italic font-serif text-flora-sage ml-0 sm:ml-24 block font-normal">ARTISTRY</span>
+                    </h1>
+                    <div class="mt-6 flex items-center gap-3 text-[10px] sm:text-xs font-sans uppercase tracking-mega text-flora-taupe bg-flora-base/80 backdrop-blur-sm px-4 py-1.5 border border-flora-dark/10">
+                        <span>Atelier Tutrakan</span>
+                        <span>&bull;</span>
+                        <span>Flora Est. 2012</span>
+                    </div>
+                </div>
+
+                <!-- High-End Editorial Centerpiece Image Frame -->
+                <div class="relative w-[78vw] sm:w-[48vw] lg:w-[36vw] h-[58vh] sm:h-[68vh] overflow-hidden shadow-2xl z-0 bg-flora-card">
+                    <img 
+                        src="https://images.unsplash.com/photo-1508759073847-927b7c2cc0ba?q=80&w=1200&auto=format&fit=crop" 
+                        alt="Flora Botanical Artistry" 
+                        class="w-full h-full object-cover scale-105 filter saturate-90 contrast-105"
+                    />
+                    <div class="absolute inset-0 bg-flora-dark/10 pointer-events-none"></div>
+                </div>
+
+                <!-- Subtle Scroll Down Indicator -->
+                <a href="#home-curated" class="absolute bottom-6 left-1/2 -translate-x-1/2 text-[10px] uppercase tracking-mega text-flora-taupe hover:text-flora-dark transition-colors flex flex-col items-center gap-2">
+                    <span>Превъртете надолу</span>
+                    <i class="fa-solid fa-arrow-down text-[10px] animate-bounce"></i>
+                </a>
+            </section>
+
+            <!-- Marquee Ambient Ticker -->
+            <div class="border-y border-flora-dark/15 py-3.5 bg-flora-cream/60 overflow-hidden select-none">
+                <div class="animate-marquee whitespace-nowrap text-xs uppercase tracking-mega text-flora-dark flex items-center gap-8 font-sans">
+                    <span>&bull; Свежи цветя от гр. Тутракан</span>
+                    <span>&bull; Авторски бутикови букети</span>
+                    <span>&bull; Сватбена флористика & аранжировки</span>
+                    <span>&bull; ЕТ РАИВ-2012 Ивелина Инджева</span>
+                    <span>&bull; Доставка в региона</span>
+                    <span>&bull; Живи саксийни орхидеи</span>
+                    <span>&bull; Свежи цветя от гр. Тутракан</span>
+                    <span>&bull; Авторски бутикови букети</span>
+                    <span>&bull; Сватбена флористика & аранжировки</span>
+                    <span>&bull; ЕТ РАИВ-2012 Ивелина Инджева</span>
+                    <span>&bull; Доставка в региона</span>
+                    <span>&bull; Живи саксийни орхидеи</span>
+                </div>
+            </div>
+
+            <!-- Curated Editorial Selection Section -->
+            <section id="home-curated" class="px-4 sm:px-8 lg:px-12 py-20 lg:py-28 max-w-7xl mx-auto">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-14 border-b border-flora-dark/15 pb-6">
+                    <div>
+                        <span class="text-[11px] uppercase tracking-mega text-flora-taupe block mb-2">Кураторска Селекция</span>
+                        <h2 class="font-serif italic text-3xl sm:text-5xl text-flora-dark">Избрани Произведения</h2>
+                    </div>
+                    <a href="#catalog" onclick="FloraApp.switchView('catalog')" class="mt-4 sm:mt-0 text-xs uppercase tracking-mega font-sans font-medium text-flora-dark hover:text-flora-sage hover-draw pb-1">
+                        Разгледай пълния каталог (12) &rarr;
+                    </a>
+                </div>
+
+                <!-- 3 Premier Works -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+                    <!-- Featured Item 1 -->
+                    <article class="edgy-card group flex flex-col gap-3" onclick="FloraApp.openProductModalById(1)">
+                        <div class="relative edgy-img-wrapper aspect-[3/4] cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?q=80&w=1000&auto=format&fit=crop" alt="Noir Rose" class="w-full h-full object-cover">
+                            <span class="absolute top-4 left-4 bg-flora-dark text-flora-base text-[9px] uppercase tracking-mega px-3 py-1 font-sans">Авангард</span>
+                        </div>
+                        <div class="meta pt-3 border-t border-flora-dark/20 flex flex-col gap-1">
+                            <div class="flex justify-between items-baseline">
+                                <h3 class="font-serif italic text-2xl text-flora-dark group-hover:text-flora-sage transition-colors">Noir Rose</h3>
+                                <span class="font-sans text-xs tracking-widest uppercase font-medium">120.00 BGN</span>
+                            </div>
+                            <p class="text-xs text-flora-taupe font-sans">Драматични кадифени рози и графичен евкалипт</p>
+                        </div>
+                    </article>
+
+                    <!-- Featured Item 2 (Local Original) -->
+                    <article class="edgy-card group flex flex-col gap-3 md:mt-10" onclick="FloraApp.openProductModalById(2)">
+                        <div class="relative edgy-img-wrapper aspect-[3/4] cursor-pointer">
+                            <img src="img/buket1.jpg" alt="Пролетен полъх" class="w-full h-full object-cover">
+                            <span class="absolute top-4 left-4 bg-flora-sage text-flora-base text-[9px] uppercase tracking-mega px-3 py-1 font-sans">Класика</span>
+                        </div>
+                        <div class="meta pt-3 border-t border-flora-dark/20 flex flex-col gap-1">
+                            <div class="flex justify-between items-baseline">
+                                <h3 class="font-serif italic text-2xl text-flora-dark group-hover:text-flora-sage transition-colors">Пролетен полъх</h3>
+                                <span class="font-sans text-xs tracking-widest uppercase font-medium">45.00 BGN</span>
+                            </div>
+                            <p class="text-xs text-flora-taupe font-sans">Свеж авторски букет от сезонни цветя за уют и топлина</p>
+                        </div>
+                    </article>
+
+                    <!-- Featured Item 3 -->
+                    <article class="edgy-card group flex flex-col gap-3" onclick="FloraApp.openProductModalById(5)">
+                        <div class="relative edgy-img-wrapper aspect-[3/4] cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?q=80&w=1000&auto=format&fit=crop" alt="Midnight Orchid" class="w-full h-full object-cover">
+                            <span class="absolute top-4 left-4 bg-flora-dark text-flora-base text-[9px] uppercase tracking-mega px-3 py-1 font-sans">Колекция</span>
+                        </div>
+                        <div class="meta pt-3 border-t border-flora-dark/20 flex flex-col gap-1">
+                            <div class="flex justify-between items-baseline">
+                                <h3 class="font-serif italic text-2xl text-flora-dark group-hover:text-flora-sage transition-colors">Midnight Orchid</h3>
+                                <span class="font-sans text-xs tracking-widest uppercase font-medium">145.00 BGN</span>
+                            </div>
+                            <p class="text-xs text-flora-taupe font-sans">Каскадна тъмна орхидея в скулптурен минерален съд</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Atelier Story Preview Section -->
+            <section class="bg-flora-cream/80 py-20 lg:py-28 px-4 sm:px-8 lg:px-12 border-t border-flora-dark/10">
+                <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                    <!-- Real Shop Physical Photo -->
+                    <div class="lg:col-span-6 relative aspect-[4/3] sm:aspect-[16/11] overflow-hidden shadow-lg bg-flora-card">
+                        <img 
+                            src="img/magazin.jpg" 
+                            alt="Магазин за цветя Флора Тутракан" 
+                            class="w-full h-full object-cover filter contrast-105"
+                        />
+                        <div class="absolute bottom-4 left-4 bg-flora-dark/90 text-flora-base text-[10px] tracking-mega uppercase px-3 py-1.5 font-sans">
+                            гр. Тутракан, ул. Родина 18
+                        </div>
+                    </div>
+
+                    <!-- Story Copy -->
+                    <div class="lg:col-span-6 flex flex-col gap-6">
+                        <span class="text-[11px] uppercase tracking-mega text-flora-taupe">За Ателието</span>
+                        <h2 class="font-serif italic text-3xl sm:text-5xl text-flora-dark leading-tight">
+                            Флорално изкуство, родено край тихия Дунав.
+                        </h2>
+                        <div class="space-y-4 text-sm sm:text-base text-flora-dark/80 font-sans leading-relaxed">
+                            <p>
+                                Добре дошли в магазин за цветя „Флора“ &ndash; семейното пространство за красота на <strong>ЕТ РАИВ-2012 (Ивелина Инджева)</strong> в град Тутракан.
+                            </p>
+                            <p>
+                                Ние вярваме, че цветята не са просто декорация, а сетивен език за обич, признателност и изящество. С повече от десетилетие опит, ръчно изработваме всеки букет с дълбоко уважение към сезонността, ботаническата форма и желанията на нашите клиенти.
+                            </p>
+                        </div>
+                        <div class="pt-2 flex flex-wrap items-center gap-6">
+                            <a href="#about" onclick="FloraApp.switchView('about')" class="bg-flora-dark hover:bg-flora-sage text-flora-base text-xs uppercase tracking-mega px-6 py-3.5 transition-colors font-sans font-medium">
+                                Прочети нашата история
+                            </a>
+                            <a href="#contact" onclick="FloraApp.switchView('contact')" class="text-xs uppercase tracking-mega text-flora-dark hover:text-flora-sage hover-draw pb-1 font-sans font-medium">
+                                Направи поръчка &rarr;
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ======================================================================
+             VIEW 2: CATALOG / ARCHIVES
+             ====================================================================== -->
+        <div id="view-catalog" class="view">
+            <section class="px-4 sm:px-8 lg:px-12 pt-28 pb-20 max-w-7xl mx-auto">
+                <!-- Catalog Header -->
+                <div class="border-b border-flora-dark/20 pb-8 mb-10">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-8">
+                        <div>
+                            <span class="text-[11px] uppercase tracking-mega text-flora-taupe block mb-2">Флорална колекция</span>
+                            <div class="flex items-baseline gap-4">
+                                <h1 class="text-editorial-title font-serif italic text-flora-dark">Archives.</h1>
+                                <span id="product-count" class="font-sans text-xs tracking-mega uppercase text-flora-taupe"></span>
+                            </div>
+                        </div>
+
+                        <!-- Search and Sort Controls -->
+                        <div class="w-full md:w-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                            <!-- Search -->
+                            <div class="relative flex-1 sm:w-64">
+                                <input 
+                                    type="text" 
+                                    id="catalog-search" 
+                                    placeholder="Търсене на букет или цвете..." 
+                                    class="w-full bg-transparent border-b border-flora-dark/40 py-2 pl-2 pr-7 text-xs font-sans text-flora-dark placeholder-flora-taupe/70 focus:outline-none focus:border-flora-dark"
+                                />
+                                <i class="fa-solid fa-magnifying-glass absolute right-2 top-3 text-[11px] text-flora-taupe pointer-events-none"></i>
+                            </div>
+
+                            <!-- Sort -->
+                            <select 
+                                id="catalog-sort" 
+                                class="bg-transparent border-b border-flora-dark/40 py-2 px-2 text-xs font-sans text-flora-dark focus:outline-none focus:border-flora-dark cursor-pointer"
+                            >
+                                <option value="featured">Препоръчани</option>
+                                <option value="price-asc">Цена: Ниска към Висока</option>
+                                <option value="price-desc">Цена: Висока към Ниска</option>
+                                <option value="name">Име (А &ndash; Я)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Filter Pill Tabs -->
+                    <div class="flex flex-wrap items-center gap-2 sm:gap-6 pt-2">
+                        <button type="button" class="filter-btn active text-xs uppercase tracking-mega font-sans py-1.5 px-3 rounded-full hover:text-flora-dark transition-colors" data-filter="всички">Всички</button>
+                        <button type="button" class="filter-btn text-xs uppercase tracking-mega font-sans py-1.5 px-3 rounded-full text-flora-taupe hover:text-flora-dark transition-colors" data-filter="букети">Букети</button>
+                        <button type="button" class="filter-btn text-xs uppercase tracking-mega font-sans py-1.5 px-3 rounded-full text-flora-taupe hover:text-flora-dark transition-colors" data-filter="авангард">Авангард</button>
+                        <button type="button" class="filter-btn text-xs uppercase tracking-mega font-sans py-1.5 px-3 rounded-full text-flora-taupe hover:text-flora-dark transition-colors" data-filter="сватбени">Сватбени</button>
+                        <button type="button" class="filter-btn text-xs uppercase tracking-mega font-sans py-1.5 px-3 rounded-full text-flora-taupe hover:text-flora-dark transition-colors" data-filter="саксийни">Саксийни</button>
+                        <button type="button" class="filter-btn text-xs uppercase tracking-mega font-sans py-1.5 px-3 rounded-full text-flora-taupe hover:text-flora-dark transition-colors" data-filter="аранжировки">Аранжировки</button>
+                    </div>
+                </div>
+
+                <!-- Editorial Asymmetric Dynamic Grid -->
+                <div id="editorial-grid" class="grid grid-cols-12 gap-y-12 gap-x-6 sm:gap-x-10">
+                    <!-- Injected dynamically via app.js -->
+                </div>
+            </section>
+        </div>
+
+        <!-- ======================================================================
+             VIEW 3: ABOUT / ATELIER
+             ====================================================================== -->
+        <div id="view-about" class="view">
+            <section class="px-4 sm:px-8 lg:px-12 pt-28 pb-20 max-w-6xl mx-auto">
+                <!-- Section Header -->
+                <div class="mb-14">
+                    <span class="text-[11px] uppercase tracking-mega text-flora-taupe block mb-2">Нашето Ателие</span>
+                    <h1 class="text-editorial-title font-serif italic text-flora-dark">За Магазин „Флора“</h1>
+                    <p class="font-serif italic text-xl text-flora-taupe mt-2">ЕТ РАИВ-2012 Ивелина Инджева &bull; гр. Тутракан</p>
+                </div>
+
+                <!-- 2-Column Editorial Spread -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-20">
+                    <div class="lg:col-span-5 space-y-6 text-sm sm:text-base text-flora-dark/85 font-sans leading-relaxed">
+                        <p class="first-letter:text-5xl first-letter:font-serif first-letter:float-left first-letter:mr-3 first-letter:leading-none">
+                            Цветарски магазин „Флора“ е утвърдено пространство за флорално изкуство в гр. Тутракан, разположено на удобната и централна локация на <strong>ул. Родина 18</strong>.
+                        </p>
+                        <p>
+                            Основан с любов към природата от Ивелина Инджева, магазинът се превърна в символ на стил, надеждност и внимание към най-съкровените моменти в живота на жителите и гостите на града ни.
+                        </p>
+                        <p>
+                            От класически букети от алени рози до авангардни интериорни венци и цялостни сватбени декорации &ndash; ние подбираме само първокласни сезонни цветя, гарантиращи дълготрайна свежест и въздействащ аромат.
+                        </p>
+                    </div>
+
+                    <div class="lg:col-span-7 grid grid-cols-2 gap-4">
+                        <div class="aspect-[3/4] overflow-hidden bg-flora-card shadow-sm">
+                            <img src="img/magazin.jpg" alt="Интериор на магазин Флора" class="w-full h-full object-cover">
+                        </div>
+                        <div class="aspect-[3/4] overflow-hidden bg-flora-card shadow-sm mt-8">
+                            <img src="img/roses.jpg" alt="Рози в магазин Флора" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4 Value Pillars -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 py-12 border-t border-b border-flora-dark/15">
+                    <div>
+                        <span class="font-serif italic text-2xl text-flora-sage block mb-1">01.</span>
+                        <h4 class="font-sans font-semibold text-xs uppercase tracking-wider text-flora-dark mb-2">Гарантирана Свежест</h4>
+                        <p class="text-xs text-flora-dark/70 leading-relaxed">Директни редовни доставки на селектирани рязани и саксийни цветя.</p>
+                    </div>
+                    <div>
+                        <span class="font-serif italic text-2xl text-flora-sage block mb-1">02.</span>
+                        <h4 class="font-sans font-semibold text-xs uppercase tracking-wider text-flora-dark mb-2">Индивидуален Стил</h4>
+                        <p class="text-xs text-flora-dark/70 leading-relaxed">Всяка поръчка се аранжира ръчно, отразявайки личния повод и емоция.</p>
+                    </div>
+                    <div>
+                        <span class="font-serif italic text-2xl text-flora-sage block mb-1">03.</span>
+                        <h4 class="font-sans font-semibold text-xs uppercase tracking-wider text-flora-dark mb-2">Сватбена Флористика</h4>
+                        <p class="text-xs text-flora-dark/70 leading-relaxed">Пълен дизайн &ndash; булчински букет, украса на зала, арки и бутониери.</p>
+                    </div>
+                    <div>
+                        <span class="font-serif italic text-2xl text-flora-sage block mb-1">04.</span>
+                        <h4 class="font-sans font-semibold text-xs uppercase tracking-wider text-flora-dark mb-2">Локална Доставка</h4>
+                        <p class="text-xs text-flora-dark/70 leading-relaxed">Точно навреме до прага на любимия човек в Тутракан и района.</p>
+                    </div>
+                </div>
+
+                <!-- Bottom CTA -->
+                <div class="text-center pt-16">
+                    <h3 class="font-serif italic text-3xl text-flora-dark mb-3">Имате ли предстоящ повод?</h3>
+                    <p class="text-xs uppercase tracking-mega text-flora-taupe mb-6">Свържете се с нас за консултация или поръчайте онлайн</p>
+                    <a href="#contact" onclick="FloraApp.switchView('contact')" class="inline-block bg-flora-dark hover:bg-flora-sage text-flora-base text-xs uppercase tracking-mega px-8 py-4 transition-colors font-sans">
+                        Направи поръчка сега
+                    </a>
+                </div>
+            </section>
+        </div>
+
+        <!-- ======================================================================
+             VIEW 4: CONTACT & INITIATE ORDER
+             ====================================================================== -->
+        <div id="view-contact" class="view">
+            <section class="min-h-screen pt-24 pb-16">
+                <div class="grid grid-cols-1 lg:grid-cols-12 min-h-[85vh]">
+                    
+                    <!-- Left Column: Commission Form -->
+                    <div class="lg:col-span-7 px-6 sm:px-12 lg:px-16 py-12 flex flex-col justify-center">
+                        <div class="max-w-xl">
+                            <span class="text-[11px] uppercase tracking-mega text-flora-taupe block mb-2">Форма за поръчка</span>
+                            <h2 class="font-serif italic text-3xl sm:text-5xl text-flora-dark mb-2">Initiate Order.</h2>
+                            <p class="text-xs uppercase tracking-mega text-flora-taupe mb-8">
+                                България, гр. Тутракан, ул. Родина 18 &bull; Тел: 0887 865 181
+                            </p>
+
+                            <!-- Bespoke Form -->
+                            <form id="order-form" class="space-y-6">
+                                <div>
+                                    <label for="order-name" class="block text-[11px] uppercase tracking-wider text-flora-taupe mb-1">Вашето име и фамилия *</label>
+                                    <input 
+                                        type="text" 
+                                        id="order-name" 
+                                        name="name" 
+                                        required 
+                                        placeholder="напр. Мария Иванова" 
+                                        class="w-full bg-transparent border-b border-flora-dark py-2 font-serif text-lg sm:text-xl text-flora-dark placeholder:italic placeholder:text-flora-taupe/60 focus:outline-none focus:border-flora-sage transition-colors"
+                                    />
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                    <div>
+                                        <label for="order-phone" class="block text-[11px] uppercase tracking-wider text-flora-taupe mb-1">Телефон за връзка *</label>
+                                        <input 
+                                            type="tel" 
+                                            id="order-phone" 
+                                            name="phone" 
+                                            required 
+                                            placeholder="напр. 0887 123 456" 
+                                            class="w-full bg-transparent border-b border-flora-dark py-2 font-serif text-lg sm:text-xl text-flora-dark placeholder:italic placeholder:text-flora-taupe/60 focus:outline-none focus:border-flora-sage transition-colors"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label for="order-email" class="block text-[11px] uppercase tracking-wider text-flora-taupe mb-1">Имейл адрес *</label>
+                                        <input 
+                                            type="email" 
+                                            id="order-email" 
+                                            name="email" 
+                                            required 
+                                            placeholder="name@example.com" 
+                                            class="w-full bg-transparent border-b border-flora-dark py-2 font-serif text-lg sm:text-xl text-flora-dark placeholder:italic placeholder:text-flora-taupe/60 focus:outline-none focus:border-flora-sage transition-colors"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                    <div>
+                                        <label for="product-select" class="block text-[11px] uppercase tracking-wider text-flora-taupe mb-1">Флорално произведение *</label>
+                                        <select 
+                                            id="product-select" 
+                                            name="product" 
+                                            required 
+                                            class="w-full bg-transparent border-b border-flora-dark py-2 font-serif text-base sm:text-lg text-flora-dark focus:outline-none focus:border-flora-sage transition-colors cursor-pointer"
+                                        >
+                                            <!-- Dynamically populated via app.js -->
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label for="order-date" class="block text-[11px] uppercase tracking-wider text-flora-taupe mb-1">Дата на получаване *</label>
+                                        <input 
+                                            type="date" 
+                                            id="order-date" 
+                                            name="date" 
+                                            required 
+                                            class="w-full bg-transparent border-b border-flora-dark py-2 font-serif text-base sm:text-lg text-flora-dark focus:outline-none focus:border-flora-sage transition-colors"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                    <div>
+                                        <label for="order-delivery" class="block text-[11px] uppercase tracking-wider text-flora-taupe mb-1">Начин на получаване *</label>
+                                        <select 
+                                            id="order-delivery" 
+                                            name="delivery" 
+                                            required 
+                                            class="w-full bg-transparent border-b border-flora-dark py-2 font-serif text-base text-flora-dark focus:outline-none focus:border-flora-sage cursor-pointer"
+                                        >
+                                            <option value="Вземане от ателието (гр. Тутракан, ул. Родина 18)">Вземане от ателието (ул. Родина 18)</option>
+                                            <option value="Доставка до адрес в гр. Тутракан">Доставка до адрес в гр. Тутракан</option>
+                                            <option value="Доставка за региона на общ. Тутракан">Доставка за региона на общ. Тутракан</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label for="order-occasion" class="block text-[11px] uppercase tracking-wider text-flora-taupe mb-1">Повод (по желание)</label>
+                                        <input 
+                                            type="text" 
+                                            id="order-occasion" 
+                                            name="occasion" 
+                                            placeholder="напр. Рожден ден, Юбилей, Сватба" 
+                                            class="w-full bg-transparent border-b border-flora-dark py-2 font-serif text-base text-flora-dark placeholder:italic placeholder:text-flora-taupe/60 focus:outline-none focus:border-flora-sage transition-colors"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label for="order-message" class="block text-[11px] uppercase tracking-wider text-flora-taupe mb-1">Текст за картичка / Специални желания</label>
+                                    <textarea 
+                                        id="order-message" 
+                                        name="message" 
+                                        rows="3" 
+                                        placeholder="Специални предпочитания към цветовата гама, опаковката или послание за получателя..." 
+                                        class="w-full bg-transparent border-b border-flora-dark py-2 font-serif text-base text-flora-dark placeholder:italic placeholder:text-flora-taupe/60 focus:outline-none focus:border-flora-sage transition-colors resize-none"
+                                    ></textarea>
+                                </div>
+
+                                <div class="pt-4 flex flex-col sm:flex-row items-center gap-4">
+                                    <button 
+                                        type="submit" 
+                                        class="w-full sm:w-auto bg-flora-dark hover:bg-flora-sage text-flora-base text-xs uppercase tracking-mega py-4 px-10 transition-colors font-sans font-medium"
+                                    >
+                                        Изпрати запитване &rarr;
+                                    </button>
+                                    <span class="text-[11px] text-flora-taupe font-sans text-center sm:text-left">
+                                        Ще се свържем с Вас по телефона за потвърждение на наличността.
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Atelier Contact Information & Map -->
+                    <div class="lg:col-span-5 bg-flora-card/70 border-t lg:border-t-0 lg:border-l border-flora-dark/15 p-8 sm:p-12 lg:p-16 flex flex-col justify-between">
+                        <div class="space-y-8">
+                            <div>
+                                <span class="text-[10px] uppercase tracking-mega text-flora-taupe block mb-1">Магазин за цветя</span>
+                                <h3 class="font-serif italic text-3xl text-flora-dark">Флора &bull; Тутракан</h3>
+                                <p class="text-xs text-flora-taupe mt-1">ЕТ РАИВ-2012 Ивелина Инджева</p>
+                            </div>
+
+                            <div class="space-y-4 text-xs font-sans">
+                                <div class="flex items-start gap-4">
+                                    <i class="fa-solid fa-location-dot text-flora-sage text-base mt-0.5"></i>
+                                    <div>
+                                        <p class="font-medium text-flora-dark">Адрес на магазина:</p>
+                                        <p class="text-flora-dark/80">ул. Родина 18, 7600 гр. Тутракан, България</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-4">
+                                    <i class="fa-solid fa-phone text-flora-sage text-base mt-0.5"></i>
+                                    <div>
+                                        <p class="font-medium text-flora-dark">Телефон за бързи поръчки:</p>
+                                        <p><a href="tel:+359887865181" class="text-flora-dark hover:text-flora-sage transition-colors font-mono text-sm font-semibold">0887 865 181</a></p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-4">
+                                    <i class="fa-solid fa-envelope text-flora-sage text-base mt-0.5"></i>
+                                    <div>
+                                        <p class="font-medium text-flora-dark">Имейл:</p>
+                                        <p><a href="mailto:ivi_indjeva@abv.bg" class="text-flora-dark hover:text-flora-sage transition-colors">ivi_indjeva@abv.bg</a></p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-4">
+                                    <i class="fa-regular fa-clock text-flora-sage text-base mt-0.5"></i>
+                                    <div>
+                                        <p class="font-medium text-flora-dark">Работно време:</p>
+                                        <p class="text-flora-dark/80">Понеделник &ndash; Събота: 08:30 &ndash; 19:30 ч.</p>
+                                        <p class="text-flora-dark/80">Неделя: 09:00 &ndash; 14:00 ч.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Interactive Google Map Embed -->
+                            <div class="w-full h-56 sm:h-64 rounded overflow-hidden shadow-sm border border-flora-dark/15">
+                                <iframe 
+                                    src="https://maps.google.com/maps?q=ул.%20Родина%2018,%20Тутракан&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+                                    width="100%" 
+                                    height="100%" 
+                                    style="border:0; filter: grayscale(30%) contrast(1.05);" 
+                                    allowfullscreen="" 
+                                    loading="lazy" 
+                                    referrerpolicy="no-referrer-when-downgrade"
+                                    title="Локация на магазин Флора в гр. Тутракан">
+                                </iframe>
+                            </div>
+                        </div>
+
+                        <!-- Social icons -->
+                        <div class="pt-8 border-t border-flora-dark/10 flex items-center justify-between text-xs text-flora-taupe">
+                            <span class="uppercase tracking-widest text-[10px]">Последвайте ателието</span>
+                            <div class="flex items-center gap-4 text-flora-dark text-base">
+                                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="hover:text-flora-sage transition-colors" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="hover:text-flora-sage transition-colors" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="tel:+359887865181" class="hover:text-flora-sage transition-colors" title="Viber"><i class="fa-brands fa-viber"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- ==========================================================================
+         FOOTER
+         ========================================================================== -->
+    <footer class="bg-flora-dark text-flora-base px-6 sm:px-12 lg:px-16 pt-16 pb-12 border-t border-flora-dark">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-flora-base/15">
+            <!-- Col 1: Brand -->
+            <div class="md:col-span-5 space-y-4">
+                <a href="#home" onclick="FloraApp.switchView('home')" class="font-serif italic text-3xl text-flora-base">Flora.</a>
+                <p class="text-xs text-flora-taupe max-w-sm leading-relaxed font-sans">
+                    Бутикова флористика и естествена ботаническа хармония. Създаваме празници от цветя в град Тутракан с любов към детайла и уважение към природата.
+                </p>
+                <p class="text-[11px] text-flora-taupe/80">
+                    ЕТ РАИВ-2012 ИВЕЛИНА ИНДЖЕВА &bull; ЕИК: 202157833
+                </p>
+            </div>
+
+            <!-- Col 2: Navigation -->
+            <div class="md:col-span-3 space-y-3 text-xs uppercase tracking-mega font-sans">
+                <p class="text-flora-base font-semibold mb-2">Навигация</p>
+                <p><a href="#home" onclick="FloraApp.switchView('home')" class="hover:text-flora-taupe transition-colors">01. Начало</a></p>
+                <p><a href="#catalog" onclick="FloraApp.switchView('catalog')" class="hover:text-flora-taupe transition-colors">02. Каталог & Архив</a></p>
+                <p><a href="#about" onclick="FloraApp.switchView('about')" class="hover:text-flora-taupe transition-colors">03. За Ателието</a></p>
+                <p><a href="#contact" onclick="FloraApp.switchView('contact')" class="hover:text-flora-taupe transition-colors">04. Поръчай онлайн</a></p>
+            </div>
+
+            <!-- Col 3: Direct Contacts -->
+            <div class="md:col-span-4 space-y-3 text-xs font-sans text-flora-taupe">
+                <p class="text-flora-base uppercase tracking-mega font-semibold mb-2">Ателие Тутракан</p>
+                <p>ул. Родина 18, 7600 гр. Тутракан</p>
+                <p>Тел: <a href="tel:+359887865181" class="text-flora-base hover:text-flora-taupe transition-colors">0887 865 181</a></p>
+                <p>Имейл: <a href="mailto:ivi_indjeva@abv.bg" class="text-flora-base hover:text-flora-taupe transition-colors">ivi_indjeva@abv.bg</a></p>
+                <p class="text-[11px] pt-2">Доставки за гр. Тутракан и околните населени места.</p>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="max-w-7xl mx-auto pt-8 flex flex-col sm:flex-row justify-between items-center text-[11px] text-flora-taupe font-sans gap-4">
             <p>&copy; 2026 ЕТ РАИВ-2012 ИВЕЛИНА ИНДЖЕВА (Магазин „Флора“). Всички права запазени.</p>
+            <p class="flex items-center gap-4">
+                <span>Botanical Artistry & Design</span>
+                <span>&bull;</span>
+                <a href="#home" class="hover:text-flora-base transition-colors">Нагоре &uarr;</a>
+            </p>
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <!-- ==========================================================================
+         PRODUCT QUICK-VIEW MODAL
+         ========================================================================== -->
+    <div id="product-modal" class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 lg:p-8 bg-flora-dark/75 backdrop-blur-sm" onclick="FloraApp.closeProductModal()">
+        <div class="modal-content relative w-full max-w-4xl bg-flora-base text-flora-dark p-6 sm:p-10 shadow-2xl max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
+            <!-- Close Modal Button -->
+            <button 
+                type="button" 
+                onclick="FloraApp.closeProductModal()" 
+                class="absolute top-5 right-5 text-xl font-sans text-flora-dark/70 hover:text-flora-dark transition-colors p-2"
+                aria-label="Затвори детайли"
+            >
+                &times;
+            </button>
+            <div id="modal-product-content">
+                <!-- Dynamically loaded product details via app.js -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         FAVORITES / WISHLIST DRAWER
+         ========================================================================== -->
+        <div id="favorites-drawer" class="drawer-backdrop fixed inset-0 z-50 bg-flora-dark/60 backdrop-blur-sm" onclick="FloraApp.closeFavoritesDrawer()">
+        <div class="drawer-panel absolute top-0 right-0 w-full max-w-md h-full bg-flora-base text-flora-dark p-6 sm:p-8 shadow-2xl flex flex-col justify-between overflow-y-auto" onclick="event.stopPropagation()">
+            <div>
+                <div class="flex justify-between items-center pb-4 border-b border-flora-dark/15 mb-6">
+                    <h3 class="font-serif italic text-2xl text-flora-dark flex items-center gap-2">
+                        <i class="fa-regular fa-heart text-flora-sage text-lg"></i>
+                        <span>Запазени цветя</span>
+                    </h3>
+                    <button type="button" onclick="FloraApp.closeFavoritesDrawer()" class="text-2xl leading-none text-flora-dark/70 hover:text-flora-dark">
+                        &times;
+                    </button>
+                </div>
+                <div id="favorites-list" class="space-y-2">
+                    <!-- Populated dynamically via app.js -->
+                </div>
+            </div>
+            <div class="pt-6 border-t border-flora-dark/15">
+                <button type="button" onclick="FloraApp.closeFavoritesDrawer()" class="w-full text-center text-xs uppercase tracking-mega text-flora-taupe hover:text-flora-dark py-2">
+                    Продължи разглеждането
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         ORDER CONFIRMATION MODAL
+         ========================================================================== -->
+    <div id="confirmation-modal" class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center p-4 bg-flora-dark/80 backdrop-blur-sm">
+        <div class="modal-content relative w-full max-w-lg bg-flora-base text-flora-dark p-8 sm:p-10 shadow-2xl text-center">
+            <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-800 mx-auto flex items-center justify-center text-2xl mb-4">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h3 class="font-serif italic text-3xl text-flora-dark mb-2">Запитването е прието!</h3>
+            <p class="text-xs uppercase tracking-mega text-flora-taupe mb-6">Благодарим Ви, че избрахте магазин „Флора“</p>
+
+            <div id="confirmation-details">
+                <!-- Dynamically generated invoice preview -->
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-3">
+                <a href="tel:+359887865181" class="flex-1 bg-flora-sage hover:bg-flora-dark text-flora-base text-xs uppercase tracking-mega py-3.5 px-4 font-sans font-medium transition-colors flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>Обади се веднага</span>
+                </a>
+                <button type="button" onclick="FloraApp.closeConfirmationModal()" class="flex-1 border border-flora-dark text-flora-dark hover:bg-flora-dark hover:text-flora-base text-xs uppercase tracking-mega py-3.5 px-4 font-sans transition-colors">
+                    Готово
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         TOAST NOTIFICATION
+         ========================================================================== -->
+    <div id="flora-toast" class="fixed bottom-6 right-6 z-50 bg-flora-dark text-flora-base px-5 py-3 shadow-2xl border border-flora-base/20 text-xs font-sans flex items-center gap-3 transition-all duration-300 opacity-0 pointer-events-none translate-y-4">
+        <i class="fa-solid fa-leaf text-flora-sage"></i>
+        <span id="toast-message">Действието бе изпълнено.</span>
+    </div>
+
+    <!-- ==========================================================================
+         SCRIPTS
+         ========================================================================== -->
+    <script src="js/products-data.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>

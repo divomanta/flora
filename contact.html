@@ -1,106 +1,132 @@
 <!DOCTYPE html>
-<html lang="bg">
+<html lang="bg" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Контакти | Флора</title>
-    <meta name="description" content="Цветарски магазин Флора в гр. Тутракан. Свежи букети, венци и сватбена флористика.">
-    <meta name="keywords" content="цветя, букети, Тутракан, цветарски магазин, доставка на цветя, рози, орхидеи">
-    <link rel="stylesheet" href="css/style.css">
+    <title>Контакти & Ателие | ФЛОРА — Botanical Artistry</title>
+    <meta name="description" content="Контакти на цветарски магазин Флора в гр. Тутракан, ул. Родина 18. Телефон: 0887 865 181, работно време и локация.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <style>
-        .contact-wrapper {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 3rem;
-            background-color: var(--bg-light-green);
-            padding: 3rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'flora-base': '#F4F0EB',
+                        'flora-dark': '#121A14',
+                        'flora-taupe': '#9A8C84',
+                        'flora-sage': '#4A5D4E',
+                        'flora-cream': '#EFE9E0',
+                        'flora-card': '#EDE8E1',
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+                        sans: ['"Inter"', 'sans-serif'],
+                    },
+                    letterSpacing: {
+                        'ultra': '0.2em',
+                        'mega': '0.3em',
+                    }
+                }
+            }
         }
-        .contact-info { 
-            flex: 1; 
-            min-width: 300px; 
-        }
-        .contact-map { 
-            flex: 1; 
-            min-width: 300px; 
-            min-height: 350px; 
-        }
-        .contact-info h3 { 
-            margin-top: 1.5rem; 
-            margin-bottom: 0.5rem; 
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .contact-info p { 
-            margin-bottom: 0.5rem; 
-            margin-left: 30px;
-        }
-        .social-links {
-            margin-top: 2rem;
-            margin-left: 30px;
-        }
-        .social-links a { 
-            color: var(--primary-color); 
-            font-size: 2rem; 
-            margin-right: 1rem; 
-            transition: color 0.3s; 
-        }
-        .social-links a:hover { 
-            color: var(--accent-color); 
-        }
-        iframe {
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-    </style>
+    </script>
+    <link rel="stylesheet" href="css/flora.css">
 </head>
-<body>
+<body class="bg-flora-base text-flora-dark font-sans selection:bg-flora-dark selection:text-flora-base min-h-screen flex flex-col justify-between">
+    <div class="grain-overlay" aria-hidden="true"></div>
 
-    <header>
-        <a href="index.html" class="logo">Флора <i class="fa-solid fa-leaf"></i></a>
-        <nav>
-            <ul id="nav-menu">
-                <li><a href="index.html">Начало</a></li>
-                <li><a href="catalog.html">Каталог</a></li>
-                <li><a href="order.html">Поръчай</a></li>
-                <li><a href="contact.html">Контакти</a></li>
-            </ul>
+    <!-- Header Navigation -->
+    <header class="fixed top-0 left-0 w-full px-6 sm:px-12 py-6 flex justify-between items-center z-50 transition-colors" style="mix-blend-mode: difference; color: #FFFFFF;">
+        <a href="index.html#home" class="font-serif italic text-2xl sm:text-3xl text-inherit">Flora<span class="text-xs font-sans tracking-mega uppercase not-italic opacity-70">.Atelier</span></a>
+        
+        <nav class="hidden md:flex items-center gap-8 text-[11px] font-sans tracking-mega uppercase">
+            <a href="index.html#home" class="hover-draw pb-0.5 text-inherit opacity-80 hover:opacity-100">Начало</a>
+            <a href="catalog.html" class="hover-draw pb-0.5 text-inherit opacity-80 hover:opacity-100">Колекция</a>
+            <a href="order.html" class="hover-draw pb-0.5 text-inherit opacity-80 hover:opacity-100">Поръчай</a>
+            <a href="contact.html" class="hover-draw pb-0.5 text-inherit opacity-100 border-b border-current">Контакти</a>
         </nav>
-        <div class="burger" id="burger-menu"><i class="fa-solid fa-bars"></i></div>
+
+        <a href="tel:+359887865181" class="text-xs uppercase tracking-mega hover-draw pb-0.5 text-inherit flex items-center gap-2">
+            <i class="fa-solid fa-phone text-[10px]"></i>
+            <span>0887 865 181</span>
+        </a>
     </header>
 
-    <main>
-        <section>
-            <h1 class="section-title fade-in">Свържете се с нас</h1>
-            
-            <div class="contact-wrapper fade-in">
-                <div class="contact-info">
-                    <h2>Информация за контакт</h2>
-                    
-                    <h3><i class="fa-solid fa-location-dot"></i> Адрес</h3>
-                    <p>ул. Родина 18<br>гр. Тутракан, България</p>
+    <main class="flex-1 px-4 sm:px-8 lg:px-12 pt-32 pb-20 max-w-7xl mx-auto w-full">
+        <!-- Title -->
+        <div class="mb-12 border-b border-flora-dark/15 pb-8">
+            <span class="text-[11px] uppercase tracking-mega text-flora-taupe block mb-2">Локация & Връзка с нас</span>
+            <h1 class="text-editorial-title font-serif italic text-flora-dark">Свържете се с нас.</h1>
+            <p class="font-serif italic text-xl text-flora-taupe mt-2">Магазин за цветя „Флора“ &bull; гр. Тутракан, ул. Родина 18</p>
+        </div>
 
-                    <h3><i class="fa-solid fa-phone"></i> Телефон</h3>
-                    <p><a href="tel:+359887865181" style="color: inherit; text-decoration: none;">0887 865 181</a></p>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            <!-- Contact Info -->
+            <div class="lg:col-span-5 space-y-8 bg-flora-card/40 border border-flora-dark/10 p-8 sm:p-10">
+                <div>
+                    <h3 class="font-serif italic text-2xl text-flora-dark mb-1">Ателие и магазин</h3>
+                    <p class="text-xs text-flora-taupe">ЕТ РАИВ-2012 Ивелина Инджева</p>
+                </div>
 
-                    <h3><i class="fa-solid fa-envelope"></i> Имейл</h3>
-                    <p><a href="mailto:ivi_indjeva@abv.bg" style="color: inherit; text-decoration: none;">ivi_indjeva@abv.bg</a></p>
+                <div class="space-y-6 text-sm font-sans">
+                    <div class="flex items-start gap-4">
+                        <i class="fa-solid fa-location-dot text-flora-sage text-lg mt-0.5"></i>
+                        <div>
+                            <strong class="block text-xs uppercase tracking-wider text-flora-dark mb-1">Точен Адрес</strong>
+                            <p class="text-flora-dark/80">ул. Родина 18</p>
+                            <p class="text-flora-dark/80">7600 гр. Тутракан, България</p>
+                        </div>
+                    </div>
 
-                    <h3><i class="fa-regular fa-clock"></i> Работно време</h3>
-                    <p>Понеделник – Събота: 08:30 – 19:30</p>
-                    <p>Неделя: 09:00 – 14:00</p>
+                    <div class="flex items-start gap-4">
+                        <i class="fa-solid fa-phone text-flora-sage text-lg mt-0.5"></i>
+                        <div>
+                            <strong class="block text-xs uppercase tracking-wider text-flora-dark mb-1">Телефонен номер</strong>
+                            <p><a href="tel:+359887865181" class="text-flora-dark hover:text-flora-sage font-mono font-medium text-base">0887 865 181</a></p>
+                            <p class="text-[11px] text-flora-taupe">На разположение за консултации и поръчки</p>
+                        </div>
+                    </div>
 
-                    <div class="social-links">
-                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <div class="flex items-start gap-4">
+                        <i class="fa-solid fa-envelope text-flora-sage text-lg mt-0.5"></i>
+                        <div>
+                            <strong class="block text-xs uppercase tracking-wider text-flora-dark mb-1">Електронна поща</strong>
+                            <p><a href="mailto:ivi_indjeva@abv.bg" class="text-flora-dark hover:text-flora-sage">ivi_indjeva@abv.bg</a></p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <i class="fa-regular fa-clock text-flora-sage text-lg mt-0.5"></i>
+                        <div>
+                            <strong class="block text-xs uppercase tracking-wider text-flora-dark mb-1">Работно Време</strong>
+                            <p class="text-flora-dark/80">Понеделник &ndash; Събота: 08:30 &ndash; 19:30 ч.</p>
+                            <p class="text-flora-dark/80">Неделя: 09:00 &ndash; 14:00 ч.</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="contact-map">
+                <div class="pt-6 border-t border-flora-dark/15 flex items-center justify-between">
+                    <span class="text-xs uppercase tracking-mega text-flora-taupe">Социални мрежи</span>
+                    <div class="flex items-center gap-4 text-flora-dark text-lg">
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="hover:text-flora-sage transition-colors"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="hover:text-flora-sage transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="tel:+359887865181" class="hover:text-flora-sage transition-colors"><i class="fa-brands fa-viber"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Google Maps Embed & Real Store Image -->
+            <div class="lg:col-span-7 space-y-6">
+                <!-- Map -->
+                <div class="w-full h-80 sm:h-96 rounded overflow-hidden shadow-sm border border-flora-dark/15">
                     <iframe 
                         src="https://maps.google.com/maps?q=ул.%20Родина%2018,%20Тутракан&t=&z=16&ie=UTF8&iwloc=&output=embed" 
                         width="100%" 
@@ -108,38 +134,34 @@
                         style="border:0;" 
                         allowfullscreen="" 
                         loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade">
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Локация на магазин Флора в Тутракан">
                     </iframe>
                 </div>
-            </div>
-        </section>
-    </main>
 
-    <footer>
-        <div class="footer-grid">
-            <div>
-                <a href="index.html" class="logo" style="color: var(--bg-white);">Флора</a>
-                <p style="margin-top: 1rem;">Красота от природата.</p>
-            </div>
-            <div>
-                <h3>Контакти</h3>
-                <p>ул. Родина 18, гр. Тутракан</p>
-                <p>0887 865 181</p>
-                <p>ivi_indjeva@abv.bg</p>
-            </div>
-            <div>
-                <h3>Последвайте ни</h3>
-                <div style="margin-top: 1rem;">
-                    <a href="#" style="color: var(--bg-white); font-size: 1.5rem; margin-right: 1rem;"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#" style="color: var(--bg-white); font-size: 1.5rem;"><i class="fa-brands fa-instagram"></i></a>
+                <!-- Store Preview Card -->
+                <div class="bg-flora-cream/60 p-6 border border-flora-dark/10 flex flex-col sm:flex-row gap-6 items-center">
+                    <img src="img/magazin.jpg" alt="Магазин Флора Тутракан" class="w-full sm:w-44 aspect-[4/3] object-cover shadow-sm bg-flora-card">
+                    <div class="space-y-2">
+                        <h4 class="font-serif italic text-xl text-flora-dark">Заповядайте на място</h4>
+                        <p class="text-xs text-flora-dark/75 leading-relaxed">
+                            Нашите флористи ще ви помогнат да изберете идеалния букет, саксийно цвете или подаръчна аранжировка на живо в магазина.
+                        </p>
+                        <a href="order.html" class="inline-block text-xs uppercase tracking-mega text-flora-dark hover:text-flora-sage hover-draw pb-0.5 font-medium">
+                            Или направете поръчка онлайн &rarr;
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 ЕТ РАИВ-2012 ИВЕЛИНА ИНДЖЕВА (Магазин „Флора“). Всички права запазени.</p>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-flora-dark text-flora-base px-6 sm:px-12 py-10 border-t border-flora-dark">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-xs text-flora-taupe gap-4">
+            <p>&copy; 2026 ЕТ РАИВ-2012 ИВЕЛИНА ИНДЖЕВА (Магазин „Флора“). гр. Тутракан, ул. Родина 18.</p>
+            <p>Тел: <a href="tel:+359887865181" class="text-flora-base hover:underline">0887 865 181</a></p>
         </div>
     </footer>
-
-    <script src="js/main.js"></script>
 </body>
 </html>

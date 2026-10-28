@@ -1,157 +1,294 @@
 <!DOCTYPE html>
-<html lang="bg">
+<html lang="bg" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Поръчай | Флора</title>
-    <meta name="description" content="Цветарски магазин Флора в гр. Тутракан. Свежи букети, венци и сватбена флористика.">
-    <meta name="keywords" content="цветя, букети, Тутракан, цветарски магазин, доставка на цветя, рози, орхидеи">
-    <link rel="stylesheet" href="css/style.css">
+    <title>Поръчай | ФЛОРА — Botanical Artistry</title>
+    <meta name="description" content="Направете поръчка на цветя и букети от цветарски магазин Флора в гр. Тутракан. Доставка до адрес или получаване от ателието на ул. Родина 18.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        .order-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: var(--bg-light-green);
-            padding: 2.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'flora-base': '#F4F0EB',
+                        'flora-dark': '#121A14',
+                        'flora-taupe': '#9A8C84',
+                        'flora-sage': '#4A5D4E',
+                        'flora-cream': '#EFE9E0',
+                        'flora-card': '#EDE8E1',
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+                        sans: ['"Inter"', 'sans-serif'],
+                    },
+                    letterSpacing: {
+                        'ultra': '0.2em',
+                        'mega': '0.3em',
+                    }
+                }
+            }
         }
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 1.5rem;
-        }
-        .form-group label {
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--primary-color);
-        }
-        .form-group input, .form-group select, .form-group textarea {
-            padding: 0.8rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-family: inherit;
-            font-size: 1rem;
-        }
-        .form-group input:focus, .form-group textarea:focus {
-            outline: none;
-            border-color: var(--accent-color);
-        }
-        .error-message {
-            color: #d32f2f;
-            font-size: 0.85rem;
-            margin-top: 0.3rem;
-            display: none;
-        }
-        .invalid input {
-            border-color: #d32f2f;
-        }
-        .invalid .error-message {
-            display: block;
-        }
-    </style>
+    </script>
+    <link rel="stylesheet" href="css/flora.css">
 </head>
-<body>
+<body class="bg-flora-base text-flora-dark font-sans selection:bg-flora-dark selection:text-flora-base min-h-screen flex flex-col justify-between">
+    <div class="grain-overlay" aria-hidden="true"></div>
 
-    <header>
-        <a href="index.html" class="logo">Флора <i class="fa-solid fa-leaf"></i></a>
-        <nav>
-            <ul id="nav-menu">
-                <li><a href="index.html">Начало</a></li>
-                <li><a href="catalog.html">Каталог</a></li>
-                <li><a href="order.html">Поръчай</a></li>
-                <li><a href="contact.html">Контакти</a></li>
-            </ul>
+    <!-- Header Navigation -->
+    <header class="fixed top-0 left-0 w-full px-6 sm:px-12 py-6 flex justify-between items-center z-50 transition-colors" style="mix-blend-mode: difference; color: #FFFFFF;">
+        <a href="index.html#home" class="font-serif italic text-2xl sm:text-3xl text-inherit">Flora<span class="text-xs font-sans tracking-mega uppercase not-italic opacity-70">.Atelier</span></a>
+        
+        <nav class="hidden md:flex items-center gap-8 text-[11px] font-sans tracking-mega uppercase">
+            <a href="index.html#home" class="hover-draw pb-0.5 text-inherit opacity-80 hover:opacity-100">Начало</a>
+            <a href="catalog.html" class="hover-draw pb-0.5 text-inherit opacity-80 hover:opacity-100">Колекция</a>
+            <a href="order.html" class="hover-draw pb-0.5 text-inherit opacity-100 border-b border-current">Поръчай</a>
+            <a href="contact.html" class="hover-draw pb-0.5 text-inherit opacity-80 hover:opacity-100">Контакти</a>
         </nav>
-        <div class="burger" id="burger-menu"><i class="fa-solid fa-bars"></i></div>
+
+        <a href="tel:+359887865181" class="text-xs uppercase tracking-mega hover-draw pb-0.5 text-inherit flex items-center gap-2">
+            <i class="fa-solid fa-phone text-[10px]"></i>
+            <span>0887 865 181</span>
+        </a>
     </header>
 
-    <main>
-        <section>
-            <h1 class="section-title fade-in">Направете поръчка</h1>
-            
-            <div class="order-container fade-in">
-                <form id="order-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
-                    
-                    <div class="form-group">
-                        <label for="name">Име и фамилия *</label>
-                        <input type="text" id="name" name="name" required>
-                        <div class="error-message">Моля, въведете вашето име.</div>
-                    </div>
+    <main class="flex-1 px-4 sm:px-8 lg:px-12 pt-32 pb-20 max-w-5xl mx-auto w-full">
+        <div class="mb-12 text-center max-w-2xl mx-auto">
+            <span class="text-[11px] uppercase tracking-mega text-flora-taupe block mb-2">Ателие Тутракан</span>
+            <h1 class="text-editorial-title font-serif italic text-flora-dark mb-3">Initiate Order.</h1>
+            <p class="text-xs uppercase tracking-mega text-flora-taupe">
+                Свържете се с нас, за да изработим съвършената флорална аранжировка
+            </p>
+        </div>
 
-                    <div class="form-group">
-                        <label for="phone">Телефон *</label>
-                        <input type="tel" id="phone" name="phone" required>
-                        <div class="error-message">Моля, въведете валиден телефонен номер.</div>
+        <div class="bg-flora-card/50 border border-flora-dark/15 p-6 sm:p-12 shadow-sm">
+            <form id="standalone-order-form" class="space-y-8">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                    <div>
+                        <label for="name" class="block text-[11px] uppercase tracking-wider text-flora-taupe mb-2 font-medium">Име и фамилия *</label>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            name="name" 
+                            required 
+                            placeholder="Вашето име" 
+                            class="w-full bg-transparent border-b border-flora-dark py-2.5 font-serif text-lg text-flora-dark placeholder:italic placeholder:text-flora-taupe/60 focus:outline-none focus:border-flora-sage transition-colors"
+                        />
                     </div>
-
-                    <div class="form-group">
-                        <label for="email">Имейл *</label>
-                        <input type="email" id="email" name="email" required>
-                        <div class="error-message">Моля, въведете валиден имейл адрес.</div>
+                    <div>
+                        <label for="phone" class="block text-[11px] uppercase tracking-wider text-flora-taupe mb-2 font-medium">Телефон за връзка *</label>
+                        <input 
+                            type="tel" 
+                            id="phone" 
+                            name="phone" 
+                            required 
+                            placeholder="0887 123 456" 
+                            class="w-full bg-transparent border-b border-flora-dark py-2.5 font-serif text-lg text-flora-dark placeholder:italic placeholder:text-flora-taupe/60 focus:outline-none focus:border-flora-sage transition-colors"
+                        />
                     </div>
+                </div>
 
-                    <div class="form-group">
-                        <label for="product">Продукт *</label>
-                        <select id="product" name="product" required>
-                            <option value="">-- Изберете продукт --</option>
-                            <option value="Пролетен полъх">Пролетен полъх (45.00 лв.)</option>
-                            <option value="Букет розови мечти">Букет розови мечти (80.00 лв.)</option>
-                            <option value="Бяла Орхидея">Бяла Орхидея (25.00 лв.)</option>
-                            <option value="Куфарче">Куфарче (30.00 лв.)</option>
-                            <option value="Кошница Слънце">Кошница Слънце (45.00 лв.)</option>
-                            <option value="Друго">Друго (ще опиша долу в желанията)</option>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                    <div>
+                        <label for="email" class="block text-[11px] uppercase tracking-wider text-flora-taupe mb-2 font-medium">Имейл адрес *</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            required 
+                            placeholder="name@example.com" 
+                            class="w-full bg-transparent border-b border-flora-dark py-2.5 font-serif text-lg text-flora-dark placeholder:italic placeholder:text-flora-taupe/60 focus:outline-none focus:border-flora-sage transition-colors"
+                        />
+                    </div>
+                    <div>
+                        <label for="product-select" class="block text-[11px] uppercase tracking-wider text-flora-taupe mb-2 font-medium">Избор на произведение *</label>
+                        <select 
+                            id="product-select" 
+                            name="product" 
+                            required 
+                            class="w-full bg-transparent border-b border-flora-dark py-2.5 font-serif text-base text-flora-dark focus:outline-none focus:border-flora-sage transition-colors cursor-pointer"
+                        >
+                            <option value="">-- Изберете цвете или букет --</option>
                         </select>
                     </div>
+                </div>
 
-                    <div class="form-group">
-                        <label for="date">Дата на получаване *</label>
-                        <input type="date" id="date" name="date" required>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                    <div>
+                        <label for="date" class="block text-[11px] uppercase tracking-wider text-flora-taupe mb-2 font-medium">Дата на получаване *</label>
+                        <input 
+                            type="date" 
+                            id="date" 
+                            name="date" 
+                            required 
+                            class="w-full bg-transparent border-b border-flora-dark py-2.5 font-serif text-base text-flora-dark focus:outline-none focus:border-flora-sage transition-colors"
+                        />
                     </div>
-
-                    <div class="form-group">
-                        <label for="occasion">Повод (по желание)</label>
-                        <input type="text" id="occasion" name="occasion" placeholder="напр. Рожден ден, Годишнина">
+                    <div>
+                        <label for="delivery" class="block text-[11px] uppercase tracking-wider text-flora-taupe mb-2 font-medium">Начин на предаване *</label>
+                        <select 
+                            id="delivery" 
+                            name="delivery" 
+                            required 
+                            class="w-full bg-transparent border-b border-flora-dark py-2.5 font-serif text-base text-flora-dark focus:outline-none focus:border-flora-sage cursor-pointer"
+                        >
+                            <option value="Вземане от ателието (гр. Тутракан, ул. Родина 18)">Вземане на място от магазина (ул. Родина 18)</option>
+                            <option value="Доставка до адрес в гр. Тутракан">Доставка до посочен адрес в гр. Тутракан</option>
+                            <option value="Доставка за региона на общ. Тутракан">Доставка за населените места в региона</option>
+                        </select>
                     </div>
+                </div>
 
-                    <div class="form-group">
-                        <label for="message">Допълнителни желания</label>
-                        <textarea id="message" name="message" rows="4" placeholder="Ако имате специални изисквания към цветовете или опаковката..."></textarea>
+                <div>
+                    <label for="occasion" class="block text-[11px] uppercase tracking-wider text-flora-taupe mb-2 font-medium">Повод (по желание)</label>
+                    <input 
+                        type="text" 
+                        id="occasion" 
+                        name="occasion" 
+                        placeholder="напр. Рожден ден, Сватба, Годишнина, Специфична изненада" 
+                        class="w-full bg-transparent border-b border-flora-dark py-2.5 font-serif text-base text-flora-dark placeholder:italic placeholder:text-flora-taupe/60 focus:outline-none focus:border-flora-sage transition-colors"
+                    />
+                </div>
+
+                <div>
+                    <label for="message" class="block text-[11px] uppercase tracking-wider text-flora-taupe mb-2 font-medium">Специални изисквания или послание за картичка</label>
+                    <textarea 
+                        id="message" 
+                        name="message" 
+                        rows="3" 
+                        placeholder="Опишете вашите желания относно цветовете, опаковката или текст за картичка..." 
+                        class="w-full bg-transparent border-b border-flora-dark py-2.5 font-serif text-base text-flora-dark placeholder:italic placeholder:text-flora-taupe/60 focus:outline-none focus:border-flora-sage transition-colors resize-none"
+                    ></textarea>
+                </div>
+
+                <div class="pt-6 border-t border-flora-dark/15 flex flex-col sm:flex-row items-center justify-between gap-6">
+                    <button 
+                        type="submit" 
+                        class="w-full sm:w-auto bg-flora-dark hover:bg-flora-sage text-flora-base text-xs uppercase tracking-mega py-4 px-12 transition-colors font-sans font-medium"
+                    >
+                        Изпрати заявка за поръчка &rarr;
+                    </button>
+                    <div class="text-xs text-flora-taupe text-center sm:text-right">
+                        <span>Спешна поръчка за днес? Обадете се на </span>
+                        <a href="tel:+359887865181" class="text-flora-dark font-medium underline">0887 865 181</a>
                     </div>
-
-                    <button type="submit" class="btn" style="width: 100%; font-size: 1.1rem;">Изпрати запитване</button>
-                </form>
-            </div>
-        </section>
+                </div>
+            </form>
+        </div>
     </main>
 
-    <footer>
-        <div class="footer-grid">
-            <div>
-                <a href="index.html" class="logo" style="color: var(--bg-white);">Флора</a>
-                <p style="margin-top: 1rem;">Красота от природата.</p>
+    <!-- Confirmation Modal -->
+    <div id="confirmation-modal" class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center p-4 bg-flora-dark/80 backdrop-blur-sm">
+        <div class="modal-content relative w-full max-w-lg bg-flora-base text-flora-dark p-8 sm:p-10 shadow-2xl text-center">
+            <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-800 mx-auto flex items-center justify-center text-2xl mb-4">
+                <i class="fa-solid fa-check"></i>
             </div>
-            <div>
-                <h3>Контакти</h3>
-                <p>ул. Родина 18, гр. Тутракан</p>
-                <p>0887 865 181</p>
-                <p>ivi_indjeva@abv.bg</p>
-            </div>
-            <div>
-                <h3>Последвайте ни</h3>
-                <div style="margin-top: 1rem;">
-                    <a href="#" style="color: var(--bg-white); font-size: 1.5rem; margin-right: 1rem;"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#" style="color: var(--bg-white); font-size: 1.5rem;"><i class="fa-brands fa-instagram"></i></a>
-                </div>
+            <h3 class="font-serif italic text-3xl text-flora-dark mb-2">Запитването е прието!</h3>
+            <p class="text-xs uppercase tracking-mega text-flora-taupe mb-6">Благодарим Ви, че избрахте магазин „Флора“</p>
+
+            <div id="confirmation-details"></div>
+
+            <div class="flex flex-col sm:flex-row gap-3 mt-6">
+                <a href="tel:+359887865181" class="flex-1 bg-flora-sage hover:bg-flora-dark text-flora-base text-xs uppercase tracking-mega py-3.5 px-4 font-sans font-medium transition-colors flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>Обади се за потвърждение</span>
+                </a>
+                <a href="catalog.html" class="flex-1 border border-flora-dark text-flora-dark hover:bg-flora-dark hover:text-flora-base text-xs uppercase tracking-mega py-3.5 px-4 font-sans transition-colors flex items-center justify-center">
+                    Към каталога
+                </a>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 ЕТ РАИВ-2012 ИВЕЛИНА ИНДЖЕВА (Магазин „Флора“). Всички права запазени.</p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-flora-dark text-flora-base px-6 sm:px-12 py-10 border-t border-flora-dark">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-xs text-flora-taupe gap-4">
+            <p>&copy; 2026 ЕТ РАИВ-2012 ИВЕЛИНА ИНДЖЕВА (Магазин „Флора“). гр. Тутракан, ул. Родина 18.</p>
+            <p>Тел: <a href="tel:+359887865181" class="text-flora-base hover:underline">0887 865 181</a></p>
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
-    <script src="js/order.js"></script>
+    <script src="js/products-data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const select = document.getElementById('product-select');
+            const dateInput = document.getElementById('date');
+            const form = document.getElementById('standalone-order-form');
+            const urlParams = new URLSearchParams(window.location.search);
+            const preselectedProduct = urlParams.get('product');
+
+            // Set min date
+            dateInput.min = new Date().toISOString().split('T')[0];
+
+            // Populate options
+            let options = '<option value="">-- Изберете флорално произведение --</option>';
+            const categories = [...new Set(FLORA_PRODUCTS.map(p => p.categoryLabel))];
+            categories.forEach(cat => {
+                options += `<optgroup label="${cat}">`;
+                FLORA_PRODUCTS.filter(p => p.categoryLabel === cat).forEach(p => {
+                    const isSelected = preselectedProduct === p.name ? 'selected' : '';
+                    options += `<option value="${p.name}" ${isSelected}>${p.name} — ${p.price.toFixed(2)} ${p.currency}</option>`;
+                });
+                options += `</optgroup>`;
+            });
+            options += `<option value="Индивидуална авторска аранжировка">Индивидуална авторска аранжировка (опишете в желания)</option>`;
+            select.innerHTML = options;
+
+            // Form Submit
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('name').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const product = select.value;
+                const date = dateInput.value;
+                const delivery = document.getElementById('delivery').value;
+                const occasion = document.getElementById('occasion').value.trim();
+
+                const refId = 'FLORA-' + Math.floor(100000 + Math.random() * 900000);
+
+                const details = document.getElementById('confirmation-details');
+                details.innerHTML = `
+                    <div class="bg-flora-cream/70 p-5 rounded border border-flora-dark/10 text-left text-xs space-y-2 mb-4 font-sans">
+                        <div class="flex justify-between border-b border-flora-dark/10 pb-2">
+                            <span class="text-flora-taupe uppercase tracking-wider">Номер на запитване:</span>
+                            <strong class="font-mono text-flora-dark">${refId}</strong>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-flora-taupe">Клиент:</span>
+                            <span class="font-medium text-flora-dark">${name}</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-flora-taupe">Телефон:</span>
+                            <span class="font-medium text-flora-dark">${phone}</span>
+                        </div>
+                        <div class="flex justify-between border-t border-flora-dark/10 pt-2">
+                            <span class="text-flora-taupe">Аранжировка:</span>
+                            <span class="font-semibold text-flora-dark">${product}</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-flora-taupe">Дата:</span>
+                            <span class="font-medium text-flora-dark">${date}</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-flora-taupe">Получаване:</span>
+                            <span class="font-medium text-flora-dark">${delivery}</span>
+                        </div>
+                    </div>
+                `;
+
+                document.getElementById('confirmation-modal').classList.add('open');
+                form.reset();
+            });
+        });
+    </script>
 </body>
 </html>
