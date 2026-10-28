@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap');
+
+:root {
+  --primary-color: #2E7D32;
+  --accent-color: #F9A825;
+  --bg-white: #FFFFFF;
+  --bg-light-green: #F1F8E9;
+  --text-color: #1A1A1A;
+  --font-heading: 'Playfair Display', serif;
+  --font-text: 'Inter', sans-serif;
+}
+
+* { 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
+}
+
+body {
+  font-family: var(--font-text);
+  color: var(--text-color);
+  background-color: var(--bg-white);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4 { 
+  font-family: var(--font-heading); 
+  color: var(--primary-color); 
+}
+
+/* Навигация */
+header {
+  background-color: var(--bg-white);
+  padding: 1rem 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo { 
+  font-family: var(--font-heading); 
+  font-size: 1.8rem; 
+  font-weight: bold; 
+  color: var(--primary-color); 
+  text-decoration: none; 
+}
+
+.logo i { 
+  color: var(--accent-color); 
+  margin-left: 5px; 
+}
+
+nav ul { 
+  display: flex; 
+  list-style: none; 
+  gap: 2rem; 
+}
+
+nav a { 
+  text-decoration: none; 
+  color: var(--text-color); 
+  font-weight: 600; 
+  transition: color 0.3s; 
+}
+
+nav a:hover { 
+  color: var(--primary-color); 
+}
+
+.burger { 
+  display: none; 
+  cursor: pointer; 
+  font-size: 1.5rem; 
+}
+
+/* Бутони */
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background-color: var(--accent-color);
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.btn:hover { 
+  transform: translateY(-2px); 
+}
+
+/* Hero Секция */
+.hero {
+  height: 70vh;
+  background: linear-gradient(rgba(46, 125, 50, 0.6), rgba(46, 125, 50, 0.6)), url('../img/hero.jpg') center/cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--bg-white);
+  padding: 0 20px;
+}
+
+.hero h1 { 
+  color: var(--bg-white); 
+  font-size: 3rem; 
+  margin-bottom: 1rem; 
+}
+
+/* Общи стилове за секциите */
+section { 
+  padding: 4rem 5%; 
+}
+
+.section-title { 
+  text-align: center; 
+  font-size: 2.5rem; 
+  margin-bottom: 2rem; 
+}
+
+/* Grid системи (Мрежи) */
+.grid-3 { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+  gap: 2rem; 
+}
+
+.grid-5 { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+  gap: 1.5rem; 
+  text-align: center; 
+}
+
+/* Продуктови карти */
+.card {
+  background: var(--bg-white);
+  border: 1px solid #eee;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: box-shadow 0.3s;
+}
+
+.card:hover { 
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+}
+
+.card img { 
+  width: 100%; 
+  height: 250px; 
+  object-fit: cover; 
+}
+
+.card-content { 
+  padding: 1.5rem; 
+  text-align: center; 
+}
+
+.card-content h3 { 
+  margin-bottom: 0.5rem; 
+}
+
+.price { 
+  color: var(--accent-color); 
+  font-weight: bold; 
+  font-size: 1.2rem; 
+  margin-bottom: 1rem; 
+}
+
+/* Анимации при скролване */
+.fade-in { 
+  opacity: 0; 
+  transform: translateY(20px); 
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out; 
+}
+
+.fade-in.visible { 
+  opacity: 1; 
+  transform: translateY(0); 
+}
+
+/* Footer (Долна част) */
+footer { 
+  background-color: var(--primary-color); 
+  color: var(--bg-white); 
+  padding: 3rem 5% 1rem; 
+}
+
+.footer-grid { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+  gap: 2rem; 
+  margin-bottom: 2rem; 
+}
+
+.footer-bottom { 
+  text-align: center; 
+  padding-top: 1rem; 
+  border-top: 1px solid rgba(255,255,255,0.2); 
+}
+
+/* Мобилна версия (Responsive) */
+@media (max-width: 768px) {
+  .burger { 
+    display: block; 
+  }
+  
+  nav ul {
+    position: absolute; 
+    top: 100%; 
+    left: 0; 
+    width: 100%; 
+    background: var(--bg-white);
+    flex-direction: column; 
+    align-items: center; 
+    padding: 2rem 0; 
+    gap: 1.5rem;
+    display: none; 
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  }
+  
+  nav ul.active { 
+    display: flex; 
+  }
+  
+  .hero h1 { 
+    font-size: 2rem; 
+  }
+}

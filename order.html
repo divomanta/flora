@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поръчай | Флора</title>
+    <meta name="description" content="Цветарски магазин Флора в гр. Тутракан. Свежи букети, венци и сватбена флористика.">
+    <meta name="keywords" content="цветя, букети, Тутракан, цветарски магазин, доставка на цветя, рози, орхидеи">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .order-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--bg-light-green);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+        .error-message {
+            color: #d32f2f;
+            font-size: 0.85rem;
+            margin-top: 0.3rem;
+            display: none;
+        }
+        .invalid input {
+            border-color: #d32f2f;
+        }
+        .invalid .error-message {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">Флора <i class="fa-solid fa-leaf"></i></a>
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="index.html">Начало</a></li>
+                <li><a href="catalog.html">Каталог</a></li>
+                <li><a href="order.html">Поръчай</a></li>
+                <li><a href="contact.html">Контакти</a></li>
+            </ul>
+        </nav>
+        <div class="burger" id="burger-menu"><i class="fa-solid fa-bars"></i></div>
+    </header>
+
+    <main>
+        <section>
+            <h1 class="section-title fade-in">Направете поръчка</h1>
+            
+            <div class="order-container fade-in">
+                <form id="order-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+                    
+                    <div class="form-group">
+                        <label for="name">Име и фамилия *</label>
+                        <input type="text" id="name" name="name" required>
+                        <div class="error-message">Моля, въведете вашето име.</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Телефон *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                        <div class="error-message">Моля, въведете валиден телефонен номер.</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Имейл *</label>
+                        <input type="email" id="email" name="email" required>
+                        <div class="error-message">Моля, въведете валиден имейл адрес.</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="product">Продукт *</label>
+                        <select id="product" name="product" required>
+                            <option value="">-- Изберете продукт --</option>
+                            <option value="Пролетен полъх">Пролетен полъх (45.00 лв.)</option>
+                            <option value="Букет розови мечти">Букет розови мечти (80.00 лв.)</option>
+                            <option value="Бяла Орхидея">Бяла Орхидея (25.00 лв.)</option>
+                            <option value="Куфарче">Куфарче (30.00 лв.)</option>
+                            <option value="Кошница Слънце">Кошница Слънце (45.00 лв.)</option>
+                            <option value="Друго">Друго (ще опиша долу в желанията)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="date">Дата на получаване *</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="occasion">Повод (по желание)</label>
+                        <input type="text" id="occasion" name="occasion" placeholder="напр. Рожден ден, Годишнина">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Допълнителни желания</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Ако имате специални изисквания към цветовете или опаковката..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn" style="width: 100%; font-size: 1.1rem;">Изпрати запитване</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <a href="index.html" class="logo" style="color: var(--bg-white);">Флора</a>
+                <p style="margin-top: 1rem;">Красота от природата.</p>
+            </div>
+            <div>
+                <h3>Контакти</h3>
+                <p>ул. Родина 18, гр. Тутракан</p>
+                <p>0887 865 181</p>
+                <p>ivi_indjeva@abv.bg</p>
+            </div>
+            <div>
+                <h3>Последвайте ни</h3>
+                <div style="margin-top: 1rem;">
+                    <a href="#" style="color: var(--bg-white); font-size: 1.5rem; margin-right: 1rem;"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" style="color: var(--bg-white); font-size: 1.5rem;"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ЕТ РАИВ-2012 ИВЕЛИНА ИНДЖЕВА (Магазин „Флора“). Всички права запазени.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/order.js"></script>
+</body>
+</html>

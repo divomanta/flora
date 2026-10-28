@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Флора | Цветарски магазин</title>
+    <meta name="description" content="Цветарски магазин Флора в гр. Тутракан. Свежи букети, венци и сватбена флористика.">
+    <meta name="keywords" content="цветя, букети, Тутракан, цветарски магазин, доставка на цветя, рози, орхидеи">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">Флора <i class="fa-solid fa-leaf"></i></a>
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="index.html">Начало</a></li>
+                <li><a href="catalog.html">Каталог</a></li>
+                <li><a href="order.html">Поръчай</a></li>
+                <li><a href="contact.html">Контакти</a></li>
+            </ul>
+        </nav>
+        <div class="burger" id="burger-menu"><i class="fa-solid fa-bars"></i></div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1 class="fade-in">Магазин за цветя „Флора“ – гр. Тутракан</h1>
+            <p class="fade-in">Свежест, стил и уникални аранжировки за всеки ваш специален повод.</p>
+            <a href="catalog.html" class="btn fade-in" style="margin-top: 1.5rem;">Разгледай каталога</a>
+        </section>
+
+        <section class="categories fade-in" style="background-color: var(--bg-light-green);">
+            <h2 class="section-title">Какво предлагаме</h2>
+            <div class="grid-5">
+                <div><i class="fa-solid fa-seedling fa-3x" style="color: var(--primary-color);"></i><h3>Букети</h3></div>
+                <div><i class="fa-solid fa-fan fa-3x" style="color: var(--primary-color);"></i><h3>Венци</h3></div>
+                <div><i class="fa-solid fa-ring fa-3x" style="color: var(--primary-color);"></i><h3>Сватбена флористика</h3></div>
+                <div><i class="fa-solid fa-spa fa-3x" style="color: var(--primary-color);"></i><h3>Аранжировки</h3></div>
+                <div><i class="fa-solid fa-gift fa-3x" style="color: var(--primary-color);"></i><h3>Подаръци</h3></div>
+                <div><i class="fa-solid fa-leaf fa-3x" style="color: var(--primary-color);"></i><h3>Саксийни</h3></div>
+            </div>
+        </section>
+
+        <section class="featured fade-in">
+            <h2 class="section-title">Препоръчани продукти</h2>
+            <div class="grid-3">
+                
+                <div class="card">
+                    <img src="img/buket1.jpg" alt="Пролетен полъх" loading="lazy">
+                    <div class="card-content">
+                        <h3>Букет „Пролетен полъх“</h3>
+                        <p class="price">45.00 лв.</p>
+                        <a href="product.html?id=1" class="btn">Детайли</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="img/roses.jpg" alt="Класически червени рози" loading="lazy">
+                    <div class="card-content">
+                        <h3>Букет розови мечти</h3>
+                        <p class="price">80.00 лв.</p>
+                        <a href="product.html?id=2" class="btn">Детайли</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="img/orchid.jpg" alt="Бяла Орхидея" loading="lazy">
+                    <div class="card-content">
+                        <h3>Елегантна Бяла Орхидея</h3>
+                        <p class="price">35.00 лв.</p>
+                        <a href="product.html?id=3" class="btn">Детайли</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="about fade-in" style="background-color: var(--bg-light-green);">
+            <div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center;">
+                <div style="flex: 1; min-width: 300px;">
+                    <h2>За нас</h2>
+                    <p>Добре дошли в магазин за цветя „Флора“ – вашето място за красота и стил в сърцето на град Тутракан!</p>
+                    <p style="margin-top: 1rem;">Ние вярваме, че всяко цвете носи своя собствена емоция. С много любов и внимание към детайла, нашият екип (ЕТ РАИВ-2012 Ивелина Инджева) създава уникални букети, венци и флорални аранжировки, които да направят вашите празници наистина незабравими. Независимо дали търсите нежен жест за любим човек, или цялостна сватбена украса, ние сме тук, за да превърнем идеите ви в реалност.</p>
+                </div>
+                <div style="flex: 1; min-width: 300px;">
+                    <img src="img/magazin.jpg" alt="Магазин Флора отвътре" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);" loading="lazy">
+                </div>
+            </div>
+        </section>
+        
+        <section class="cta fade-in" style="text-align: center;">
+            <h2>Имате специален повод?</h2>
+            <p>Свържете се с нас или направете поръчка онлайн, за да зарадвате любим човек още днес.</p>
+            <br>
+            <a href="order.html" class="btn">Направи поръчка</a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <a href="index.html" class="logo" style="color: var(--bg-white);">Флора</a>
+                <p style="margin-top: 1rem;">Красота от природата.</p>
+            </div>
+            <div>
+                <h3>Контакти</h3>
+                <p>ул. Родина 18, гр. Тутракан</p>
+                <p>0887 865 181</p>
+                <p>ivi_indjeva@abv.bg</p>
+            </div>
+            <div>
+                <h3>Последвайте ни</h3>
+                <div style="margin-top: 1rem;">
+                    <a href="#" style="color: var(--bg-white); font-size: 1.5rem; margin-right: 1rem;"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" style="color: var(--bg-white); font-size: 1.5rem;"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ЕТ РАИВ-2012 ИВЕЛИНА ИНДЖЕВА (Магазин „Флора“). Всички права запазени.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
