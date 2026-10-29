@@ -46,35 +46,28 @@
 }
 
 /* ==========================================================================
-   HEADER VINE GARLAND DIVIDER BORDER
-   Botanical blush rose & leaf garland along the line separating header & banner
+   HEADER BOTANICAL VINE GARLAND DIVIDER (Matches Mockup)
+   The vine garland sits along the bottom edge of the header, filled with the
+   header background (#F6EFF6) above, and softly blending into the banner below.
    ========================================================================== */
 .header-vine-border {
     position: absolute;
-    bottom: -16px;
+    top: calc(100% - 2px);
     left: 0;
     width: 100%;
-    height: 34px;
-    background-image: url('../img/rose-garland.png');
+    height: 48px;
+    background-image: url('../img/header-wavy-border.png');
     background-repeat: repeat-x;
     background-size: auto 100%;
-    background-position: center;
+    background-position: top center;
     pointer-events: none;
-    z-index: 50;
-    filter: drop-shadow(0 2px 4px rgba(48, 36, 58, 0.12));
+    z-index: 30;
 }
 
 @media (min-width: 640px) {
     .header-vine-border {
-        bottom: -20px;
-        height: 40px;
-    }
-}
-
-@media (min-width: 1024px) {
-    .header-vine-border {
-        bottom: -22px;
-        height: 46px;
+        top: calc(100% - 26px);
+        height: 56px;
     }
 }
 

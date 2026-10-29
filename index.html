@@ -67,66 +67,51 @@
     <div class="grain-overlay" aria-hidden="true"></div>
 
     <!-- ==========================================================================
-         TOP HEADER NAVIGATION
+         TOP HEADER NAVIGATION (Matches Mockup)
          ========================================================================== -->
-    <header class="fixed top-0 left-0 w-full px-4 sm:px-8 lg:px-12 py-3 sm:py-4 flex justify-between items-center z-40 transition-all duration-300 bg-flora-butter/95 backdrop-blur-md border-b border-flora-juniper/10 shadow-sm text-flora-midnight">
-        <!-- Logo (Anchor / Structure: Deep Juniper & Electric Coral Leaf) -->
-        <a href="#home" onclick="FloraApp.switchView('home')" class="logo font-serif italic text-xl sm:text-2xl md:text-3xl tracking-tight text-flora-juniper flex items-center gap-1.5 sm:gap-2 group">
+    <header class="fixed top-0 left-0 w-full px-4 sm:px-8 lg:px-12 h-14 sm:h-16 flex justify-between items-center z-40 transition-all duration-300 bg-[#F6EFF6] text-[#2E2431]">
+        <!-- Logo -->
+        <a href="#home" onclick="FloraApp.switchView('home')" class="logo font-serif italic text-2xl sm:text-[28px] text-[#2E2431] flex items-center gap-2 group tracking-tight">
             <span class="font-bold">Flora</span>
-            <span class="text-flora-coral group-hover:text-flora-apricot text-base sm:text-lg group-hover:rotate-12 transition-all"><i class="fa-solid fa-leaf"></i></span>
-            <span class="text-[9px] sm:text-[10px] font-sans tracking-wider sm:tracking-mega uppercase not-italic text-flora-juniper font-bold bg-flora-juniper/10 px-2 py-0.5 rounded-full border border-flora-juniper/25">Тутракан</span>
+            <img src="img/logo-flower.png" alt="Flora" class="w-4 h-4 sm:w-5 sm:h-5 object-contain">
+            <span class="text-[9px] sm:text-[10px] font-sans tracking-[0.25em] uppercase not-italic text-[#6E5A6C] font-semibold ml-0.5">ТУТРАКАН</span>
         </a>
 
         <!-- Desktop Navigation (Hidden on Mobile) -->
-        <nav class="hidden md:flex items-center gap-6 lg:gap-8 text-[12px] font-sans tracking-mega uppercase font-semibold text-flora-juniper">
-            <a href="#home" onclick="FloraApp.switchView('home')" class="hover-draw pb-0.5 hover:text-flora-coral transition-colors">Начало</a>
-            <a href="#catalog" onclick="FloraApp.switchView('catalog')" class="hover-draw pb-0.5 hover:text-flora-coral transition-colors">Колекция</a>
-            <a href="#about" onclick="FloraApp.switchView('about')" class="hover-draw pb-0.5 hover:text-flora-coral transition-colors">За Нас</a>
-            <a href="#contact" onclick="FloraApp.switchView('contact')" class="hover-draw pb-0.5 text-flora-coral hover:text-flora-apricot font-bold transition-colors">Поръчка</a>
+        <nav class="hidden md:flex items-center gap-7 lg:gap-10 text-[11px] lg:text-[12px] font-sans tracking-[0.2em] uppercase font-semibold text-[#4A3D4B]">
+            <a href="#home" onclick="FloraApp.switchView('home')" class="hover:text-[#C84B7E] transition-colors">Начало</a>
+            <a href="#catalog" onclick="FloraApp.switchView('catalog')" class="hover:text-[#C84B7E] transition-colors">Колекции</a>
+            <a href="#about" onclick="FloraApp.switchView('about')" class="hover:text-[#C84B7E] transition-colors">За Нас</a>
+            <a href="#contact" onclick="FloraApp.switchView('contact')" class="hover:text-[#C84B7E] transition-colors">Поръчка</a>
         </nav>
 
-        <!-- Right Action Triggers -->
-        <div class="flex items-center gap-2 sm:gap-4">
+        <!-- Right Action Triggers: Heart & Bag -->
+        <div class="flex items-center gap-3 sm:gap-4">
             <!-- Favorites Heart Trigger -->
             <button 
                 type="button" 
                 onclick="FloraApp.openFavoritesDrawer()" 
-                class="relative text-flora-juniper hover:text-flora-coral transition-colors w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-full hover:bg-flora-coral/10"
+                class="relative text-[#3D313F] hover:text-[#C84B7E] p-1.5 transition-colors flex items-center justify-center rounded-full hover:bg-black/5"
                 title="Преглед на запазени цветя"
                 aria-label="Запазени цветя"
             >
-                <i class="fa-regular fa-heart text-base sm:text-lg"></i>
-                <span id="favorites-count" class="hidden absolute top-1 right-1 bg-flora-coral text-white text-[9px] w-4 h-4 rounded-full items-center justify-center font-sans font-bold shadow-sm">0</span>
+                <svg class="w-5 h-5 sm:w-[22px] sm:h-[22px]" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                </svg>
+                <span id="favorites-count" class="hidden absolute -top-0.5 -right-0.5 bg-[#C84B7E] text-white text-[9px] w-4 h-4 rounded-full items-center justify-center font-sans font-bold shadow-sm">0</span>
             </button>
 
-            <!-- Desktop Call Button -->
-            <a 
-                href="tel:+359887865181" 
-                class="hidden sm:inline-flex items-center gap-2 bg-flora-coral hover:bg-flora-apricot text-white text-[11px] font-bold uppercase tracking-wider py-2.5 px-4 lg:px-5 rounded-full shadow-md shadow-flora-coral/25 transition-all hover:scale-105"
-            >
-                <i class="fa-solid fa-phone text-[10px]"></i>
-                <span>0887 865 181</span>
-            </a>
-
-            <!-- Mobile Quick Phone Call Icon -->
-            <a 
-                href="tel:+359887865181" 
-                class="sm:hidden w-9 h-9 rounded-full bg-flora-juniper/10 text-flora-juniper hover:bg-flora-coral hover:text-white flex items-center justify-center transition-colors"
-                title="Обади се"
-                aria-label="Обади се"
-            >
-                <i class="fa-solid fa-phone text-xs text-flora-coral"></i>
-            </a>
-
-            <!-- Mobile Menu Toggle Button (Visible ONLY on Mobile) -->
+            <!-- Shopping Bag Trigger -->
             <button 
-                id="mobileMenuBtn" 
                 type="button" 
-                onclick="FloraApp.openMobileMenu()" 
-                class="md:hidden w-9 h-9 rounded-full bg-flora-coral text-white flex items-center justify-center shadow-md shadow-flora-coral/25 hover:bg-flora-apricot transition-colors"
-                aria-label="Отвори меню за мобилни устройства"
+                onclick="FloraApp.switchView('contact')" 
+                class="relative text-[#3D313F] hover:text-[#C84B7E] p-1.5 transition-colors flex items-center justify-center rounded-full hover:bg-black/5"
+                title="Поръчка / Кошница"
+                aria-label="Поръчка"
             >
-                <i class="fa-solid fa-bars text-sm"></i>
+                <svg class="w-5 h-5 sm:w-[22px] sm:h-[22px]" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25c-.67 0-1.189-.578-1.119-1.243l1.263-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007z" />
+                </svg>
             </button>
         </div>
 
@@ -314,88 +299,90 @@
              ====================================================================== -->
         <div id="view-home" class="view active">
             
-            <!-- VIBRANT HERO SECTION (Deep Juniper & Floral Contrast) -->
-            <section class="relative min-h-[85vh] sm:min-h-[92vh] flex items-center justify-center pt-20 sm:pt-24 pb-12 sm:pb-16 overflow-hidden bg-flora-juniper">
-                <!-- High-Resolution Floral Background Image -->
+            <!-- HERO SECTION (Matches Mockup Exactly) -->
+            <section class="relative min-h-[90vh] sm:min-h-[94vh] flex items-center justify-center pt-24 sm:pt-28 pb-14 sm:pb-16 overflow-hidden bg-[#1E0F1C]">
+                <!-- High-Resolution Floral Background Image with Soft Ambient Vignette -->
                 <div class="absolute inset-0 z-0">
                     <img 
                         src="img/banner-flowers.jpg" 
-                        alt="Vibrant Blooming Flowers Banner - Flora Tutrakan" 
-                        class="w-full h-full object-cover object-center filter saturate-125 contrast-105 scale-105"
+                        alt="Флора Тутракан - Бутикови цветя и авторски букети" 
+                        class="w-full h-full object-cover object-center filter saturate-[1.12] contrast-[1.04]"
                         onerror="this.onerror=null; this.src='img/hero-vibrant.jpg';"
                     />
-                    <!-- Scrim overlay using Deep Juniper gradient -->
-                    <div class="absolute inset-0 bg-gradient-to-t from-flora-juniper via-flora-juniper/75 to-black/50 backdrop-blur-[0.5px]"></div>
+                    <!-- Soft luminous ambient vignette overlay matching the reference mockup -->
+                    <div class="absolute inset-0 bg-gradient-to-b from-[#1E0D1C]/25 via-[#160814]/42 to-[#12040E]/75 backdrop-blur-[0.3px]"></div>
+                    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(30,10,24,0.15)_0%,rgba(18,5,15,0.6)_100%)]"></div>
                 </div>
 
                 <!-- Floating Banner Content -->
                 <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white flex flex-col items-center">
                     
-                    <!-- Notification Badge: Secondary Pop -->
-                    <div class="inline-flex items-center gap-2 bg-flora-butter/95 backdrop-blur-md text-flora-juniper px-3 sm:px-4 py-1.5 rounded-full shadow-lg border border-flora-apricot/60 mb-5 sm:mb-6 max-w-full">
-                        <span class="w-2 h-2 rounded-full bg-flora-apricot animate-pulse shrink-0"></span>
-                        <span class="text-[10px] sm:text-xs font-sans uppercase tracking-wider sm:tracking-mega font-bold text-flora-juniper truncate">
-                            Магазин за цветя „Флора“ &bull; гр. Тутракан
+                    <!-- Notification Badge: White Pill with Pink Bullets -->
+                    <div class="inline-flex items-center gap-2 bg-white/95 backdrop-blur-md text-[#2E2030] px-4 py-1 sm:py-1.5 rounded-full shadow-md border border-white/80 mb-5 sm:mb-6 max-w-full">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#E58CA3] shrink-0"></span>
+                        <span class="text-[9px] sm:text-[10.5px] font-sans uppercase tracking-[0.2em] font-bold text-[#342436] truncate">
+                            МАГАЗИН ЗА ЦВЕТЯ „ФЛОРА“ &bull; ГР. ТУТРАКАН
                         </span>
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#E58CA3] shrink-0"></span>
                     </div>
 
-                    <!-- Main Editorial Title -->
-                    <h1 class="text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-bold text-flora-butter tracking-tight drop-shadow-md mb-4 leading-tight break-words">
-                        Свежест, Стил & <br>
-                        <span class="italic font-serif font-normal bg-gradient-to-r from-flora-apricot via-flora-coral to-flora-butter bg-clip-text text-transparent">
+                    <!-- Main Editorial Title: Two Lines Matching Mockup -->
+                    <h1 class="text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-[76px] font-serif leading-[1.08] tracking-tight text-center mb-4">
+                        <span class="block font-bold text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)]">
+                            Свежест, Стил &amp;
+                        </span>
+                        <span class="block italic font-normal text-[#E5A8B6] drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)] mt-1 sm:mt-2">
                             Цветно Вдъхновение
                         </span>
                     </h1>
 
-                    <p class="max-w-2xl text-sm sm:text-lg md:text-xl text-flora-butter/90 font-sans font-light leading-relaxed mb-6 sm:mb-8 drop-shadow px-2">
+                    <p class="max-w-2xl text-xs sm:text-sm md:text-base text-white/90 font-sans font-normal leading-relaxed mb-7 sm:mb-8 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] px-4 text-center">
                         Уникални авторски букети, сватбена флористика и свежи аранжировки, ръчно изработени с любов в град Тутракан.
                     </p>
 
-                    <!-- Primary CTAs -->
-                    <div class="flex flex-col sm:flex-row items-center gap-3.5 sm:gap-4 w-full sm:w-auto px-2">
+                    <!-- Primary Pill Outline CTA with Attached Botanical Sprig -->
+                    <div class="relative inline-flex items-center group mt-1">
                         <a 
                             href="#catalog" 
                             onclick="FloraApp.switchView('catalog')" 
-                            class="w-full sm:w-auto bg-flora-coral hover:bg-flora-apricot text-white text-xs sm:text-sm uppercase tracking-mega font-bold py-3.5 sm:py-4 px-6 sm:px-8 rounded-full shadow-xl shadow-flora-coral/40 transition-all hover:scale-105 flex items-center justify-center gap-2 border border-flora-coral hover:border-flora-apricot"
+                            class="relative z-10 bg-[#1A0B16]/40 hover:bg-[#1A0B16]/65 backdrop-blur-md text-white text-[11px] sm:text-xs font-sans uppercase tracking-[0.2em] font-semibold py-2.5 sm:py-3 px-8 sm:px-9 rounded-full border border-white/85 shadow-lg transition-all duration-300 group-hover:scale-105 group-hover:border-white flex items-center gap-2"
                         >
-                            <span>Разгледай Каталога</span>
-                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                            <span>РАЗГЛЕДАЙ КАТАЛОГА</span>
+                            <span class="text-xs">&rarr;</span>
                         </a>
-
-                        <a 
-                            href="#contact" 
-                            onclick="FloraApp.switchView('contact')" 
-                            class="w-full sm:w-auto bg-flora-butter hover:bg-flora-apricot text-flora-juniper hover:text-flora-juniper text-xs sm:text-sm uppercase tracking-mega font-bold py-3.5 sm:py-4 px-6 sm:px-8 rounded-full shadow-lg transition-all hover:scale-105 flex items-center justify-center gap-2 border border-flora-butter"
-                        >
-                            <i class="fa-solid fa-wand-magic-sparkles text-flora-coral"></i>
-                            <span>Поръчай Букет</span>
-                        </a>
+                        <!-- Botanical Sprig Accent on Right Edge -->
+                        <img 
+                            src="img/cta-sprig.png" 
+                            alt="" 
+                            aria-hidden="true" 
+                            class="absolute -right-5 -top-2 w-11 h-12 pointer-events-none z-20 object-contain drop-shadow-md group-hover:rotate-6 transition-transform duration-300"
+                        />
                     </div>
 
                 </div>
 
-                <!-- Scroll Down Hint (Desktop only) -->
-                <a href="#home-curated" class="hidden sm:flex absolute bottom-3 left-1/2 -translate-x-1/2 text-flora-butter/80 hover:text-flora-butter text-[10px] uppercase tracking-mega flex-col items-center gap-1 transition-colors">
-                    <span class="font-semibold">Разгледай още</span>
-                    <i class="fa-solid fa-chevron-down text-xs animate-bounce"></i>
+                <!-- Scroll Down Hint -->
+                <a href="#home-curated" class="hidden sm:flex absolute bottom-4 left-1/2 -translate-x-1/2 text-white/70 hover:text-white text-[10px] uppercase tracking-[0.22em] font-medium flex-col items-center gap-1 transition-colors">
+                    <span>РАЗГЛЕДАЙ ОЩЕ</span>
+                    <i class="fa-solid fa-chevron-down text-[10px] animate-bounce"></i>
                 </a>
             </section>
 
-            <!-- Vibrant Botanical Gradient Promo Banner Marquee -->
-            <div class="bg-gradient-to-r from-flora-apricot via-flora-coral to-flora-apricot py-3 text-white overflow-hidden shadow-inner select-none border-y border-white/20">
-                <div class="animate-marquee whitespace-nowrap text-xs uppercase tracking-wider sm:tracking-mega flex items-center gap-6 sm:gap-8 font-sans font-bold">
-                    <span>&bull; СВЕЖИ ЦВЕТЯ &ndash; ГР. ТУТРАКАН</span>
-                    <span>&bull; БУТИКОВИ БУКЕТИ</span>
-                    <span>&bull; СВАТБЕНА ФЛОРИСТИКА</span>
-                    <span>&bull; ЕТ РАИВ-2012 ИВЕЛИНА ИНДЖЕВА</span>
-                    <span>&bull; ЖИВИ САКСИЙНИ ОРХИДЕИ</span>
-                    <span>&bull; БЪРЗА ЛОКАЛНА ДОСТАВКА</span>
-                    <span>&bull; СВЕЖИ ЦВЕТЯ &ndash; ГР. ТУТРАКАН</span>
-                    <span>&bull; БУТИКОВИ БУКЕТИ</span>
-                    <span>&bull; СВАТБЕНА ФЛОРИСТИКА</span>
-                    <span>&bull; ЕТ РАИВ-2012 ИВЕЛИНА ИНДЖЕВА</span>
-                    <span>&bull; ЖИВИ САКСИЙНИ ОРХИДЕИ</span>
-                    <span>&bull; БЪРЗА ЛОКАЛНА ДОСТАВКА</span>
+            <!-- Marquee Promo Bar in Deep Wine matching mockup -->
+            <div class="bg-[#240614] py-3 text-white overflow-hidden shadow-inner select-none border-t border-[#4A122E]/40">
+                <div class="animate-marquee whitespace-nowrap text-[11px] sm:text-xs uppercase tracking-[0.22em] flex items-center gap-8 font-sans font-semibold">
+                    <span class="flex items-center gap-2"><span class="text-[#E58CA3]">&bull;</span> СВЕЖИ ЦВЕТЯ &ndash; ГР. ТУТРАКАН</span>
+                    <span class="flex items-center gap-2"><span class="text-[#E58CA3]">&bull;</span> БУТИКОВИ БУКЕТИ</span>
+                    <span class="flex items-center gap-2"><span class="text-[#E58CA3]">&bull;</span> СВАТБЕНА ФЛОРИСТИКА</span>
+                    <span class="flex items-center gap-2"><span class="text-[#E58CA3]">&bull;</span> ЕТ РАИВ-2012 ИВЕЛИНА ИНДЖЕВА</span>
+                    <span class="flex items-center gap-2"><span class="text-[#E58CA3]">&bull;</span> ЖИВИ САКСИЙНИ ОРХИДЕИ</span>
+                    <span class="flex items-center gap-2"><span class="text-[#E58CA3]">&bull;</span> БЪРЗА ЛОКАЛНА ДОСТАВКА</span>
+                    <span class="flex items-center gap-2"><span class="text-[#E58CA3]">&bull;</span> СВЕЖИ ЦВЕТЯ &ndash; ГР. ТУТРАКАН</span>
+                    <span class="flex items-center gap-2"><span class="text-[#E58CA3]">&bull;</span> БУТИКОВИ БУКЕТИ</span>
+                    <span class="flex items-center gap-2"><span class="text-[#E58CA3]">&bull;</span> СВАТБЕНА ФЛОРИСТИКА</span>
+                    <span class="flex items-center gap-2"><span class="text-[#E58CA3]">&bull;</span> ЕТ РАИВ-2012 ИВЕЛИНА ИНДЖЕВА</span>
+                    <span class="flex items-center gap-2"><span class="text-[#E58CA3]">&bull;</span> ЖИВИ САКСИЙНИ ОРХИДЕИ</span>
+                    <span class="flex items-center gap-2"><span class="text-[#E58CA3]">&bull;</span> БЪРЗА ЛОКАЛНА ДОСТАВКА</span>
                 </div>
             </div>
 
