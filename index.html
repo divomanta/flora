@@ -22,26 +22,26 @@
             theme: {
                 extend: {
                     colors: {
-                        /* Palette: Velvet Magenta & Royal Orchid */
-                        'flora-coral': '#E6007E',      /* Hero Accent: Primary CTAs, sale callouts */
-                        'flora-apricot': '#9C27B0',    /* Secondary Pop: Royal Orchid Purple */
-                        'flora-pink': '#FFB3D9',       /* Soft Pastel Blossom Pink */
-                        'flora-juniper': '#30243A',    /* Anchor / Structure: Deep Midnight Plum */
-                        'flora-butter': '#F3E5F5',     /* Background Base: Pale Lavender / Lilac */
-                        'flora-midnight': '#30243A',   /* Body Text: Deep Midnight Plum */
+                        /* Unified Botanical Palette */
+                        'flora-coral': '#C84B7E',      /* Primary Accent: Antique Rose */
+                        'flora-apricot': '#6B806F',    /* Secondary Accent: Botanical Sage Green */
+                        'flora-pink': '#F4E8EE',       /* Soft Petal Tint */
+                        'flora-juniper': '#2E222D',    /* Anchor / Structure: Deep Botanical Plum */
+                        'flora-butter': '#F9F5F7',     /* Background Base: Soft Petal Cream */
+                        'flora-midnight': '#2E222D',   /* Body Text: Deep Botanical Plum */
 
                         /* Semantic Mappings & Aliases */
-                        'flora-base': '#F3E5F5',
-                        'flora-dark': '#30243A',
-                        'flora-text': '#30243A',
-                        'flora-emerald': '#30243A',
-                        'flora-rose': '#E6007E',
-                        'flora-amber': '#9C27B0',
-                        'flora-sage': '#9C27B0',
-                        'flora-magenta': '#E6007E',
-                        'flora-purple': '#9C27B0',
-                        'flora-plum': '#30243A',
-                        'flora-lavender': '#F3E5F5',
+                        'flora-base': '#F9F5F7',
+                        'flora-dark': '#2E222D',
+                        'flora-text': '#2E222D',
+                        'flora-emerald': '#6B806F',
+                        'flora-rose': '#C84B7E',
+                        'flora-amber': '#C84B7E',
+                        'flora-sage': '#6B806F',
+                        'flora-magenta': '#C84B7E',
+                        'flora-purple': '#2E222D',
+                        'flora-plum': '#2E222D',
+                        'flora-lavender': '#F6EFF6',
                     },
                     fontFamily: {
                         serif: ['"Playfair Display"', 'Georgia', 'serif'],
@@ -369,7 +369,7 @@
             </section>
 
             <!-- Marquee Promo Bar in Deep Wine matching mockup -->
-            <div class="bg-[#240614] py-3 text-white overflow-hidden shadow-inner select-none border-t border-[#4A122E]/40">
+            <div class="bg-[#381F2F] py-3 text-white overflow-hidden shadow-inner select-none border-t border-[#381F2F]/40">
                 <div class="animate-marquee whitespace-nowrap text-[11px] sm:text-xs uppercase tracking-[0.22em] flex items-center gap-8 font-sans font-semibold">
                     <span class="flex items-center gap-2"><span class="text-[#E58CA3]">&bull;</span> СВЕЖИ ЦВЕТЯ &ndash; ГР. ТУТРАКАН</span>
                     <span class="flex items-center gap-2"><span class="text-[#E58CA3]">&bull;</span> БУТИКОВИ БУКЕТИ</span>
@@ -403,64 +403,81 @@
                 </div>
 
                 <!-- 3 Premier Works -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-8">
                     
                     <!-- Featured Item 1 -->
-                    <article class="edgy-card group flex flex-col gap-3 bg-white p-3 sm:p-3.5 rounded-xl shadow-sm border border-flora-juniper/10 hover:border-flora-apricot hover:shadow-xl transition-all cursor-pointer" onclick="FloraApp.openProductModalById(1)">
-                        <div class="relative edgy-img-wrapper aspect-[3/4] rounded-lg overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?q=80&w=1000&auto=format&fit=crop" alt="Noir Rose" class="w-full h-full object-cover filter saturate-115">
-                            <span class="absolute top-3 left-3 bg-flora-juniper text-white text-[10px] uppercase tracking-mega px-2.5 py-1 font-sans font-bold rounded shadow-sm">
+                    <article class="edgy-card group flex flex-col bg-white rounded-2xl overflow-hidden border border-flora-juniper/10 hover:border-flora-coral/40 hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 cursor-pointer" onclick="FloraApp.openProductModalById(1)">
+                        <div class="relative aspect-[4/5] overflow-hidden bg-[#FAF6F7]">
+                            <img src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?q=80&w=1000&auto=format&fit=crop" alt="Noir Rose" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-3.5 left-3.5 bg-flora-juniper text-white text-[10px] uppercase tracking-wider px-3 py-1 font-sans font-semibold rounded-md shadow-sm">
                                 Авангард
                             </span>
                         </div>
-                        <div class="meta pt-2 flex flex-col gap-1.5">
-                            <div class="flex justify-between items-baseline gap-2">
-                                <h3 class="font-serif italic text-xl sm:text-2xl text-flora-juniper group-hover:text-flora-coral transition-colors truncate">Noir Rose</h3>
-                                <span class="font-sans text-xs sm:text-sm tracking-wide font-bold text-flora-coral bg-flora-coral/10 px-2 py-0.5 rounded border border-flora-coral/25 shrink-0">120.00 €</span>
+                        <div class="p-5 flex flex-col flex-1 justify-between gap-3">
+                            <div>
+                                <div class="flex justify-between items-baseline gap-2 mb-1.5">
+                                    <h3 class="font-serif italic text-lg sm:text-xl text-flora-juniper group-hover:text-flora-coral transition-colors truncate">Noir Rose</h3>
+                                    <span class="font-sans text-xs sm:text-sm font-bold text-flora-coral bg-flora-coral/10 px-2.5 py-0.5 rounded-full border border-flora-coral/25 shrink-0">120.00 €</span>
+                                </div>
+                                <p class="text-xs text-flora-midnight/70 font-sans line-clamp-2 leading-relaxed">Кадифени дълбокочервени рози и ароматен евкалипт</p>
                             </div>
-                            <p class="text-xs text-flora-midnight/75 font-sans line-clamp-2">Кадифени дълбокочервени рози и ароматен евкалипт</p>
+                            <div class="pt-3 border-t border-flora-juniper/10 flex items-center justify-between text-xs font-bold text-flora-coral">
+                                <span class="text-[10px] uppercase tracking-wider font-semibold text-flora-juniper/60">&bull; Авангард</span>
+                                <span class="flex items-center gap-1">Поръчай &rarr;</span>
+                            </div>
                         </div>
                     </article>
 
                     <!-- Featured Item 2 -->
-                    <article class="edgy-card group flex flex-col gap-3 bg-white p-3 sm:p-3.5 rounded-xl shadow-sm border border-flora-juniper/10 hover:border-flora-coral hover:shadow-xl transition-all md:-translate-y-4 cursor-pointer" onclick="FloraApp.openProductModalById(2)">
-                        <div class="relative edgy-img-wrapper aspect-[3/4] rounded-lg overflow-hidden">
-                            <img src="img/buket1.jpg" alt="Пролетен полъх" class="w-full h-full object-cover filter saturate-115">
-                            <span class="absolute top-3 left-3 bg-flora-coral text-white text-[10px] uppercase tracking-mega px-2.5 py-1 font-sans font-bold rounded shadow-sm">
+                    <article class="edgy-card group flex flex-col bg-white rounded-2xl overflow-hidden border border-flora-juniper/10 hover:border-flora-coral/40 hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 cursor-pointer" onclick="FloraApp.openProductModalById(2)">
+                        <div class="relative aspect-[4/5] overflow-hidden bg-[#FAF6F7]">
+                            <img src="img/buket1.jpg" alt="Пролетен полъх" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-3.5 left-3.5 bg-flora-coral text-white text-[10px] uppercase tracking-wider px-3 py-1 font-sans font-semibold rounded-md shadow-sm">
                                 Свеж Фаворит
                             </span>
                         </div>
-                        <div class="meta pt-2 flex flex-col gap-1.5">
-                            <div class="flex justify-between items-baseline gap-2">
-                                <h3 class="font-serif italic text-xl sm:text-2xl text-flora-juniper group-hover:text-flora-coral transition-colors truncate">Пролетен полъх</h3>
-                                <span class="font-sans text-xs sm:text-sm tracking-wide font-bold text-flora-coral bg-flora-coral/10 px-2 py-0.5 rounded border border-flora-coral/25 shrink-0">45.00 €</span>
+                        <div class="p-5 flex flex-col flex-1 justify-between gap-3">
+                            <div>
+                                <div class="flex justify-between items-baseline gap-2 mb-1.5">
+                                    <h3 class="font-serif italic text-lg sm:text-xl text-flora-juniper group-hover:text-flora-coral transition-colors truncate">Пролетен полъх</h3>
+                                    <span class="font-sans text-xs sm:text-sm font-bold text-flora-coral bg-flora-coral/10 px-2.5 py-0.5 rounded-full border border-flora-coral/25 shrink-0">45.00 €</span>
+                                </div>
+                                <p class="text-xs text-flora-midnight/70 font-sans line-clamp-2 leading-relaxed">Свеж авторски букет от сезонни цветя от магазин „Флора“</p>
                             </div>
-                            <p class="text-xs text-flora-midnight/75 font-sans line-clamp-2">Свеж авторски букет от сезонни цветя от магазин „Флора“</p>
+                            <div class="pt-3 border-t border-flora-juniper/10 flex items-center justify-between text-xs font-bold text-flora-coral">
+                                <span class="text-[10px] uppercase tracking-wider font-semibold text-flora-juniper/60">&bull; Букети</span>
+                                <span class="flex items-center gap-1">Поръчай &rarr;</span>
+                            </div>
                         </div>
                     </article>
 
                     <!-- Featured Item 3 -->
-                    <article class="edgy-card group flex flex-col gap-3 bg-white p-3 sm:p-3.5 rounded-xl shadow-sm border border-flora-juniper/10 hover:border-flora-apricot hover:shadow-xl transition-all cursor-pointer" onclick="FloraApp.openProductModalById(3)">
-                        <div class="relative edgy-img-wrapper aspect-[3/4] rounded-lg overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=1000&auto=format&fit=crop" alt="Spring Solstice" class="w-full h-full object-cover filter saturate-115">
-                            <span class="absolute top-3 left-3 bg-flora-pink text-flora-juniper text-[10px] uppercase tracking-mega px-2.5 py-1 font-sans font-bold rounded shadow-sm">
+                    <article class="edgy-card group flex flex-col bg-white rounded-2xl overflow-hidden border border-flora-juniper/10 hover:border-flora-coral/40 hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 cursor-pointer" onclick="FloraApp.openProductModalById(3)">
+                        <div class="relative aspect-[4/5] overflow-hidden bg-[#FAF6F7]">
+                            <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=1000&auto=format&fit=crop" alt="Spring Solstice" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-3.5 left-3.5 bg-flora-apricot text-white text-[10px] uppercase tracking-wider px-3 py-1 font-sans font-semibold rounded-md shadow-sm">
                                 Пролетна Елегантност
                             </span>
                         </div>
-                        <div class="meta pt-2 flex flex-col gap-1.5">
-                            <div class="flex justify-between items-baseline gap-2">
-                                <h3 class="font-serif italic text-xl sm:text-2xl text-flora-juniper group-hover:text-flora-coral transition-colors truncate">Spring Solstice</h3>
-                                <span class="font-sans text-xs sm:text-sm tracking-wide font-bold text-flora-coral bg-flora-coral/10 px-2 py-0.5 rounded border border-flora-coral/25 shrink-0">85.00 €</span>
+                        <div class="p-5 flex flex-col flex-1 justify-between gap-3">
+                            <div>
+                                <div class="flex justify-between items-baseline gap-2 mb-1.5">
+                                    <h3 class="font-serif italic text-lg sm:text-xl text-flora-juniper group-hover:text-flora-coral transition-colors truncate">Spring Solstice</h3>
+                                    <span class="font-sans text-xs sm:text-sm font-bold text-flora-coral bg-flora-coral/10 px-2.5 py-0.5 rounded-full border border-flora-coral/25 shrink-0">85.00 €</span>
+                                </div>
+                                <p class="text-xs text-flora-midnight/70 font-sans line-clamp-2 leading-relaxed">Пастелни лютичета, фрезии и нежен люляк</p>
                             </div>
-                            <p class="text-xs text-flora-midnight/75 font-sans line-clamp-2">Пастелни лютичета, фрезии и нежен люляк</p>
+                            <div class="pt-3 border-t border-flora-juniper/10 flex items-center justify-between text-xs font-bold text-flora-coral">
+                                <span class="text-[10px] uppercase tracking-wider font-semibold text-flora-juniper/60">&bull; Букети</span>
+                                <span class="flex items-center gap-1">Поръчай &rarr;</span>
+                            </div>
                         </div>
                     </article>
-
                 </div>
             </section>
 
             <!-- Atelier Story Section -->
-            <section class="bg-gradient-to-b from-flora-butter via-[#FFB3D9]/25 to-flora-butter py-14 sm:py-20 lg:py-28 px-4 sm:px-8 lg:px-12 border-t border-flora-juniper/15">
+            <section class="bg-gradient-to-b from-flora-butter via-flora-pink/40 to-flora-butter py-14 sm:py-20 lg:py-28 px-4 sm:px-8 lg:px-12 border-t border-flora-juniper/15">
                 <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-center">
                     
                     <!-- Physical Store Photo -->
@@ -468,7 +485,7 @@
                         <img 
                             src="img/magazin.jpg" 
                             alt="Магазин за цветя Флора Тутракан" 
-                            class="w-full h-full object-cover filter contrast-105 saturate-110"
+                            class="w-full h-full object-cover"
                         />
                         <div class="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 bg-flora-juniper/95 text-flora-butter text-[11px] sm:text-xs tracking-wider sm:tracking-mega uppercase px-3 py-1.5 sm:px-4 sm:py-2 font-sans font-bold rounded shadow-md flex items-center gap-2">
                             <i class="fa-solid fa-location-dot text-flora-coral"></i>
@@ -562,7 +579,7 @@
                 </div>
 
                 <!-- Dynamic Grid -->
-                <div id="editorial-grid" class="grid grid-cols-12 gap-y-8 sm:gap-y-12 gap-x-4 sm:gap-x-8 lg:gap-x-10">
+                <div id="editorial-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                     <!-- Populated dynamically by app.js -->
                 </div>
             </section>

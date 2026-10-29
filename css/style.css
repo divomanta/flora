@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 
 :root {
-  --primary-color: #30243A; /* Deep Midnight Plum - Anchor / Structure */
-  --accent-color: #E6007E; /* Vivid Magenta - Hero Accent */
-  --secondary-pop: #9C27B0; /* Royal Orchid Purple - Secondary Pop */
-  --bg-white: #F3E5F5; /* Pale Lavender / Lilac - Background Base */
-  --bg-light-pink: #FFB3D9; /* Soft Blossom Pink */
-  --bg-light-green: #FFB3D9;
-  --text-color: #30243A; /* Deep Midnight Plum - Body Text */
+  --primary-color: #2E222D; /* Deep Botanical Plum - Anchor / Structure */
+  --accent-color: #C84B7E; /* Antique Rose - Primary Floral Accent */
+  --secondary-pop: #6B806F; /* Botanical Sage Green */
+  --bg-white: #F9F5F7; /* Soft Petal Cream - Background Base */
+  --bg-light-pink: #F4E8EE; /* Soft Rose Petal Tint */
+  --bg-light-green: #F0F4F1;
+  --text-color: #2E222D; /* Deep Botanical Plum - Body Text */
   --font-heading: 'Playfair Display', serif;
   --font-text: 'Inter', sans-serif;
 }
