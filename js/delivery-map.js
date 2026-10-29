@@ -90,10 +90,10 @@
             // 60 km outer radius circle (Electric Coral border with soft Apricot fill)
             circle60 = L.circle([centerLat, centerLng], {
                 radius: 60000,
-                color: '#FF4834',
+                color: '#E6007E',
                 weight: 2.5,
                 dashArray: '6, 6',
-                fillColor: '#FFA451',
+                fillColor: '#9C27B0',
                 fillOpacity: 0.08,
                 interactive: false
             }).addTo(map);
@@ -101,10 +101,10 @@
             // 15 km inner express zone circle (Deep Juniper)
             circle15 = L.circle([centerLat, centerLng], {
                 radius: 15000,
-                color: '#0D3B2E',
+                color: '#30243A',
                 weight: 1.5,
                 dashArray: '4, 4',
-                fillColor: '#0D3B2E',
+                fillColor: '#30243A',
                 fillOpacity: 0.04,
                 interactive: false
             }).addTo(map);
@@ -153,8 +153,8 @@
             className: 'flora-center-marker-icon',
             html: `
                 <div style="position:relative;width:36px;height:36px;display:flex;align-items:center;justify-content:center;">
-                    <span style="position:absolute;width:36px;height:36px;border-radius:50%;background:rgba(255,72,52,0.35);animation:floraPing 1.6s cubic-bezier(0,0,0.2,1) infinite;"></span>
-                    <span style="position:relative;width:32px;height:32px;border-radius:50%;background:#FF4834;color:#FFFDF5;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(255,72,52,0.5);border:2.5px solid #FFFFFF;font-size:14px;">
+                    <span style="position:absolute;width:36px;height:36px;border-radius:50%;background:rgba(230,0,126,0.35);animation:floraPing 1.6s cubic-bezier(0,0,0.2,1) infinite;"></span>
+                    <span style="position:relative;width:32px;height:32px;border-radius:50%;background:#E6007E;color:#F3E5F5;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(230,0,126,0.5);border:2.5px solid #FFFFFF;font-size:14px;">
                         <i class="fa-solid fa-leaf"></i>
                     </span>
                 </div>
@@ -170,11 +170,11 @@
             className: 'flora-city-marker-icon',
             html: `
                 <div style="display:flex;flex-direction:column;align-items:center;cursor:pointer;">
-                    <div style="background:#0D3B2E;color:#FFFDF5;border:1px solid #FFA451;padding:2px 8px;border-radius:9999px;font-size:11px;font-family:sans-serif;font-weight:700;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,0.25);display:flex;align-items:center;gap:4px;">
-                        <i class="fa-solid fa-city" style="color:#FFA451;font-size:9px;"></i>
+                    <div style="background:#30243A;color:#F3E5F5;border:1px solid #9C27B0;padding:2px 8px;border-radius:9999px;font-size:11px;font-family:sans-serif;font-weight:700;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,0.25);display:flex;align-items:center;gap:4px;">
+                        <i class="fa-solid fa-city" style="color:#9C27B0;font-size:9px;"></i>
                         <span>${name}</span>
                     </div>
-                    <div style="width:10px;height:10px;background:#FF4834;border-radius:50%;border:2px solid #FFFFFF;box-shadow:0 2px 4px rgba(0,0,0,0.3);margin-top:-2px;"></div>
+                    <div style="width:10px;height:10px;background:#E6007E;border-radius:50%;border:2px solid #FFFFFF;box-shadow:0 2px 4px rgba(0,0,0,0.3);margin-top:-2px;"></div>
                 </div>
             `,
             iconSize: [80, 28],
@@ -187,7 +187,7 @@
         return L.divIcon({
             className: 'flora-village-marker-icon',
             html: `
-                <div style="width:12px;height:12px;background:#0D3B2E;border:2px solid #FFFFFF;border-radius:50%;box-shadow:0 1px 4px rgba(0,0,0,0.3);cursor:pointer;transition:transform 0.15s, background-color 0.15s;"></div>
+                <div style="width:12px;height:12px;background:#30243A;border:2px solid #FFFFFF;border-radius:50%;box-shadow:0 1px 4px rgba(0,0,0,0.3);cursor:pointer;transition:transform 0.15s, background-color 0.15s;"></div>
             `,
             iconSize: [12, 12],
             iconAnchor: [6, 6],
@@ -206,33 +206,33 @@
 
         return `
             <div class="flora-popup-card font-sans p-2 min-w-[220px] max-w-[280px]">
-                <div class="flex items-center justify-between border-b border-[#0D3B2E]/15 pb-2 mb-2">
+                <div class="flex items-center justify-between border-b border-[#30243A]/15 pb-2 mb-2">
                     <span class="text-[9px] uppercase tracking-wider font-bold px-2 py-0.5 rounded-full ${badgeClass}">
                         ${typeLabel} &bull; Общ. ${s.obshtina}
                     </span>
-                    <span class="font-mono text-xs font-bold text-[#FF4834]">
+                    <span class="font-mono text-xs font-bold text-[#E6007E]">
                         ${s.isCenter ? '0 км' : s.distance + ' км'}
                     </span>
                 </div>
                 
-                <h4 class="font-serif italic font-bold text-lg text-[#0D3B2E] mb-1 leading-tight">
+                <h4 class="font-serif italic font-bold text-lg text-[#30243A] mb-1 leading-tight">
                     ${s.name}
                 </h4>
                 
-                <p class="text-[11px] text-[#111A16]/80 mb-3 flex items-start gap-1.5 leading-snug">
-                    <i class="fa-solid fa-truck text-[#FF4834] text-xs mt-0.5 shrink-0"></i>
+                <p class="text-[11px] text-[#30243A]/80 mb-3 flex items-start gap-1.5 leading-snug">
+                    <i class="fa-solid fa-truck text-[#E6007E] text-xs mt-0.5 shrink-0"></i>
                     <span>${timeText}</span>
                 </p>
                 
-                <div class="flex items-center justify-between text-[10px] text-[#111A16]/60 border-t border-[#0D3B2E]/10 pt-2 mb-3">
+                <div class="flex items-center justify-between text-[10px] text-[#30243A]/60 border-t border-[#30243A]/10 pt-2 mb-3">
                     <span>Зона на покритие:</span>
-                    <strong class="text-[#0D3B2E]">Радиус 60 км</strong>
+                    <strong class="text-[#30243A]">Радиус 60 км</strong>
                 </div>
 
                 <button 
                     type="button" 
                     onclick="window.FloraDeliveryMap.selectSettlement('${s.name}', ${s.distance})" 
-                    class="w-full bg-[#FF4834] hover:bg-[#FFA451] text-white text-[11px] font-sans uppercase tracking-wider font-bold py-2.5 px-3 rounded-xl shadow-md shadow-[#FF4834]/25 transition-all flex items-center justify-center gap-1.5 cursor-pointer hover:scale-[1.02]"
+                    class="w-full bg-[#E6007E] hover:bg-[#9C27B0] text-white text-[11px] font-sans uppercase tracking-wider font-bold py-2.5 px-3 rounded-xl shadow-md shadow-[#E6007E]/25 transition-all flex items-center justify-center gap-1.5 cursor-pointer hover:scale-[1.02]"
                 >
                     <i class="fa-solid fa-check text-[10px]"></i>
                     <span>Избери за доставка</span>
@@ -298,11 +298,11 @@
         // Update UI pill buttons
         document.querySelectorAll('[data-delivery-filter]').forEach(btn => {
             if (btn.getAttribute('data-delivery-filter') === filterType) {
-                btn.classList.add('bg-[#FF4834]', 'text-white', 'border-[#FF4834]');
-                btn.classList.remove('bg-white', 'text-[#0D3B2E]', 'border-[#0D3B2E]/20');
+                btn.classList.add('bg-[#E6007E]', 'text-white', 'border-[#E6007E]');
+                btn.classList.remove('bg-white', 'text-[#30243A]', 'border-[#30243A]/20');
             } else {
-                btn.classList.remove('bg-[#FF4834]', 'text-white', 'border-[#FF4834]');
-                btn.classList.add('bg-white', 'text-[#0D3B2E]', 'border-[#0D3B2E]/20');
+                btn.classList.remove('bg-[#E6007E]', 'text-white', 'border-[#E6007E]');
+                btn.classList.add('bg-white', 'text-[#30243A]', 'border-[#30243A]/20');
             }
         });
     }
@@ -359,9 +359,9 @@
         
         if (destInput) {
             destInput.value = name;
-            destInput.classList.add('ring-2', 'ring-[#FF4834]');
+            destInput.classList.add('ring-2', 'ring-[#E6007E]');
             setTimeout(() => {
-                destInput.classList.remove('ring-2', 'ring-[#FF4834]');
+                destInput.classList.remove('ring-2', 'ring-[#E6007E]');
             }, 2500);
         }
 
@@ -419,30 +419,30 @@
         obshtiniNames.forEach(obshtina => {
             const list = byObshtina[obshtina];
             html += `
-                <div class="border border-[#0D3B2E]/10 rounded-xl overflow-hidden bg-white mb-2 shadow-xs">
+                <div class="border border-[#30243A]/10 rounded-xl overflow-hidden bg-white mb-2 shadow-xs">
                     <button 
                         type="button" 
                         onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('.arrow-icon').classList.toggle('rotate-180');" 
-                        class="w-full px-3.5 py-2.5 flex items-center justify-between text-left hover:bg-[#0D3B2E]/5 transition-colors cursor-pointer"
+                        class="w-full px-3.5 py-2.5 flex items-center justify-between text-left hover:bg-[#30243A]/5 transition-colors cursor-pointer"
                     >
                         <div class="flex items-center gap-2">
-                            <i class="fa-solid fa-map-pin text-[#FF4834] text-xs"></i>
-                            <span class="font-bold text-xs text-[#0D3B2E]">Община ${obshtina}</span>
-                            <span class="text-[10px] bg-[#0D3B2E]/10 text-[#0D3B2E] font-bold px-1.5 py-0.2 rounded-full">${list.length}</span>
+                            <i class="fa-solid fa-map-pin text-[#E6007E] text-xs"></i>
+                            <span class="font-bold text-xs text-[#30243A]">Община ${obshtina}</span>
+                            <span class="text-[10px] bg-[#30243A]/10 text-[#30243A] font-bold px-1.5 py-0.2 rounded-full">${list.length}</span>
                         </div>
-                        <i class="fa-solid fa-chevron-down text-xs text-[#0D3B2E]/50 transition-transform arrow-icon"></i>
+                        <i class="fa-solid fa-chevron-down text-xs text-[#30243A]/50 transition-transform arrow-icon"></i>
                     </button>
-                    <div class="hidden px-3.5 py-2 bg-[#FFFDF5] border-t border-[#0D3B2E]/10 max-h-48 overflow-y-auto space-y-1 text-xs">
+                    <div class="hidden px-3.5 py-2 bg-[#F3E5F5] border-t border-[#30243A]/10 max-h-48 overflow-y-auto space-y-1 text-xs">
                         ${list.map(s => `
                             <div 
                                 onclick="window.FloraDeliveryMap.focusSettlement('${s.name}')" 
-                                class="flex items-center justify-between p-1.5 rounded hover:bg-[#FF4834]/10 cursor-pointer transition-colors group"
+                                class="flex items-center justify-between p-1.5 rounded hover:bg-[#E6007E]/10 cursor-pointer transition-colors group"
                             >
-                                <span class="font-medium text-[#111A16] group-hover:text-[#FF4834] transition-colors flex items-center gap-1.5">
-                                    <i class="fa-solid ${s.type === 'city' ? 'fa-city text-[#FF4834]' : 'fa-circle text-[6px] text-[#0D3B2E]/40'}"></i>
+                                <span class="font-medium text-[#30243A] group-hover:text-[#E6007E] transition-colors flex items-center gap-1.5">
+                                    <i class="fa-solid ${s.type === 'city' ? 'fa-city text-[#E6007E]' : 'fa-circle text-[6px] text-[#30243A]/40'}"></i>
                                     <span>${s.name}</span>
                                 </span>
-                                <span class="font-mono text-[11px] text-[#0D3B2E]/60">${s.distance} км</span>
+                                <span class="font-mono text-[11px] text-[#30243A]/60">${s.distance} км</span>
                             </div>
                         `).join('')}
                     </div>
@@ -473,7 +473,7 @@
         if (product) {
             previewName.textContent = product.name;
             if (previewCat) previewCat.textContent = `${product.categoryLabel} • ${product.subtitle || ''}`;
-            if (previewPrice) previewPrice.textContent = `${product.price.toFixed(2)} лв.`;
+            if (previewPrice) previewPrice.textContent = `${product.price.toFixed(2)} €`;
             if (previewImg) {
                 previewImg.src = product.image;
                 previewImg.alt = product.name;
@@ -504,7 +504,7 @@
 
                 if (matches.length === 0) {
                     searchResults.innerHTML = `
-                        <div class="p-3 text-xs text-[#111A16]/60 text-center">
+                        <div class="p-3 text-xs text-[#30243A]/60 text-center">
                             Няма открито населено място в радиус 60 км.
                         </div>
                     `;
@@ -512,14 +512,14 @@
                     searchResults.innerHTML = matches.map(s => `
                         <div 
                             onclick="window.FloraDeliveryMap.focusSettlement('${s.name}'); document.getElementById('delivery-search-results').classList.add('hidden'); document.getElementById('delivery-search-input').value = '${s.name}';" 
-                            class="px-3.5 py-2 hover:bg-[#FF4834]/10 cursor-pointer flex items-center justify-between text-xs border-b border-[#0D3B2E]/10 last:border-b-0"
+                            class="px-3.5 py-2 hover:bg-[#E6007E]/10 cursor-pointer flex items-center justify-between text-xs border-b border-[#30243A]/10 last:border-b-0"
                         >
-                            <span class="font-bold text-[#0D3B2E] flex items-center gap-1.5">
-                                <i class="fa-solid ${s.type === 'city' ? 'fa-city text-[#FF4834]' : 'fa-location-dot text-[#0D3B2E]/50'} text-xs"></i>
+                            <span class="font-bold text-[#30243A] flex items-center gap-1.5">
+                                <i class="fa-solid ${s.type === 'city' ? 'fa-city text-[#E6007E]' : 'fa-location-dot text-[#30243A]/50'} text-xs"></i>
                                 <span>${s.name}</span>
-                                <span class="text-[10px] text-[#111A16]/50 font-normal">(общ. ${s.obshtina})</span>
+                                <span class="text-[10px] text-[#30243A]/50 font-normal">(общ. ${s.obshtina})</span>
                             </span>
-                            <span class="font-mono text-[#FF4834] font-bold">${s.distance} км</span>
+                            <span class="font-mono text-[#E6007E] font-bold">${s.distance} км</span>
                         </div>
                     `).join('');
                 }

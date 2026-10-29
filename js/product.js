@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="product-info">
                         <h1>${product.name}</h1>
                         <div class="category-tag">Категория: ${product.category}</div>
-                        <div class="price">${product.price.toFixed(2)} лв.</div>
+                        <div class="price">${product.price.toFixed(2)} €</div>
                         <p class="desc">${product.description}</p>
                         <a href="order.html" class="btn" style="text-align: center; width: 200px;">Поръчай сега</a>
                     </div>

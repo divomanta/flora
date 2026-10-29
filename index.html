@@ -22,21 +22,26 @@
             theme: {
                 extend: {
                     colors: {
-                        /* Palette 1: Electric Sunset & Evergreen */
-                        'flora-coral': '#FF4834',      /* Hero Accent: Primary CTAs, sale callouts */
-                        'flora-apricot': '#FFA451',    /* Secondary Pop: Hover states, promo banners, notification badges */
-                        'flora-juniper': '#0D3B2E',    /* Anchor / Structure: Navigation bar, main headers, high-end branding text */
-                        'flora-butter': '#FFFDF5',     /* Background Base: Warm Buttercream */
-                        'flora-midnight': '#111A16',   /* Body Text: Midnight Forest */
+                        /* Palette: Velvet Magenta & Royal Orchid */
+                        'flora-coral': '#E6007E',      /* Hero Accent: Primary CTAs, sale callouts */
+                        'flora-apricot': '#9C27B0',    /* Secondary Pop: Royal Orchid Purple */
+                        'flora-pink': '#FFB3D9',       /* Soft Pastel Blossom Pink */
+                        'flora-juniper': '#30243A',    /* Anchor / Structure: Deep Midnight Plum */
+                        'flora-butter': '#F3E5F5',     /* Background Base: Pale Lavender / Lilac */
+                        'flora-midnight': '#30243A',   /* Body Text: Deep Midnight Plum */
 
-                        /* Semantic Mappings */
-                        'flora-base': '#FFFDF5',
-                        'flora-dark': '#0D3B2E',
-                        'flora-text': '#111A16',
-                        'flora-emerald': '#0D3B2E',
-                        'flora-rose': '#FF4834',
-                        'flora-amber': '#FFA451',
-                        'flora-sage': '#134E3E',
+                        /* Semantic Mappings & Aliases */
+                        'flora-base': '#F3E5F5',
+                        'flora-dark': '#30243A',
+                        'flora-text': '#30243A',
+                        'flora-emerald': '#30243A',
+                        'flora-rose': '#E6007E',
+                        'flora-amber': '#9C27B0',
+                        'flora-sage': '#9C27B0',
+                        'flora-magenta': '#E6007E',
+                        'flora-purple': '#9C27B0',
+                        'flora-plum': '#30243A',
+                        'flora-lavender': '#F3E5F5',
                     },
                     fontFamily: {
                         serif: ['"Playfair Display"', 'Georgia', 'serif'],
@@ -124,6 +129,9 @@
                 <i class="fa-solid fa-bars text-sm"></i>
             </button>
         </div>
+
+        <!-- Botanical Vine Garland Divider Border (Along line separating header & banner) -->
+        <div class="header-vine-border" aria-hidden="true"></div>
     </header>
 
     <!-- ==========================================================================
@@ -257,7 +265,7 @@
     <!-- ==========================================================================
          MOBILE STICKY BOTTOM NAVIGATION BAR (Thumb-friendly app experience)
          ========================================================================== -->
-    <nav class="md:hidden fixed bottom-0 left-0 w-full z-40 bg-flora-butter/95 backdrop-blur-lg border-t border-flora-juniper/15 shadow-[0_-4px_20px_rgba(13,59,46,0.08)] py-1.5 px-2">
+    <nav class="md:hidden fixed bottom-0 left-0 w-full z-40 bg-flora-butter/95 backdrop-blur-lg border-t border-flora-juniper/15 shadow-[0_-4px_20px_rgba(48,36,58,0.08)] py-1.5 px-2">
         <div class="grid grid-cols-5 items-center justify-around text-center">
             <!-- Home -->
             <a href="#home" onclick="FloraApp.switchView('home')" class="flex flex-col items-center gap-0.5 text-flora-juniper hover:text-flora-coral py-1 transition-colors">
@@ -364,22 +372,6 @@
                         </a>
                     </div>
 
-                    <!-- Guarantee Features Pills -->
-                    <div class="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3 w-full max-w-3xl text-xs font-sans">
-                        <div class="bg-flora-juniper/80 backdrop-blur-md border border-flora-butter/20 rounded-lg p-3 text-flora-butter flex items-center justify-center gap-2.5">
-                            <i class="fa-solid fa-certificate text-flora-apricot text-sm sm:text-base shrink-0"></i>
-                            <span class="font-medium text-[11px] sm:text-xs">100% Свежи Сезонни Цветя</span>
-                        </div>
-                        <div class="bg-flora-juniper/80 backdrop-blur-md border border-flora-butter/20 rounded-lg p-3 text-flora-butter flex items-center justify-center gap-2.5">
-                            <i class="fa-solid fa-truck-fast text-flora-apricot text-sm sm:text-base shrink-0"></i>
-                            <span class="font-medium text-[11px] sm:text-xs">Доставка в гр. Тутракан</span>
-                        </div>
-                        <div class="bg-flora-juniper/80 backdrop-blur-md border border-flora-butter/20 rounded-lg p-3 text-flora-butter flex items-center justify-center gap-2.5">
-                            <i class="fa-solid fa-heart text-flora-coral text-sm sm:text-base shrink-0"></i>
-                            <span class="font-medium text-[11px] sm:text-xs">Авторски Индивидуален Дизайн</span>
-                        </div>
-                    </div>
-
                 </div>
 
                 <!-- Scroll Down Hint (Desktop only) -->
@@ -389,8 +381,8 @@
                 </a>
             </section>
 
-            <!-- Secondary Pop: Bright Apricot Promo Banner Marquee -->
-            <div class="bg-flora-apricot py-3 text-flora-juniper overflow-hidden shadow-inner select-none border-y border-flora-apricot">
+            <!-- Vibrant Botanical Gradient Promo Banner Marquee -->
+            <div class="bg-gradient-to-r from-flora-apricot via-flora-coral to-flora-apricot py-3 text-white overflow-hidden shadow-inner select-none border-y border-white/20">
                 <div class="animate-marquee whitespace-nowrap text-xs uppercase tracking-wider sm:tracking-mega flex items-center gap-6 sm:gap-8 font-sans font-bold">
                     <span>&bull; СВЕЖИ ЦВЕТЯ &ndash; ГР. ТУТРАКАН</span>
                     <span>&bull; БУТИКОВИ БУКЕТИ</span>
@@ -437,7 +429,7 @@
                         <div class="meta pt-2 flex flex-col gap-1.5">
                             <div class="flex justify-between items-baseline gap-2">
                                 <h3 class="font-serif italic text-xl sm:text-2xl text-flora-juniper group-hover:text-flora-coral transition-colors truncate">Noir Rose</h3>
-                                <span class="font-sans text-xs sm:text-sm tracking-wide font-bold text-flora-coral bg-flora-coral/10 px-2 py-0.5 rounded border border-flora-coral/25 shrink-0">120.00 BGN</span>
+                                <span class="font-sans text-xs sm:text-sm tracking-wide font-bold text-flora-coral bg-flora-coral/10 px-2 py-0.5 rounded border border-flora-coral/25 shrink-0">120.00 €</span>
                             </div>
                             <p class="text-xs text-flora-midnight/75 font-sans line-clamp-2">Кадифени дълбокочервени рози и ароматен евкалипт</p>
                         </div>
@@ -454,7 +446,7 @@
                         <div class="meta pt-2 flex flex-col gap-1.5">
                             <div class="flex justify-between items-baseline gap-2">
                                 <h3 class="font-serif italic text-xl sm:text-2xl text-flora-juniper group-hover:text-flora-coral transition-colors truncate">Пролетен полъх</h3>
-                                <span class="font-sans text-xs sm:text-sm tracking-wide font-bold text-flora-coral bg-flora-coral/10 px-2 py-0.5 rounded border border-flora-coral/25 shrink-0">45.00 BGN</span>
+                                <span class="font-sans text-xs sm:text-sm tracking-wide font-bold text-flora-coral bg-flora-coral/10 px-2 py-0.5 rounded border border-flora-coral/25 shrink-0">45.00 €</span>
                             </div>
                             <p class="text-xs text-flora-midnight/75 font-sans line-clamp-2">Свеж авторски букет от сезонни цветя от магазин „Флора“</p>
                         </div>
@@ -464,14 +456,14 @@
                     <article class="edgy-card group flex flex-col gap-3 bg-white p-3 sm:p-3.5 rounded-xl shadow-sm border border-flora-juniper/10 hover:border-flora-apricot hover:shadow-xl transition-all cursor-pointer" onclick="FloraApp.openProductModalById(3)">
                         <div class="relative edgy-img-wrapper aspect-[3/4] rounded-lg overflow-hidden">
                             <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=1000&auto=format&fit=crop" alt="Spring Solstice" class="w-full h-full object-cover filter saturate-115">
-                            <span class="absolute top-3 left-3 bg-flora-apricot text-flora-juniper text-[10px] uppercase tracking-mega px-2.5 py-1 font-sans font-bold rounded shadow-sm">
+                            <span class="absolute top-3 left-3 bg-flora-pink text-flora-juniper text-[10px] uppercase tracking-mega px-2.5 py-1 font-sans font-bold rounded shadow-sm">
                                 Пролетна Елегантност
                             </span>
                         </div>
                         <div class="meta pt-2 flex flex-col gap-1.5">
                             <div class="flex justify-between items-baseline gap-2">
                                 <h3 class="font-serif italic text-xl sm:text-2xl text-flora-juniper group-hover:text-flora-coral transition-colors truncate">Spring Solstice</h3>
-                                <span class="font-sans text-xs sm:text-sm tracking-wide font-bold text-flora-coral bg-flora-coral/10 px-2 py-0.5 rounded border border-flora-coral/25 shrink-0">85.00 BGN</span>
+                                <span class="font-sans text-xs sm:text-sm tracking-wide font-bold text-flora-coral bg-flora-coral/10 px-2 py-0.5 rounded border border-flora-coral/25 shrink-0">85.00 €</span>
                             </div>
                             <p class="text-xs text-flora-midnight/75 font-sans line-clamp-2">Пастелни лютичета, фрезии и нежен люляк</p>
                         </div>
@@ -481,7 +473,7 @@
             </section>
 
             <!-- Atelier Story Section -->
-            <section class="bg-gradient-to-b from-flora-butter via-[#E8F2ED] to-flora-butter py-14 sm:py-20 lg:py-28 px-4 sm:px-8 lg:px-12 border-t border-flora-juniper/15">
+            <section class="bg-gradient-to-b from-flora-butter via-[#FFB3D9]/25 to-flora-butter py-14 sm:py-20 lg:py-28 px-4 sm:px-8 lg:px-12 border-t border-flora-juniper/15">
                 <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-center">
                     
                     <!-- Physical Store Photo -->
@@ -639,8 +631,8 @@
                         <h4 class="font-bold text-xs uppercase tracking-wider text-flora-coral mb-1">Ръчна Изработка</h4>
                         <p class="text-xs text-flora-midnight/70 leading-relaxed">Всеки букет се подрежда с професионализъм и грижа.</p>
                     </div>
-                    <div class="bg-flora-apricot/10 p-5 sm:p-6 rounded-xl border border-flora-apricot/30">
-                        <div class="w-10 h-10 rounded-full bg-flora-apricot text-flora-juniper flex items-center justify-center text-lg mb-3 shadow-sm shadow-flora-apricot/30">
+                    <div class="bg-flora-pink/20 p-5 sm:p-6 rounded-xl border border-flora-pink/40">
+                        <div class="w-10 h-10 rounded-full bg-flora-pink text-flora-juniper flex items-center justify-center text-lg mb-3 shadow-sm shadow-flora-pink/30">
                             <i class="fa-solid fa-ring"></i>
                         </div>
                         <h4 class="font-bold text-xs uppercase tracking-wider text-flora-juniper mb-1">Сватбен Дизайн</h4>
@@ -700,7 +692,7 @@
                             </div>
 
                             <div class="flex items-center gap-3 bg-white/10 backdrop-blur-sm p-3 rounded-2xl border border-white/10">
-                                <span class="w-9 h-9 rounded-xl bg-flora-apricot text-flora-juniper flex items-center justify-center shrink-0 text-sm shadow-sm">
+                                <span class="w-9 h-9 rounded-xl bg-flora-pink text-flora-juniper flex items-center justify-center shrink-0 text-sm shadow-sm">
                                     <i class="fa-solid fa-truck-fast"></i>
                                 </span>
                                 <div>

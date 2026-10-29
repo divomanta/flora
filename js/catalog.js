@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <img src="${product.image}" alt="${product.name}" loading="lazy">
                 <div class="card-content">
                     <h3>${product.name}</h3>
-                    <p class="price">${product.price.toFixed(2)} лв.</p>
+                    <p class="price">${product.price.toFixed(2)} €</p>
                     <a href="product.html?id=${product.id}" class="btn">Детайли</a>
                 </div>
             `;

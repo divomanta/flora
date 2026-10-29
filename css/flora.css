@@ -1,31 +1,32 @@
 /* ==========================================================================
-   FLORA | Botanical Artistry - Electric Sunset & Evergreen Aesthetics
+   FLORA | Botanical Artistry - Velvet Magenta & Royal Orchid Aesthetics
    High-Fashion Maximalist Palette:
-   - Hero Accent: Electric Coral / Poppy (#FF4834)
-   - Secondary Pop: Bright Apricot (#FFA451)
-   - Anchor / Structure: Deep Juniper (#0D3B2E)
-   - Background Base: Warm Buttercream (#FFFDF5)
-   - Body Text: Midnight Forest (#111A16)
+   - Hero Accent: Vivid Magenta (#E6007E)
+   - Secondary Pop: Royal Orchid Purple (#9C27B0)
+   - Soft Accent: Blossom Pink (#FFB3D9)
+   - Background Base: Pale Lavender / Lilac (#F3E5F5)
+   - Anchor / Structure / Body Text: Deep Midnight Plum (#30243A)
    ========================================================================== */
 
 :root {
-    --bg-base: #FFFDF5; /* Warm Buttercream */
-    --text-dark: #111A16; /* Midnight Forest */
-    --body-text: #111A16;
-    --hero-coral: #FF4834; /* Electric Coral / Poppy */
-    --secondary-apricot: #FFA451; /* Bright Apricot */
-    --anchor-juniper: #0D3B2E; /* Deep Juniper */
-    --flora-emerald: #0D3B2E;
-    --flora-rose: #FF4834;
-    --flora-gold: #FFA451;
-    --flora-leaf: #FFA451;
-    --flora-sage: #134E3E;
+    --bg-base: #F3E5F5; /* Pale Lavender / Lilac */
+    --text-dark: #30243A; /* Deep Midnight Plum */
+    --body-text: #30243A;
+    --hero-coral: #E6007E; /* Vivid Magenta */
+    --secondary-apricot: #9C27B0; /* Royal Orchid Purple */
+    --soft-pink: #FFB3D9; /* Blossom Pink */
+    --anchor-juniper: #30243A; /* Deep Midnight Plum */
+    --flora-emerald: #30243A;
+    --flora-rose: #E6007E;
+    --flora-gold: #9C27B0;
+    --flora-leaf: #9C27B0;
+    --flora-sage: #9C27B0;
 }
 
 /* Custom Selection */
 ::selection {
-    background-color: #FF4834;
-    color: #FFFDF5;
+    background-color: #E6007E;
+    color: #F3E5F5;
 }
 
 /* Slim Vibrant Scrollbar */
@@ -34,14 +35,47 @@
     height: 6px;
 }
 ::-webkit-scrollbar-track {
-    background: #FFFDF5;
+    background: #F3E5F5;
 }
 ::-webkit-scrollbar-thumb {
-    background: #0D3B2E;
+    background: #30243A;
     border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: #FF4834;
+    background: #E6007E;
+}
+
+/* ==========================================================================
+   HEADER VINE GARLAND DIVIDER BORDER
+   Botanical blush rose & leaf garland along the line separating header & banner
+   ========================================================================== */
+.header-vine-border {
+    position: absolute;
+    bottom: -16px;
+    left: 0;
+    width: 100%;
+    height: 34px;
+    background-image: url('../img/rose-garland.png');
+    background-repeat: repeat-x;
+    background-size: auto 100%;
+    background-position: center;
+    pointer-events: none;
+    z-index: 50;
+    filter: drop-shadow(0 2px 4px rgba(48, 36, 58, 0.12));
+}
+
+@media (min-width: 640px) {
+    .header-vine-border {
+        bottom: -20px;
+        height: 40px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .header-vine-border {
+        bottom: -22px;
+        height: 46px;
+    }
 }
 
 /* Subtle Luminous Texture */
@@ -108,7 +142,7 @@
 .edgy-img-wrapper {
     position: relative;
     overflow: hidden;
-    background-color: #E8F2ED;
+    background-color: #FFB3D9;
 }
 
 .edgy-img-wrapper img {
@@ -220,19 +254,19 @@
 
 /* Glowing Vibrant Highlights */
 .glow-coral {
-    box-shadow: 0 10px 30px -10px rgba(255, 72, 52, 0.45);
+    box-shadow: 0 10px 30px -10px rgba(230, 0, 126, 0.45);
 }
 .glow-apricot {
-    box-shadow: 0 10px 30px -10px rgba(255, 164, 81, 0.45);
+    box-shadow: 0 10px 30px -10px rgba(156, 39, 176, 0.45);
 }
 .glow-juniper {
-    box-shadow: 0 10px 30px -10px rgba(13, 59, 46, 0.4);
+    box-shadow: 0 10px 30px -10px rgba(48, 36, 58, 0.4);
 }
 .glow-emerald {
-    box-shadow: 0 10px 30px -10px rgba(13, 59, 46, 0.4);
+    box-shadow: 0 10px 30px -10px rgba(48, 36, 58, 0.4);
 }
 .glow-rose {
-    box-shadow: 0 10px 30px -10px rgba(255, 72, 52, 0.45);
+    box-shadow: 0 10px 30px -10px rgba(230, 0, 126, 0.45);
 }
 
 
@@ -258,11 +292,11 @@
 
 /* Custom Leaflet Popup */
 .flora-custom-leaflet-popup .leaflet-popup-content-wrapper {
-    background: #FFFDF5 !important;
-    color: #111A16 !important;
+    background: #F3E5F5 !important;
+    color: #30243A !important;
     border-radius: 16px !important;
-    border: 1px solid rgba(13, 59, 46, 0.2) !important;
-    box-shadow: 0 16px 36px -8px rgba(13, 59, 46, 0.25) !important;
+    border: 1px solid rgba(48, 36, 58, 0.2) !important;
+    box-shadow: 0 16px 36px -8px rgba(48, 36, 58, 0.25) !important;
     padding: 2px !important;
 }
 
@@ -272,36 +306,36 @@
 }
 
 .flora-custom-leaflet-popup .leaflet-popup-tip {
-    background: #FFFDF5 !important;
-    border: 1px solid rgba(13, 59, 46, 0.2) !important;
+    background: #F3E5F5 !important;
+    border: 1px solid rgba(48, 36, 58, 0.2) !important;
     box-shadow: none !important;
 }
 
 .flora-custom-leaflet-popup a.leaflet-popup-close-button {
     top: 8px !important;
     right: 8px !important;
-    color: #0D3B2E !important;
+    color: #30243A !important;
     font-size: 16px !important;
 }
 
 .flora-custom-leaflet-popup a.leaflet-popup-close-button:hover {
-    color: #FF4834 !important;
+    color: #E6007E !important;
 }
 
 /* Custom Tooltip */
 .flora-leaflet-tooltip {
-    background: #0D3B2E !important;
-    color: #FFFDF5 !important;
-    border: 1px solid #FFA451 !important;
+    background: #30243A !important;
+    color: #F3E5F5 !important;
+    border: 1px solid #9C27B0 !important;
     border-radius: 6px !important;
     font-family: inherit !important;
     font-size: 11px !important;
     padding: 3px 8px !important;
-    box-shadow: 0 4px 14px rgba(13, 59, 46, 0.25) !important;
+    box-shadow: 0 4px 14px rgba(48, 36, 58, 0.25) !important;
 }
 
 .flora-leaflet-tooltip::before {
-    border-top-color: #0D3B2E !important;
+    border-top-color: #30243A !important;
 }
 
 
@@ -320,6 +354,6 @@
 }
 
 .flora-village-marker-icon div:hover {
-    background-color: #FF4834 !important;
+    background-color: #E6007E !important;
     transform: scale(1.6);
 }
